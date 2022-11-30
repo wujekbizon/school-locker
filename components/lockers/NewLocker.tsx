@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -6,7 +6,21 @@ const NewLocker = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [privacy, setPrivacy] = useState('public');
+  const [schoolName, setSchoolName] = useState('');
+  const [classroom, setClassroom] = useState('');
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
   const [isLogin, setIsLogin] = useState(true);
+
+  const resetFields = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setSchoolName('');
+    setClassroom('');
+    setTitle('');
+  };
 
   const onSumbitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,15 +49,18 @@ const NewLocker = () => {
             name,
             email,
             password,
+            privacy,
+            schoolName,
+            classroom,
+            title,
+            image,
           }),
           headers: {
             'Content-Type': 'application/json',
           },
         });
 
-        setName('');
-        setEmail('');
-        setPassword('');
+        resetFields();
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.message || 'Something went wrong!');
@@ -79,11 +96,11 @@ const NewLocker = () => {
       <form onSubmit={onSumbitHandler}>
         {!isLogin && (
           <div>
-            {' '}
             <label htmlFor="name">Student Name</label>
             <input
               type="text"
               id="name"
+              placeholder="field required"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -92,26 +109,88 @@ const NewLocker = () => {
         )}
 
         <div>
-          <label htmlFor="email">Student Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
             required
+            placeholder="field required"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="password">Student Password</label>
+          <label htmlFor="password">Locker Password</label>
           <input
             type="password"
             id="password"
             autoComplete="on"
             required
+            placeholder="field required"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {!isLogin && (
+          <div>
+            <label htmlFor="privacy">Security</label>
+            <select
+              name="privacy"
+              id="privacy"
+              onChange={(e) => setPrivacy(e.target.value)}
+            >
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+            </select>
+          </div>
+        )}
+        {!isLogin && (
+          <div>
+            <label htmlFor="title">Locker title</label>
+            <input
+              type="text"
+              id="title"
+              placeholder="field optional"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+        )}
+        {!isLogin && (
+          <div>
+            <label htmlFor="school">School Name</label>
+            <input
+              type="text"
+              id="school"
+              placeholder="field optional"
+              value={schoolName}
+              onChange={(e) => setSchoolName(e.target.value)}
+            />
+          </div>
+        )}
+        {!isLogin && (
+          <div>
+            <label htmlFor="classroom">Classroom</label>
+            <input
+              type="text"
+              id="classroom"
+              placeholder="field optional"
+              value={classroom}
+              onChange={(e) => setClassroom(e.target.value)}
+            />
+          </div>
+        )}
+        {!isLogin && (
+          <div>
+            <label htmlFor="image">Avatar Image</label>
+            <input
+              type="file"
+              id="image"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
+        )}
 
         <div>
           <button>{isLogin ? 'Open Locker' : 'Create Locker'}</button>
@@ -120,6 +199,12 @@ const NewLocker = () => {
           </button>
         </div>
       </form>
+      <div>
+        <p>
+          In order to create a new locker , you need to provide all required
+          fields. All the optional fields you can always customize later.
+        </p>
+      </div>
     </section>
   );
 };

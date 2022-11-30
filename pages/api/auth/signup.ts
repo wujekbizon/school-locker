@@ -1,17 +1,37 @@
 import { NextApiResponse, NextApiRequest } from 'next';
 import { hashPassword } from '../../../helpers/auth';
-import { connectToDatabase } from '../../../helpers/db';
+import {
+  connectToDatabase,
+  findOneDocument,
+  insertOneDocument,
+} from '../../../helpers/db';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+      privacy,
+      classroom,
+      schoolName,
+      title,
+      image,
+    } = req.body;
     const hashedPassword = await hashPassword(password);
+
+    const lockerTitle = `${name} Locker`;
 
     const newLocker = {
       email,
-      name,
       password: hashedPassword,
       createdAt: new Date(),
+      title: title || lockerTitle,
+      student: name,
+      img: image || '/images/i7.png',
+      school: schoolName || 'Test School',
+      classroom: classroom || 'Test Classroom',
+      privacy,
     };
 
     if (
@@ -38,17 +58,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      const db = client.db();
-      const existingLocker = await db
-        .collection('lockers')
-        .findOne({ email: email });
+      // const db = client.db();
+      // const existingLocker = await db
+      //   .collection('lockers')
+      //   .findOne({ email: email });
+      const existingLocker = await findOneDocument(client, 'lockers', {
+        email: email,
+      });
 
       if (existingLocker) {
         res.status(422).json({ message: 'Locker exist already!' });
         return;
       }
 
-      await db.collection('lockers').insertOne(newLocker);
+      // await db.collection('lockers').insertOne(newLocker);
+      await insertOneDocument(client, 'lockers', newLocker);
       res.status(201).json({ message: 'Created Locker!' });
     } catch (error) {
       res.status(500).json({ message: 'Insert data failed!' });
