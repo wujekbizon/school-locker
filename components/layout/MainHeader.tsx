@@ -16,7 +16,7 @@ const MainHeader = () => {
             <Link href="/lockers">All lockers</Link>
           </li>
           <li>
-            <Link href="/populate">New locker</Link>
+            <Link href="/populate">New and existing lockers</Link>
           </li>
         </ul>
       </nav>
