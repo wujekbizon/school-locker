@@ -1,8 +1,8 @@
 import LockerList from '../../components/lockers/LockerList';
 import { getAllLockers } from '../../data/dummydata';
-import { LockerItemType } from '../../types/lockersType';
+import { LockerDataType } from '../../types/lockersType';
 
-const SchoolLockersPage = ({ lockers }: { lockers: LockerItemType[] }) => {
+const SchoolLockersPage = ({ lockers }: { lockers: LockerDataType[] }) => {
   return <LockerList items={lockers} />;
 };
 export default SchoolLockersPage;

@@ -1,9 +1,11 @@
-import { LockerItemType } from '../types/lockersType';
+import { LockerDataType } from '../types/lockersType';
 
-const DUMMY_DATA: LockerItemType[] = [
+const DUMMY_DATA: LockerDataType[] = [
   {
-    id: 1,
-    school: 'HighSchool 1',
+    _id: 1,
+    schoolName: 'HighSchool 1',
+    email: '',
+    password: '',
     student: 'Greg Wolfinger',
     title: "Bizon's Death Locker",
     classroom: '3A',
@@ -12,9 +14,11 @@ const DUMMY_DATA: LockerItemType[] = [
     createdAt: '08-11-1996',
   },
   {
-    id: 2,
-    school: 'HighSchool 1',
+    _id: 2,
+    schoolName: 'HighSchool 1',
     student: 'Mr Poppy',
+    email: '',
+    password: '',
     title: 'The Locker',
     classroom: '8D',
     privacy: 'public',
@@ -22,9 +26,11 @@ const DUMMY_DATA: LockerItemType[] = [
     createdAt: '01-09-2007',
   },
   {
-    id: 3,
-    school: 'Best School',
+    _id: 3,
+    schoolName: 'Best School',
     student: 'Karen Kurosaki',
+    email: '',
+    password: '',
     title: 'My Bee Locker',
     classroom: '4B',
     privacy: 'public',
@@ -32,9 +38,11 @@ const DUMMY_DATA: LockerItemType[] = [
     createdAt: '12-04-2020',
   },
   {
-    id: 4,
-    school: 'Unknown',
+    _id: 4,
+    schoolName: 'Unknown',
     student: 'Stranger Surfer',
+    email: '',
+    password: '',
     title: 'unknown',
     classroom: 'not',
     privacy: 'private',

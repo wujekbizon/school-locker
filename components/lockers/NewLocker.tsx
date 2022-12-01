@@ -46,14 +46,14 @@ const NewLocker = () => {
         const response = await fetch('api/auth/signup', {
           method: 'POST',
           body: JSON.stringify({
-            name,
+            student: name,
             email,
             password,
             privacy,
             schoolName,
             classroom,
             title,
-            image,
+            img: image,
           }),
           headers: {
             'Content-Type': 'application/json',

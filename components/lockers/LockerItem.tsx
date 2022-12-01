@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { LockerItemType } from '../../types/lockersType';
+import { LockerDataType } from '../../types/lockersType';
 
-const LockerItem = (props: LockerItemType) => {
-  const { student, school, classroom, privacy, img, createdAt, title } = props;
+const LockerItem = (props: LockerDataType) => {
+  const { student, schoolName, classroom, privacy, img, createdAt, title } =
+    props;
 
   const date = new Date(createdAt).toLocaleDateString('pl-PL', {
     day: 'numeric',
@@ -22,7 +23,7 @@ const LockerItem = (props: LockerItemType) => {
           {privacy === 'public' ? (
             <>
               <div>
-                <h4>{school}</h4>
+                <h4>{schoolName}</h4>
                 <p>{date}</p>
               </div>
               <div>

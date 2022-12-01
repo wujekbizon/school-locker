@@ -1,20 +1,8 @@
-import { MongoClient, ObjectId } from 'mongodb';
+import { MongoClient } from 'mongodb';
+import { LockerDataType } from '../types/lockersType';
 
-type FilteredDocument<T> = {
-  [key: string]: T;
-};
-
-type LockerDocument = {
-  email: string;
-  password: string;
-  student: string;
-  createdAt: Date;
-  title: string;
-  img: string;
-  school: string;
-  classroom: string;
-  privacy: string;
-  _id: ObjectId;
+type FilteredDocument<Document> = {
+  [key: string]: Document | string | Date;
 };
 
 export const connectToDatabase = async (dbName: string) => {
@@ -27,7 +15,7 @@ export const connectToDatabase = async (dbName: string) => {
 export const findOneDocument = async (
   client: MongoClient,
   collection: string,
-  filter: FilteredDocument<LockerDocument>
+  filter: FilteredDocument<LockerDataType>
 ) => {
   const db = client.db();
   const result = await db.collection(collection).findOne(filter);
@@ -37,9 +25,18 @@ export const findOneDocument = async (
 export const insertOneDocument = async (
   client: MongoClient,
   collection: string,
-  document: FilteredDocument<LockerDocument>
+  document: FilteredDocument<LockerDataType>
 ) => {
   const db = client.db();
   const result = await db.collection(collection).insertOne(document);
   return result;
+};
+
+export const getAllDocuments = async (
+  client: MongoClient,
+  collection: string
+) => {
+  const db = client.db();
+  const lockersArray = await db.collection(collection).find().toArray();
+  return lockersArray;
 };

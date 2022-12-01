@@ -5,31 +5,32 @@ import {
   findOneDocument,
   insertOneDocument,
 } from '../../../helpers/db';
+import { LockerDataType } from '../../../types/lockersType';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const {
-      name,
+      student,
       email,
       password,
       privacy,
       classroom,
       schoolName,
       title,
-      image,
-    } = req.body;
+      img,
+    }: LockerDataType = req.body;
     const hashedPassword = await hashPassword(password);
 
-    const lockerTitle = `${name} Locker`;
+    const lockerTitle = `${student} Locker`;
 
     const newLocker = {
       email,
       password: hashedPassword,
       createdAt: new Date(),
       title: title || lockerTitle,
-      student: name,
-      img: image || '/images/i7.png',
-      school: schoolName || 'Test School',
+      student,
+      img: img || '/images/i7.png',
+      schoolName: schoolName || 'Test School',
       classroom: classroom || 'Test Classroom',
       privacy,
     };
@@ -39,8 +40,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       !email.includes('@') ||
       !password ||
       password.trim().length < 8 ||
-      !name ||
-      name.trim() === ''
+      !student ||
+      student.trim() === ''
     ) {
       res.status(422).json({
         message: 'Invalid input - password must be at leat 8 characters long.',
@@ -58,10 +59,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      // const db = client.db();
-      // const existingLocker = await db
-      //   .collection('lockers')
-      //   .findOne({ email: email });
       const existingLocker = await findOneDocument(client, 'lockers', {
         email: email,
       });
@@ -71,7 +68,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return;
       }
 
-      // await db.collection('lockers').insertOne(newLocker);
       await insertOneDocument(client, 'lockers', newLocker);
       res.status(201).json({ message: 'Created Locker!' });
     } catch (error) {

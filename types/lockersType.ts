@@ -1,7 +1,11 @@
-export type LockerItemType = {
-  id: number;
-  school: string;
+import { ObjectId } from 'mongodb';
+
+export type LockerDataType = {
+  _id: ObjectId | number;
   student: string;
+  email: string;
+  password: string;
+  schoolName: string;
   title: string;
   classroom: string;
   privacy: string;
