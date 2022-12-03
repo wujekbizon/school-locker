@@ -29,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       createdAt: new Date(),
       title: title || lockerTitle,
       student,
-      img: img || '/images/i7.png',
+      img,
       schoolName: schoolName || 'Test School',
       classroom: classroom || 'Test Classroom',
       privacy,

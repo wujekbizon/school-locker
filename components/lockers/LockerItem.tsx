@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { cloudinaryLoader } from '../../helpers/cloudinary';
 import { LockerDataType } from '../../types/lockersType';
 
 const LockerItem = (props: LockerDataType) => {
@@ -16,7 +17,14 @@ const LockerItem = (props: LockerDataType) => {
       <div>
         <div>
           <h1>{title}</h1>
-          <Image src={img} alt="my locker" width={450} height={500} />
+          <Image
+            src={img}
+            alt="my locker"
+            width={450}
+            height={500}
+            loader={cloudinaryLoader}
+            priority
+          />
         </div>
 
         <div>

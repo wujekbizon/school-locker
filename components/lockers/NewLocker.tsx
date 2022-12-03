@@ -1,6 +1,6 @@
-import React, { use, useState } from 'react';
-
+import React, { HTMLInputTypeAttribute, useState } from 'react';
 import Image from 'next/image';
+import { cloudinaryLoader } from '../../helpers/cloudinary';
 
 const NewLocker = () => {
   const [name, setName] = useState('');
@@ -10,7 +10,7 @@ const NewLocker = () => {
   const [schoolName, setSchoolName] = useState('');
   const [classroom, setClassroom] = useState('');
   const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
+  const [previewImage, setPreviewImage] = useState<string>();
   const [isLogin, setIsLogin] = useState(true);
 
   const resetFields = () => {
@@ -39,6 +39,34 @@ const NewLocker = () => {
       return;
     }
 
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }: any) => name === 'file'
+    ) as HTMLInputElement;
+
+    const formData = new FormData();
+
+    if (fileInput) {
+      for (const file of fileInput.files) {
+        formData.append('file', file);
+      }
+
+      formData.append('upload_preset', 'school-lockers-upload');
+    }
+
+    const { url } = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    ).then((r) => r.json());
+
+    console.log(url);
+
+    const imgUrl = url.slice(url.indexOf('v') - 1);
+    console.log(imgUrl);
+
     // handle form submit
     if (isLogin) {
     } else {
@@ -53,7 +81,7 @@ const NewLocker = () => {
             schoolName,
             classroom,
             title,
-            img: image,
+            img: imgUrl,
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -75,6 +103,20 @@ const NewLocker = () => {
     }
   };
 
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const reader = new FileReader();
+
+    reader.onload = (onLoadEvent) => {
+      setPreviewImage(onLoadEvent.target?.result);
+    };
+
+    if (event.target.files![0]) {
+      reader.readAsDataURL(event.target.files![0]);
+    } else {
+      setPreviewImage(undefined);
+    }
+  };
+
   return (
     <section>
       <div>
@@ -85,12 +127,13 @@ const NewLocker = () => {
           <p>Create and customize your locker</p>
         )}
         <Image
-          src="/images/l2.png"
+          src="/v1670000632/SchoolLocker/l2_b6mo5k.png"
           alt="customize locker"
           width={600}
           height={450}
           style={{ width: '60%', height: 'auto' }}
           priority
+          loader={cloudinaryLoader}
         />
       </div>
       <form onSubmit={onSumbitHandler}>
@@ -100,6 +143,7 @@ const NewLocker = () => {
             <input
               type="text"
               id="name"
+              name="name"
               placeholder="field required"
               required
               value={name}
@@ -113,6 +157,7 @@ const NewLocker = () => {
           <input
             type="email"
             id="email"
+            name="email"
             required
             placeholder="field required"
             value={email}
@@ -124,6 +169,7 @@ const NewLocker = () => {
           <input
             type="password"
             id="password"
+            name="password"
             autoComplete="on"
             required
             placeholder="field required"
@@ -150,6 +196,7 @@ const NewLocker = () => {
             <input
               type="text"
               id="title"
+              name="title"
               placeholder="field optional"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -162,6 +209,7 @@ const NewLocker = () => {
             <input
               type="text"
               id="school"
+              name="school"
               placeholder="field optional"
               value={schoolName}
               onChange={(e) => setSchoolName(e.target.value)}
@@ -174,6 +222,7 @@ const NewLocker = () => {
             <input
               type="text"
               id="classroom"
+              name="classrom"
               placeholder="field optional"
               value={classroom}
               onChange={(e) => setClassroom(e.target.value)}
@@ -186,9 +235,11 @@ const NewLocker = () => {
             <input
               type="file"
               id="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              name="file"
+              // value={image}
+              onChange={onChangeHandler}
             />
+            <img src={previewImage} alt="image" width={200} height={200} />
           </div>
         )}
 
