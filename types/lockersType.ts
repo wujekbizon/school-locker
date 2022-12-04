@@ -1,7 +1,5 @@
-import { ObjectId } from 'mongodb';
-
 export type LockerDataType = {
-  _id: ObjectId | number;
+  _id: string;
   student: string;
   email: string;
   password: string;

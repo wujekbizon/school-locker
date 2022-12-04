@@ -1,5 +1,5 @@
 import LockerList from '../../components/lockers/LockerList';
-// import { getAllLockers } from '../../data/dummydata';
+import { GetStaticProps } from 'next';
 import { LockerDataType } from '../../types/lockersType';
 import { getAllLockers } from '../../helpers/api';
 
@@ -8,7 +8,7 @@ const SchoolLockersPage = ({ lockers }: { lockers: LockerDataType[] }) => {
 };
 export default SchoolLockersPage;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const allLockers = await getAllLockers();
 
   return {

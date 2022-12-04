@@ -4,14 +4,25 @@ import { cloudinaryLoader } from '../../helpers/cloudinary';
 import { LockerDataType } from '../../types/lockersType';
 
 const LockerItem = (props: LockerDataType) => {
-  const { student, schoolName, classroom, privacy, img, createdAt, title } =
-    props;
+  const {
+    student,
+    schoolName,
+    classroom,
+    privacy,
+    img,
+    createdAt,
+    title,
+    _id,
+  } = props;
 
   const date = new Date(createdAt).toLocaleDateString('pl-PL', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
+
+  // const lockerId = title.toLowerCase().split(' ').join('');
+
   return (
     <li>
       <div>
@@ -20,8 +31,8 @@ const LockerItem = (props: LockerDataType) => {
           <Image
             src={img}
             alt="my locker"
-            width={450}
-            height={500}
+            width={150}
+            height={150}
             loader={cloudinaryLoader}
             priority
           />
@@ -38,7 +49,7 @@ const LockerItem = (props: LockerDataType) => {
                 <h1>{student}</h1>
                 <h3>{classroom}</h3>
               </div>
-              <Link href={`/lockers/${title}`}>Open</Link>
+              <Link href={`/lockers/${_id}`}>Open</Link>
             </>
           ) : (
             <h3>Warning! You not allowed!</h3>
