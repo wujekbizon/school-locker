@@ -1,6 +1,8 @@
-import React, { HTMLInputTypeAttribute, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
+import { defaultAvatarImage } from '../../helpers/cloudinary';
+import { uploadImageToCloudinary } from '../../helpers/cloudinary';
 
 const NewLocker = () => {
   const [name, setName] = useState('');
@@ -10,7 +12,7 @@ const NewLocker = () => {
   const [schoolName, setSchoolName] = useState('');
   const [classroom, setClassroom] = useState('');
   const [title, setTitle] = useState('');
-  const [previewImage, setPreviewImage] = useState<string>();
+  const [previewImage, setPreviewImage] = useState(defaultAvatarImage);
   const [isLogin, setIsLogin] = useState(true);
 
   const resetFields = () => {
@@ -40,32 +42,16 @@ const NewLocker = () => {
     }
 
     const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
-      ({ name }: any) => name === 'file'
-    ) as HTMLInputElement;
+    const fileInputArray = Array.from(form.elements);
 
-    const formData = new FormData();
+    const fileInput = fileInputArray.find((input) => input.id === 'image');
 
-    if (fileInput) {
-      for (const file of fileInput.files) {
-        formData.append('file', file);
-      }
-
-      formData.append('upload_preset', 'school-lockers-upload');
+    if (!fileInput) {
+      console.log('no file');
+      return;
     }
 
-    const { url } = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
-      {
-        method: 'POST',
-        body: formData,
-      }
-    ).then((r) => r.json());
-
-    console.log(url);
-
-    const imgUrl = url.slice(url.indexOf('v') - 1);
-    console.log(imgUrl);
+    const imageSrc = await uploadImageToCloudinary(fileInput);
 
     // handle form submit
     if (isLogin) {
@@ -81,7 +67,7 @@ const NewLocker = () => {
             schoolName,
             classroom,
             title,
-            img: imgUrl,
+            img: imageSrc,
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -104,16 +90,28 @@ const NewLocker = () => {
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader();
+    const file = event.target.files && event.target.files[0];
 
-    reader.onload = (onLoadEvent) => {
-      setPreviewImage(onLoadEvent.target?.result);
-    };
+    if (file) {
+      const reader = new FileReader();
 
-    if (event.target.files![0]) {
-      reader.readAsDataURL(event.target.files![0]);
+      // reader.onload = (onLoadEvent) => {
+      //   setPreviewImage(onLoadEvent.target?.result);
+      // };
+
+      reader.addEventListener(
+        'load',
+        () => {
+          if (typeof reader.result === 'string') {
+            setPreviewImage(reader.result);
+          }
+        },
+        false
+      );
+
+      reader.readAsDataURL(file);
     } else {
-      setPreviewImage(undefined);
+      setPreviewImage(defaultAvatarImage);
     }
   };
 
@@ -236,10 +234,10 @@ const NewLocker = () => {
               type="file"
               id="image"
               name="file"
-              // value={image}
               onChange={onChangeHandler}
+              required
             />
-            <img src={previewImage} alt="image" width={200} height={200} />
+            <img src={previewImage} alt="image" width={100} height={100} />
           </div>
         )}
 
