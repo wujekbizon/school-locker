@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
 import { defaultAvatarImage } from '../../helpers/cloudinary';
 import { uploadImageToCloudinary } from '../../helpers/cloudinary';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const NewLocker = () => {
   const [name, setName] = useState('');
@@ -14,6 +16,12 @@ const NewLocker = () => {
   const [title, setTitle] = useState('');
   const [previewImage, setPreviewImage] = useState(defaultAvatarImage);
   const [isLogin, setIsLogin] = useState(true);
+
+  const router = useRouter();
+
+  // const { id } = router.query;
+
+  const id = '63962470d380614f030091e5';
 
   const resetFields = () => {
     setName('');
@@ -29,32 +37,47 @@ const NewLocker = () => {
 
     // optional handle validation on client side
     if (
-      !name ||
-      name.trim() === '' ||
-      !email ||
-      !email.includes('@') ||
-      email.trim() === '' ||
-      !password ||
-      password.trim().length < 8
+      !isLogin &&
+      (!name ||
+        name.trim() === '' ||
+        !email ||
+        !email.includes('@') ||
+        email.trim() === '' ||
+        !password ||
+        password.trim().length < 8)
     ) {
       console.log('Invalid Inputs');
       return;
     }
 
-    const form = event.currentTarget;
-    const fileInputArray = Array.from(form.elements);
+    let imageSrc;
 
-    const fileInput = fileInputArray.find((input) => input.id === 'image');
+    if (!isLogin) {
+      const form = event.currentTarget;
+      const fileInputArray = Array.from(form.elements);
 
-    if (!fileInput) {
-      console.log('no file');
-      return;
+      const fileInput = fileInputArray.find((input) => input.id === 'image');
+
+      if (!fileInput) {
+        console.log('no file');
+        return;
+      }
+      imageSrc = await uploadImageToCloudinary(fileInput);
     }
-
-    const imageSrc = await uploadImageToCloudinary(fileInput);
 
     // handle form submit
     if (isLogin) {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+
+      console.log(id);
+
+      if (!result?.error) {
+        router.replace(`/lockers/${id}`);
+      }
     } else {
       try {
         const response = await fetch('api/auth/signup', {

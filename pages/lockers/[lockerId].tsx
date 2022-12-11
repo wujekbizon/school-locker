@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { lockerId } = context.params as IParams;
 
   const locker = await getLockerById(lockerId);
-  console.log(locker);
 
   return {
     props: {
@@ -50,7 +49,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { lockerId: locker._id },
   }));
 
-  console.log(lockersPath);
   return {
     paths: lockersPath,
     fallback: false,
