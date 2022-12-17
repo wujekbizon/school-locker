@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
 import { LockerDataType } from '../../types/lockersType';
+import { useSession } from 'next-auth/react';
 
 const LockerItem = (props: LockerDataType) => {
   const {
@@ -15,11 +16,16 @@ const LockerItem = (props: LockerDataType) => {
     _id,
   } = props;
 
+  const { status, data: session } = useSession();
+
   const date = new Date(createdAt).toLocaleDateString('pl-PL', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
+
+  console.log(_id);
+  console.log(session?.user?.id);
 
   // const lockerId = title.toLowerCase().split(' ').join('');
 
@@ -49,6 +55,7 @@ const LockerItem = (props: LockerDataType) => {
                 <h1>{student}</h1>
                 <h3>{classroom}</h3>
               </div>
+
               <Link href={`/lockers/${_id}`}>Open</Link>
             </>
           ) : (

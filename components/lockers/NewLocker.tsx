@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
 import { defaultAvatarImage } from '../../helpers/cloudinary';
@@ -18,10 +18,6 @@ const NewLocker = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const router = useRouter();
-
-  // const { id } = router.query;
-
-  const id = '63962470d380614f030091e5';
 
   const resetFields = () => {
     setName('');
@@ -73,10 +69,8 @@ const NewLocker = () => {
         password,
       });
 
-      console.log(id);
-
       if (!result?.error) {
-        router.replace(`/lockers/${id}`);
+        router.reload();
       }
     } else {
       try {
@@ -117,10 +111,6 @@ const NewLocker = () => {
 
     if (file) {
       const reader = new FileReader();
-
-      // reader.onload = (onLoadEvent) => {
-      //   setPreviewImage(onLoadEvent.target?.result);
-      // };
 
       reader.addEventListener(
         'load',

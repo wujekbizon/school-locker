@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 const MainHeader = () => {
+  const { data: session, status } = useSession();
   return (
     <header>
       <div>
@@ -20,6 +23,10 @@ const MainHeader = () => {
           </li>
         </ul>
       </nav>
+
+      {!session && status === 'unauthenticated' && (
+        <button onClick={() => signIn()}>Sign In</button>
+      )}
     </header>
   );
 };

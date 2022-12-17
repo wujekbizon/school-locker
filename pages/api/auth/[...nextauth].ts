@@ -1,40 +1,61 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectToDatabase, findOneDocument } from '../../../helpers/db';
 import { verifyPassword } from '../../../helpers/auth';
 
-export default NextAuth({
-  session: { strategy: 'jwt' },
+const authOptions: NextAuthOptions = {
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
-      name: 'credentials',
-      // @ts-ignore
+      type: 'credentials',
+      credentials: {},
       async authorize(credentials) {
-        if (!credentials) {
-          return null;
-        }
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        };
 
         const client = await connectToDatabase('lockertest');
-        const userLocker = await findOneDocument(client, 'lockers', {
-          email: credentials.email,
+        const user = await findOneDocument(client, 'lockers', {
+          email: email,
         });
 
-        if (!userLocker) {
+        if (!user) {
           return null;
         }
 
-        const isValid = await verifyPassword(
-          credentials.password,
-          userLocker.password
-        );
+        const isValid = await verifyPassword(password, user.password);
 
         if (!isValid) {
-          console.log('Credentials not valid');
-          return null;
+          throw new Error('Credentials not valid');
         }
 
-        return { email: userLocker.email, id: userLocker._id };
+        const id = user._id.toString();
+
+        return { email: user.email, id };
       },
     }),
   ],
-});
+  pages: {
+    signIn: '/populate',
+  },
+  callbacks: {
+    session: async ({ session, user, token }) => {
+      if (token) {
+        // @ts-ignore
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+    jwt: async ({ token, user }) => {
+      if (user && user.id) {
+        token.id = user.id;
+      }
+      return token;
+    },
+  },
+};
+
+export default NextAuth(authOptions);

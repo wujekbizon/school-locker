@@ -7,11 +7,24 @@ import LockerSettings from '../../components/locker-detail/LockerSettings';
 import { getLockerById, getAllLockers } from '../../helpers/api';
 import { LockerDataType } from '../../types/lockersType';
 
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 interface IParams extends ParsedUrlQuery {
   lockerId: string;
 }
 
 const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
+  const router = useRouter();
+  const { status, data } = useSession();
+
+  console.log(data);
+
+  useEffect(() => {
+    if (status === 'unauthenticated') router.replace('/populate');
+  }, [status]);
+
   if (!locker) {
     return (
       <div>
@@ -20,13 +33,15 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
     );
   }
 
-  return (
-    <>
-      <LockerInfo title={locker.title} img={locker.img} />
-      <LockerContent {...locker} />
-      <LockerSettings />
-    </>
-  );
+  if (status === 'authenticated') {
+    return (
+      <>
+        <LockerInfo title={locker.title} img={locker.img} />
+        <LockerContent {...locker} />
+        <LockerSettings />
+      </>
+    );
+  }
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
