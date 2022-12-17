@@ -6,7 +6,6 @@ const LockerSettings = () => {
 
   const signoutHandler = () => {
     signOut();
-    router.replace('/lockers');
   };
 
   return (

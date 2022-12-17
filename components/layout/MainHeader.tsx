@@ -13,7 +13,7 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/rumors">Spread a rumor</Link>
+            <Link href="/rumors">Rumors</Link>
           </li>
           <li>
             <Link href="/lockers">All lockers</Link>

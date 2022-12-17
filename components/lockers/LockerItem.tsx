@@ -24,9 +24,6 @@ const LockerItem = (props: LockerDataType) => {
     year: 'numeric',
   });
 
-  console.log(_id);
-  console.log(session?.user?.id);
-
   // const lockerId = title.toLowerCase().split(' ').join('');
 
   return (

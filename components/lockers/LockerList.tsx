@@ -2,14 +2,14 @@ import { LockerDataType } from '../../types/lockersType';
 import LockerItem from '../lockers/LockerItem';
 
 type Props = {
-  items: LockerDataType[];
+  lockers: LockerDataType[];
 };
 
-const LockerList = ({ items }: Props) => {
+const LockerList = ({ lockers }: Props) => {
   return (
     <ul>
-      {items.map((item) => {
-        return <LockerItem key={item._id} {...item} />;
+      {lockers.map((locker) => {
+        return <LockerItem key={locker._id} {...locker} />;
       })}
     </ul>
   );

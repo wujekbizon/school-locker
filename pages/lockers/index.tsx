@@ -4,7 +4,7 @@ import { LockerDataType } from '../../types/lockersType';
 import { getAllLockers } from '../../helpers/api';
 
 const SchoolLockersPage = ({ lockers }: { lockers: LockerDataType[] }) => {
-  return <LockerList items={lockers} />;
+  return <LockerList lockers={lockers} />;
 };
 export default SchoolLockersPage;
 
