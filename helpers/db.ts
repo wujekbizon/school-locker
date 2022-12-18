@@ -1,9 +1,9 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { LockerDataType } from '../types/lockersType';
 import { RumorType } from '../types/rumorsTypes';
 
 type FilteredDocument<Document> = {
-  [key: string]: Document | string | number | Date;
+  [key: string]: Document | string | number | Date | ObjectId;
 };
 
 export const connectToDatabase = async (dbName: string) => {
@@ -16,7 +16,7 @@ export const connectToDatabase = async (dbName: string) => {
 export const findOneDocument = async (
   client: MongoClient,
   collection: string,
-  filter: FilteredDocument<LockerDataType>
+  filter: FilteredDocument<LockerDataType | RumorType>
 ) => {
   const db = client.db();
   const result = await db.collection(collection).findOne(filter);

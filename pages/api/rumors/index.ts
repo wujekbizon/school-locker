@@ -3,7 +3,9 @@ import {
   connectToDatabase,
   insertOneDocument,
   getAllDocuments,
+  findOneDocument,
 } from '../../../helpers/db';
+import { ObjectId } from 'mongodb';
 import { RumorType } from '../../../types/rumorsTypes';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -70,6 +72,34 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     } catch (error) {
       res.status(500).json({ message: 'Getting data failed' });
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    const { _id } = req.body;
+    const rumorId = new ObjectId(_id);
+
+    console.log(rumorId);
+    if (!_id) {
+      res.status(500).json({ message: 'No rumor found!' });
+      return;
+    }
+    let client;
+    try {
+      client = await connectToDatabase('lockertest');
+    } catch (error) {
+      res.status(500).json({ message: 'Connecting to database failed!' });
+      return;
+    }
+
+    try {
+      const foundedRummor = await findOneDocument(client, 'rumors', {
+        _id: rumorId,
+      });
+      console.log(foundedRummor);
+      res.status(201).json({ message: 'Successfually deleted rumor' });
+    } catch (error) {
+      res.status(500).json({ message: 'Delete rumor failed!' });
     }
   }
 };

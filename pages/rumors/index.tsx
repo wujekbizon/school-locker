@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       allRumors,
     },
+    revalidate: 600,
   };
 };
 

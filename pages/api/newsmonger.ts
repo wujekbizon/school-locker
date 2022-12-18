@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const result = await insertOneDocument(client, 'newsmonger', { email });
       console.log(result);
-      res.status(200).json({ message: 'Email addded with success!' });
+      res.status(200).json({ message: 'Email added with success!' });
     } catch (error) {
       res.status(500).json({ message: 'Insert data failed!' });
     }
