@@ -23,6 +23,16 @@ export const findOneDocument = async (
   return result;
 };
 
+export const findOneAndDelete = async (
+  client: MongoClient,
+  collection: string,
+  filter: FilteredDocument<LockerDataType | RumorType>
+) => {
+  const db = client.db();
+  const result = await db.collection(collection).findOneAndDelete(filter);
+  return result;
+};
+
 export const insertOneDocument = async (
   client: MongoClient,
   collection: string,
