@@ -1,11 +1,48 @@
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 const NewRumor = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const { data: session } = useSession();
+
+  const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = async (
+    e
+  ) => {
     e.preventDefault();
-    console.log(text, title);
+
+    // add some validation
+    if (!title || title.trim() === '' || !text || text.trim() === '') {
+      console.log('Please provide all fields');
+      return;
+    }
+    // this is a user id who wrote this rumor
+    const userId = session?.user?.id;
+
+    try {
+      const response = await fetch('api/rumors', {
+        method: 'POST',
+        body: JSON.stringify({
+          userId,
+          title,
+          content: text,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong!');
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        throw new Error('Something went wrong!');
+      }
+    }
   };
 
   return (
