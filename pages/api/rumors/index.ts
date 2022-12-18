@@ -3,7 +3,7 @@ import {
   connectToDatabase,
   insertOneDocument,
   getAllDocuments,
-  findOneDocument,
+  findOneAndDelete,
 } from '../../../helpers/db';
 import { ObjectId } from 'mongodb';
 import { RumorType } from '../../../types/rumorsTypes';
@@ -93,11 +93,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      const foundedRummor = await findOneDocument(client, 'rumors', {
+      await findOneAndDelete(client, 'rumors', {
         _id: rumorId,
       });
-      console.log(foundedRummor);
-      res.status(201).json({ message: 'Successfually deleted rumor' });
+
+      res.status(201).json({ message: 'Successfully deleted rumor' });
     } catch (error) {
       res.status(500).json({ message: 'Delete rumor failed!' });
     }
