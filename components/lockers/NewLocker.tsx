@@ -74,7 +74,7 @@ const NewLocker = () => {
       }
     } else {
       try {
-        const response = await fetch('api/auth/signup', {
+        const response = await fetch('/api/auth/signup', {
           method: 'POST',
           body: JSON.stringify({
             student: name,

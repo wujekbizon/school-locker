@@ -20,7 +20,7 @@ const NewRumor = () => {
     const userId = session?.user?.id;
 
     try {
-      const response = await fetch('../api/rumors', {
+      const response = await fetch('/api/rumors', {
         method: 'POST',
         body: JSON.stringify({
           userId,
