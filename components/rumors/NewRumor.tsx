@@ -19,6 +19,8 @@ const NewRumor = () => {
     // this is a user id who wrote this rumor
     const userId = session?.user?.id;
 
+    const date = new Date();
+
     try {
       const response = await fetch('/api/rumors', {
         method: 'POST',
@@ -27,6 +29,7 @@ const NewRumor = () => {
           title,
           content: text,
           likes: 0,
+          createdAt: date,
         }),
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 import type { RumorType } from '../types/rumorsTypes';
 
-export const rumorList: RumorType[] = [
+export const rumorList = [
   {
     id: '1',
     userId: 'user1',

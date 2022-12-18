@@ -9,7 +9,7 @@ const RumorList = ({ rumorList }: Props) => {
   return (
     <ul>
       {rumorList.map((rumor) => {
-        return <RumorItem key={rumor.id} {...rumor} />;
+        return <RumorItem key={rumor._id} {...rumor} />;
       })}
     </ul>
   );

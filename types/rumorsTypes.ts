@@ -1,8 +1,8 @@
 export type RumorType = {
-  id?: string;
+  _id?: string;
   userId: string;
   content: string;
   likes: number;
-  date?: string;
+  createdAt: Date;
   title: string;
 };

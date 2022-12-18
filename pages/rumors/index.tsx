@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { RumorType } from '../../types/rumorsTypes';
 import NewRumor from '../../components/rumors/NewRumor';
 import { useSession } from 'next-auth/react';
+import { getAllRumors } from '../../helpers/api';
 
 const RumorsPageList = ({ allRumors }: { allRumors: RumorType[] }) => {
   const { data: session, status } = useSession();
@@ -17,10 +18,12 @@ const RumorsPageList = ({ allRumors }: { allRumors: RumorType[] }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const allRumors = await getAllRumors();
+
   return {
     props: {
-      allRumors: rumorList,
+      allRumors,
     },
   };
 };

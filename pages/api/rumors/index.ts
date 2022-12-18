@@ -1,10 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connectToDatabase, insertOneDocument } from '../../../helpers/db';
+import {
+  connectToDatabase,
+  insertOneDocument,
+  getAllDocuments,
+} from '../../../helpers/db';
 import { RumorType } from '../../../types/rumorsTypes';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { userId, title, content, likes }: RumorType = req.body;
+    const { userId, title, content, likes, createdAt }: RumorType = req.body;
 
     // server-side validation
 
@@ -26,6 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       title,
       content,
       likes,
+      createdAt,
     };
 
     let client;
@@ -38,13 +43,33 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      // connecting to db
-
       const result = await insertOneDocument(client, 'rumors', newRumor);
       console.log(result);
       res.status(201).json({ message: 'Rumor successfully has been created' });
     } catch (error) {
       res.status(500).json({ message: 'Insert data failed!' });
+    }
+  }
+  if (req.method === 'GET') {
+    let client;
+    try {
+      client = await connectToDatabase('lockertest');
+    } catch (error) {
+      res.status(500).json({ message: 'Connecting to database failed!' });
+      return;
+    }
+
+    try {
+      const rumorsArray = await getAllDocuments(client, 'rumors');
+      const allRumors = rumorsArray.map((rumor) => {
+        return rumor;
+      });
+
+      res.status(200).json({
+        rumors: allRumors,
+      });
+    } catch (error) {
+      res.status(500).json({ message: 'Getting data failed' });
     }
   }
 };
