@@ -26,7 +26,7 @@ export const findOneDocument = async (
 export const insertOneDocument = async (
   client: MongoClient,
   collection: string,
-  document: FilteredDocument<LockerDataType | RumorType>
+  document: FilteredDocument<LockerDataType | RumorType | string>
 ) => {
   const db = client.db();
   const result = await db.collection(collection).insertOne(document);
