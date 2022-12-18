@@ -19,8 +19,6 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
   const router = useRouter();
   const { status, data } = useSession();
 
-  console.log(data);
-
   useEffect(() => {
     if (status === 'unauthenticated') router.replace('/populate');
   }, [status]);
@@ -31,6 +29,10 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
         <p>Loading...</p>
       </div>
     );
+  }
+
+  if (status === 'loading') {
+    return <p>Loading...</p>;
   }
 
   if (status === 'authenticated') {

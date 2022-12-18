@@ -17,6 +17,7 @@ const RumorItem = (props: RumorType) => {
       </div>
       <div>{content}</div>
       <div>LIKES: {likes}</div>
+      <button>Delete Rumor</button>
     </article>
   );
 };

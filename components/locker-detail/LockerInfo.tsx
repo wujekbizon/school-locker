@@ -19,6 +19,7 @@ const LockerInfo = (props: Props) => {
             width={150}
             height={150}
             loader={cloudinaryLoader}
+            priority
           />
         </div>
       </div>
