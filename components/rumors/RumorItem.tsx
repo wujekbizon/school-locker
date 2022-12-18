@@ -1,7 +1,9 @@
 import { RumorType } from '../../types/rumorsTypes';
+import { useSession } from 'next-auth/react';
 
 const RumorItem = (props: RumorType) => {
   const { userId, content, _id, likes, createdAt, title } = props;
+  const { data: session, status } = useSession();
 
   const onClickDelete: React.MouseEventHandler<HTMLButtonElement> = async (
     e
@@ -43,9 +45,12 @@ const RumorItem = (props: RumorType) => {
       </div>
       <div>{content}</div>
       <div>LIKES: {likes}</div>
-      <button type="button" onClick={onClickDelete}>
-        Delete Rumor
-      </button>
+
+      {userId === session?.user?.id && (
+        <button type="button" onClick={onClickDelete}>
+          Delete Rumor
+        </button>
+      )}
     </article>
   );
 };
