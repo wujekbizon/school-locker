@@ -26,11 +26,14 @@ const NewRumor = () => {
           userId,
           title,
           content: text,
+          likes: 0,
         }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
+
+      console.log(response);
       const data = await response.json();
 
       if (!response.ok) {

@@ -1,8 +1,9 @@
 import { MongoClient } from 'mongodb';
 import { LockerDataType } from '../types/lockersType';
+import { RumorType } from '../types/rumorsTypes';
 
 type FilteredDocument<Document> = {
-  [key: string]: Document | string | Date;
+  [key: string]: Document | string | number | Date;
 };
 
 export const connectToDatabase = async (dbName: string) => {
@@ -25,7 +26,7 @@ export const findOneDocument = async (
 export const insertOneDocument = async (
   client: MongoClient,
   collection: string,
-  document: FilteredDocument<LockerDataType>
+  document: FilteredDocument<LockerDataType | RumorType>
 ) => {
   const db = client.db();
   const result = await db.collection(collection).insertOne(document);

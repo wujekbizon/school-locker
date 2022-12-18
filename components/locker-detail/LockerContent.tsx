@@ -1,5 +1,5 @@
 import { LockerDataType } from '../../types/lockersType';
-import FormRumor from '../rumors/NewRumor';
+import NewRumor from '../rumors/NewRumor';
 import LockerFeatures from './LockerFeatures';
 
 const LockerContent = (props: LockerDataType) => {
@@ -29,7 +29,7 @@ const LockerContent = (props: LockerDataType) => {
         <LockerFeatures />
       </section>
 
-      <FormRumor />
+      <NewRumor />
     </main>
   );
 };
