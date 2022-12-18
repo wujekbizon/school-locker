@@ -19,7 +19,7 @@ const NewLocker = () => {
 
   const router = useRouter();
 
-  const resetFields = () => {
+  const resetInputs = () => {
     setName('');
     setEmail('');
     setPassword('');
@@ -91,7 +91,7 @@ const NewLocker = () => {
           },
         });
 
-        resetFields();
+        resetInputs();
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.message || 'Something went wrong!');

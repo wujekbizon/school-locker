@@ -33,7 +33,8 @@ const NewRumor = () => {
         },
       });
 
-      console.log(response);
+      setText('');
+      setTitle('');
       const data = await response.json();
 
       if (!response.ok) {
