@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import { LockerDataType } from '../../types/lockersType';
 import NewRumor from '../rumors/NewRumor';
 import LockerFeatures from './LockerFeatures';
 
 const LockerContent = (props: LockerDataType) => {
-  const { student, schoolName, classroom, createdAt } = props;
+  const { student, schoolName, classroom, createdAt, _id } = props;
 
   const date = new Date(createdAt).toLocaleDateString('pl-PL', {
     day: 'numeric',
@@ -29,7 +30,12 @@ const LockerContent = (props: LockerDataType) => {
         <LockerFeatures />
       </section>
 
-      <NewRumor />
+      <section>
+        <NewRumor />
+        <button>
+          <Link href={`/lockers/${_id}/rumors`}>My spread rumors</Link>
+        </button>
+      </section>
     </main>
   );
 };
