@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from 'querystring';
 import LockerContent from '../../components/locker-detail/LockerContent';
 import LockerInfo from '../../components/locker-detail/LockerInfo';
 import LockerSettings from '../../components/locker-detail/LockerSettings';
-
+import Head from 'next/head';
 import { getLockerById, getAllLockers } from '../../helpers/api';
 import { LockerDataType } from '../../types/lockersType';
 
@@ -38,6 +38,13 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
   if (status === 'authenticated') {
     return (
       <>
+        <Head>
+          <title>{locker.title}</title>
+          <meta
+            name="description"
+            content={`This is ${locker.student} portfolio locker.`}
+          />
+        </Head>
         <LockerInfo title={locker.title} img={locker.img} />
         <LockerContent {...locker} />
         <LockerSettings />
