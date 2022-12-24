@@ -16,7 +16,7 @@ const MainHeader = () => {
       <nav className="topWrapper">
         <div className="topLeft">
           <div className="logoContainer">
-            <Link href="/">
+            <Link href="/admin">
               <Image
                 src="/images/logo.png"
                 alt="logo"

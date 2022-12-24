@@ -11,7 +11,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
   // temp isAdmin flag
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <SessionProvider session={session}>

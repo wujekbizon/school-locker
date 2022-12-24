@@ -4,6 +4,9 @@ import { useSession } from 'next-auth/react';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
+  // temp isAdmin flag
+  const isAdmin = false;
+
   return (
     <header>
       <div>
