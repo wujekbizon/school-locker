@@ -1,5 +1,5 @@
 import './Layout.scss';
-import '../../styles/light.scss';
+import '../../../styles/light.scss';
 import Sidebar from './Sidebar';
 import MainHeader from './MainHeader';
 import { useContext } from 'react';
