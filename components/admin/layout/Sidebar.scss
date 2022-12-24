@@ -1,0 +1,102 @@
+@import '../../styles/styles.scss';
+
+.sidebar {
+  flex: 1;
+  height: calc(100vh - 70px);
+  position: sticky;
+  top: 70px;
+  background-color: $sidebarColor;
+
+  .wrapper {
+    padding: 0 20px 20px 20px;
+    color: $textColor;
+
+    .menu {
+      margin-bottom: 10px;
+
+      .title {
+        font-size: 14px;
+        color: #8b949e;
+      }
+
+      .list {
+        list-style: none;
+        padding: 5px;
+
+        .item {
+          padding: 5px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          border-radius: 10px;
+          border: 1px solid $sidebarColor;
+          color: $textColor;
+          margin: 1px 0px;
+
+          &.active,
+          &:hover {
+            background-color: $navColor;
+            border: 1px solid $borderColor;
+          }
+        }
+      }
+    }
+
+    .sidebarIcon {
+      font-size: 20px;
+      margin-right: 10px;
+      color: white;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+    border: 1px solid $borderColor;
+
+    .bottomTitle {
+      margin: 0px 10px;
+      color: $textColor;
+    }
+
+    .colorOption {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid $navColor;
+      cursor: pointer;
+      margin: 5px;
+
+      &:nth-child(2) {
+        background-color: white;
+      }
+      &:nth-child(3) {
+        background-color: $mainColor;
+      }
+    }
+
+    .logout {
+      display: flex;
+      align-items: center;
+      color: $textColor;
+      cursor: pointer;
+      margin-right: 10px;
+
+      &:hover {
+        color: white;
+      }
+
+      .sidebarIcon {
+        margin-left: 50px;
+        margin-right: 10px;
+        color: white;
+      }
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
