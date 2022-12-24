@@ -9,11 +9,12 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
-  const admin = true;
+  // temp isAdmin flag
+  const isAdmin = true;
 
   return (
     <SessionProvider session={session}>
-      {admin ? (
+      {isAdmin ? (
         <AdminPanelLayout>
           <Component {...pageProps} />
         </AdminPanelLayout>

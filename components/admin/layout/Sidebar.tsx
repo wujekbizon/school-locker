@@ -38,7 +38,7 @@ const Sidebar = () => {
           <div className="menu">
             <h3 className="title">Main</h3>
             <ul className="list">
-              <Link href="/" className="link">
+              <Link href="/admin" className="link">
                 <li
                   className={active === '1' ? 'active item' : 'item'}
                   id={'1'}
@@ -51,24 +51,28 @@ const Sidebar = () => {
             </ul>
           </div>
           <div className="menu">
-            <h3 className="title">Sales</h3>
+            <h3 className="title">Lockers</h3>
             <ul className="list">
-              <li
-                className={active === '2' ? 'active item' : 'item'}
-                id={'2'}
-                onClick={handleToggleActive}
-              >
-                <TimelineOutlinedIcon className="sidebarIcon" />
-                Analytics
-              </li>
-              <li
-                className={active === '3' ? 'active item' : 'item'}
-                id={'3'}
-                onClick={handleToggleActive}
-              >
-                <AttachMoneyOutlinedIcon className="sidebarIcon" />
-                Transactions
-              </li>
+              <Link href="/lockers">
+                <li
+                  className={active === '2' ? 'active item' : 'item'}
+                  id={'2'}
+                  onClick={handleToggleActive}
+                >
+                  <TimelineOutlinedIcon className="sidebarIcon" />
+                  Lockers
+                </li>
+              </Link>
+              <Link href="/rumors">
+                <li
+                  className={active === '3' ? 'active item' : 'item'}
+                  id={'3'}
+                  onClick={handleToggleActive}
+                >
+                  <AttachMoneyOutlinedIcon className="sidebarIcon" />
+                  Rumors
+                </li>
+              </Link>
               <li
                 className={active === '4' ? 'active item' : 'item'}
                 id={'4'}
@@ -82,7 +86,7 @@ const Sidebar = () => {
           <div className="menu">
             <h3 className="title">List</h3>
             <ul className="list">
-              <Link href="/users" className="link">
+              <Link href="/admin/users" className="link">
                 <li
                   className={active === '5' ? 'active item' : 'item'}
                   id={'5'}
@@ -92,7 +96,7 @@ const Sidebar = () => {
                   Users
                 </li>
               </Link>
-              <Link href="/products" className="link">
+              <Link href="/admin/products" className="link">
                 <li
                   className={active === '6' ? 'active item' : 'item'}
                   id={'6'}
