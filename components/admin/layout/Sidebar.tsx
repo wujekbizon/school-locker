@@ -20,11 +20,11 @@ import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { useContext } from 'react';
-// import { LightModeContext } from '../../context/lightModeContext';
+import { LightModeContext } from '../../context/lightModeContext';
 
 const Sidebar = () => {
   const [active, setActive] = useState('1');
-  // const { dispatch } = useContext(LightModeContext);
+  const { dispatch } = useContext(LightModeContext);
 
   const handleToggleActive = (event: React.MouseEvent<HTMLLIElement>) => {
     setActive(event.currentTarget.id);
@@ -221,11 +221,11 @@ const Sidebar = () => {
           <span className="bottomTitle">Color:</span>
           <div
             className="colorOption"
-            // onClick={() => dispatch({ type: 'LIGHT' })}
+            onClick={() => dispatch({ type: 'LIGHT' })}
           ></div>
           <div
             className="colorOption"
-            // onClick={() => dispatch({ type: 'DARK' })}
+            onClick={() => dispatch({ type: 'DARK' })}
           ></div>
           <div
             className="logout"

@@ -6,10 +6,10 @@ import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import Image from 'next/image';
 import { useContext } from 'react';
-// import { LightModeContext } from '../../context/lightModeContext';
+import { LightModeContext } from '../../context/lightModeContext';
 
 const MainHeader = () => {
-  // const { dispatch } = useContext(LightModeContext);
+  const { dispatch } = useContext(LightModeContext);
 
   return (
     <header className="topbar">
@@ -50,7 +50,7 @@ const MainHeader = () => {
           </div>
           <div className="topIconContainer">
             <DarkModeOutlinedIcon
-            // onClick={() => dispatch({ type: 'TOGGLE' })}
+              onClick={() => dispatch({ type: 'TOGGLE' })}
             />
           </div>
 
