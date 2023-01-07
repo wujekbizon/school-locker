@@ -1,0 +1,29 @@
+.hero-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 250px 50px;
+
+  .hero-title {
+    position: relative;
+    h1 {
+      margin: 0;
+      font-family: 'Eudoxus Sans';
+      font-weight: 700;
+      font-size: 144px;
+      line-height: 110%;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  .animation-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -150px;
+  }
+}
