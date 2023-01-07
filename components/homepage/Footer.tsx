@@ -1,8 +1,9 @@
+import './Footer.scss';
 import NewsmongerForm from '../newsmonger/NewsmongerForm';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <NewsmongerForm />
       <div>
         <h4>new trends</h4>

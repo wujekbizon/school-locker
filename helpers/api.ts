@@ -1,4 +1,3 @@
-import { rumorList } from '../data/dummyRumors';
 import type { LockerDataType } from '../types/lockersType';
 import type { RumorType } from '../types/rumorsTypes';
 
