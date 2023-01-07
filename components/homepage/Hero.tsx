@@ -3,15 +3,17 @@ import LinesAnimation from '../animations/Lines';
 
 const Hero = () => {
   return (
-    <section className="hero-wrapper">
-      <div className="hero-title">
-        <h1>School</h1>
-        <div className="animation-wrapper">
-          <LinesAnimation />
+    <>
+      <section className="hero-wrapper">
+        <div className="hero-title">
+          <h1>School</h1>
+          <div className="animation-wrapper">
+            <LinesAnimation />
+          </div>
+          <h1>Locker</h1>
         </div>
-        <h1>Locker</h1>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 export default Hero;
