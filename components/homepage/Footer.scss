@@ -53,5 +53,32 @@
         }
       }
     }
+
+    .footer-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .footer-company {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+
+        h1 {
+          margin: 0;
+        }
+
+        p {
+          margin: 0;
+          margin-left: 32px;
+        }
+      }
+
+      .footer-media {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 }

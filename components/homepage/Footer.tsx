@@ -1,5 +1,7 @@
 import './Footer.scss';
 import NewsmongerForm from '../newsmonger/NewsmongerForm';
+import Logo from '../logo/Logo';
+import SocialLinks from './SocialLinks';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -40,6 +42,17 @@ const Footer = () => {
               </li>
               <li>Editor</li>
             </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="footer-company">
+            <Link href="/">
+              <Logo />
+            </Link>
+            <p>Educational multimedia platform AI </p>
+          </div>
+          <div className="footer-media">
+            <SocialLinks />
           </div>
         </div>
       </footer>

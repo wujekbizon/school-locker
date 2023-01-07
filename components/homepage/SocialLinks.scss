@@ -1,0 +1,29 @@
+@import '../../styles/styles.scss';
+
+.social-media {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    font-size: 40px;
+    box-shadow: 0 5px 10px 0 $boxShadow;
+
+    svg {
+      transition: $transition;
+      color: $whiteColor;
+    }
+
+    &:hover svg {
+      transform: scale(1.1);
+      box-shadow: 0 5px 30px 0 $boxShadow;
+      color: $background;
+      background-color: $logoColor;
+      border-radius: 7px;
+    }
+  }
+}
