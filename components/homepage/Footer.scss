@@ -1,6 +1,57 @@
-.footer {
+@import '../../styles/styles.scss';
+
+.footer-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .footer {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 40px 0 80px;
+
+    .footer-links {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 1rem;
+
+      .footer-list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        h2 {
+          font-size: 14px;
+          text-transform: uppercase;
+          line-height: 1.5rem;
+          font-weight: 500;
+          color: $footerColor;
+        }
+
+        .list-links {
+          display: flex;
+          flex-direction: column;
+
+          li {
+            margin-top: 10px;
+            cursor: pointer;
+            color: #afbacf;
+            transition: color 0.2s ease-in-out;
+            font-size: 18px;
+            font-weight: 300;
+
+            &:hover {
+              color: #c9d0dd;
+            }
+          }
+        }
+      }
+    }
+  }
 }
