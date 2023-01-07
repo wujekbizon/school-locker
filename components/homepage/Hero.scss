@@ -1,9 +1,12 @@
+@import '../../styles/styles.scss';
+
 .hero-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
   padding: 250px 50px;
+  position: relative;
 
   .hero-title {
     position: relative;
@@ -16,6 +19,31 @@
       line-height: 110%;
       text-transform: uppercase;
       letter-spacing: -0.02em;
+    }
+  }
+
+  .hero-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: 70px;
+    top: 100px;
+
+    a {
+      margin-top: 33px;
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition;
+
+      &:hover {
+        border-radius: 10px;
+        border-color: $logoColor;
+      }
     }
   }
 

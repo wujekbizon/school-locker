@@ -22,3 +22,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.gradient_text {
+  background: linear-gradient(270deg, #00dbd8, #b133ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

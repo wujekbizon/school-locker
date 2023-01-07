@@ -13,10 +13,14 @@ const Footer = () => {
           <div className="footer-list">
             <h2>Company</h2>
             <ul className="list-links">
-              <li>About Us</li>
+              <li>
+                <a href="#about">About Us</a>{' '}
+              </li>
               <li>Pricing</li>
               <li>Blog</li>
-              <li>Join Us</li>
+              <li>
+                <Link href="/populate">Join Us</Link>{' '}
+              </li>
             </ul>
           </div>
           <div className="footer-list">
