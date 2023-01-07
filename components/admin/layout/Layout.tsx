@@ -17,7 +17,7 @@ const Layout = ({ children }: Props) => {
         <MainHeader />
         <div className="container">
           <Sidebar />
-          <main className="home">{children}</main>
+          <main className="adimn-home">{children}</main>
         </div>
       </div>
     </>

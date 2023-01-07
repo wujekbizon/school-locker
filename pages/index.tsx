@@ -1,5 +1,4 @@
-import Hero from '../components/homepage/Hero';
-import Footer from '../components/homepage/Footer';
+import Home from '../components/homepage/Home';
 import Head from 'next/head';
 
 const HomePage = () => {
@@ -12,8 +11,7 @@ const HomePage = () => {
           content="One of the best application for creating full portfolio. Get yourself a locker, Today"
         />
       </Head>
-      <Hero />
-      <Footer />
+      <Home />
     </>
   );
 };

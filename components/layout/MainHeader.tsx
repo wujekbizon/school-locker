@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
+import './MainHeader.scss';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
@@ -8,7 +9,7 @@ const MainHeader = () => {
   const isAdmin = false;
 
   return (
-    <header>
+    <header className="header-wrapper">
       <div>
         <Link href="/">SCHOOL LOCKER</Link>
       </div>
