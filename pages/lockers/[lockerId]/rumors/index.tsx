@@ -45,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const lockers = await getAllLockers();
 
   const lockersPath = lockers.map((locker) => ({
-    params: { lockerId: locker._id },
+    params: { lockerId: locker._id.toString() },
   }));
 
   return {

@@ -6,16 +6,13 @@ const Protected = () => {
   const router = useRouter();
   const { status, data } = useSession();
 
+  useEffect(() => {
+    if (status === 'unauthenticated') router.replace('/populate');
+  }, [status, router]);
+
   if (status === 'loading') {
     return <p>Loading...</p>;
   }
-  useEffect(() => {
-    if (status === 'unauthenticated') router.replace('/populate');
-
-    if (status === 'authenticated') {
-      console.log(data);
-    }
-  }, [status, data, router]);
 
   return <div>Welcome to your locker</div>;
 };

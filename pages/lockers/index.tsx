@@ -25,7 +25,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      lockers: allLockers,
+      lockers: allLockers.map((locker) => ({
+        ...locker,
+        createdAt: locker.createdAt.toString(),
+        _id: locker._id.toString(),
+      })),
     },
     revalidate: 1800,
   };

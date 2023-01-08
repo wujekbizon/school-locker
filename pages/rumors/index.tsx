@@ -1,5 +1,4 @@
 import RumorList from '../../components/rumors/RumorList';
-import { rumorList } from '../../data/dummyRumors';
 import { GetStaticProps } from 'next';
 import { RumorType } from '../../types/rumorsTypes';
 import NewRumor from '../../components/rumors/NewRumor';
