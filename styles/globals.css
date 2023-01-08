@@ -29,3 +29,37 @@ ul {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.react-resizable-handle {
+  display: block;
+  background-color: #30363d;
+
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.react-resizable-handle-s {
+  height: 10px;
+  width: 100%;
+  cursor: row-resize;
+  background-image: url('/images/hdots.jpg');
+  background-size: 50px;
+}
+
+.react-resizable-handle-e {
+  width: 10px;
+  min-width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  background-image: url('/images/vdots.jpg');
+  background-size: 50px;
+}
+
+.resize-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.react-draggable-transparent-selection iframe {
+  pointer-events: none;
+}
