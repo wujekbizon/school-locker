@@ -1,11 +1,24 @@
-import CodeCell from '../../components/wolfpad/CodeCell/CodeCell';
-import TextEditor from '../../components/wolfpad/TextEditor/TextEditor';
+import dynamic from 'next/dynamic';
+
+const DynamicCodeCell = dynamic(
+  () => import('../../components/wolfpad/CodeCell/CodeCell'),
+  {
+    loading: () => <p>Initializing Code Editor Cell...</p>,
+  }
+);
+
+const DynamicTextEditor = dynamic(
+  () => import('../../components/wolfpad/TextEditor/TextEditor'),
+  {
+    loading: () => <p>Initializing Text Editor...</p>,
+  }
+);
 
 const PlaygroundPage = () => {
   return (
     <>
-      <TextEditor />
-      <CodeCell />
+      <DynamicTextEditor />
+      <DynamicCodeCell />
     </>
   );
 };
