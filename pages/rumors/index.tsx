@@ -18,9 +18,9 @@ const RumorsPageList = ({ allRumors }: { allRumors: RumorType[] }) => {
           content="Check the latest rumors in your school ground."
         />
       </Head>
-      <RumorList rumorList={allRumors} />
       {/* can be only visible when authenticated */}
       {session && status === 'authenticated' && <NewRumor />}
+      <RumorList rumorList={allRumors} />
     </>
   );
 };
