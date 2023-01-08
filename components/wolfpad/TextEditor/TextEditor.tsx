@@ -54,7 +54,7 @@ const onError = (error: Error) => {
 const TextEditor = () => {
   const initialConfig = {
     namespace: 'Wolfpad_Editor',
-    editorState: testText,
+    editorState: prepopulatedText,
     theme: exampleTheme,
     onError,
     // Any custom nodes go here

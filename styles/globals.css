@@ -39,8 +39,9 @@ ul {
 }
 
 .react-resizable-handle-s {
+  margin: auto;
   height: 10px;
-  width: 100%;
+  width: calc(100% - 40px);
   cursor: row-resize;
   background-image: url('/images/hdots.jpg');
   background-size: 50px;
