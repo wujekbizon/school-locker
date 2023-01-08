@@ -20,8 +20,6 @@ type Props = {
 };
 
 const LockerAllRumorsPage = ({ lockerId, rumors }: Props) => {
-  console.log(lockerId);
-
   const lockerRumors = rumors.filter((rumor) => rumor.userId === lockerId) ?? [
     {
       message: 'You got 0 rumors',
@@ -37,7 +35,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const rumors = await getAllRumors();
 
   return {
-    props: { lockerId, rumors },
+    props: {
+      lockerId,
+      rumors: rumors.map((rumor) => ({
+        ...rumor,
+        _id: rumor._id.toString(),
+      })),
+    },
   };
 };
 
