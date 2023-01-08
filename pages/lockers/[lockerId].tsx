@@ -21,7 +21,7 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
 
   useEffect(() => {
     if (status === 'unauthenticated') router.replace('/populate');
-  }, [status]);
+  }, [status, router]);
 
   if (!locker) {
     return (

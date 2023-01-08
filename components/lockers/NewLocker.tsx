@@ -69,9 +69,11 @@ const NewLocker = () => {
         password,
       });
 
-      if (!result?.error) {
-        router.reload();
-      }
+      router.reload();
+
+      // if (!result && !result?.error) {
+      //   router.reload();
+      // }
     } else {
       try {
         const response = await fetch('/api/auth/signup', {

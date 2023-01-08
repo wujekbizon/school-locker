@@ -26,7 +26,7 @@ const MainHeader = () => {
             <Link href="/populate">New and existing lockers</Link>
           </li>
           <li>
-            <Link href="/wolfpad">Wolfpad - Let's Code!</Link>
+            <Link href="/wolfpad">Wolfpad - Let&apos;s Code!</Link>
           </li>
           <li>
             <Link href="/admin">Admin panel</Link>

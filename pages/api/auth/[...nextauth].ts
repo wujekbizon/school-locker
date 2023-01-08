@@ -43,7 +43,7 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     session: async ({ session, user, token }) => {
-      if (token) {
+      if (token && session.user) {
         // @ts-ignore
         session.user.id = token.sub;
       }
@@ -51,7 +51,7 @@ const authOptions: NextAuthOptions = {
     },
     jwt: async ({ token, user }) => {
       if (user && user.id) {
-        token.id = user.id;
+        token.sub = user.id;
       }
       return token;
     },

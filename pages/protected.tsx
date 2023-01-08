@@ -15,7 +15,7 @@ const Protected = () => {
     if (status === 'authenticated') {
       console.log(data);
     }
-  }, [status]);
+  }, [status, data, router]);
 
   return <div>Welcome to your locker</div>;
 };
