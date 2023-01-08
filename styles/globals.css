@@ -64,3 +64,10 @@ ul {
 .react-draggable-transparent-selection iframe {
   pointer-events: none;
 }
+
+.dynamic-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
