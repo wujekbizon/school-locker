@@ -1,12 +1,4 @@
-import type { LockerDataType } from '../types/lockersType';
-import type { RumorType } from '../types/rumorsTypes';
 import { connectToDatabase, getAllDocuments } from './db';
-
-// export const getAllLockers = async () => {
-//   const response = await fetch('http://localhost:3000/api/lockers');
-//   const { lockers }: { lockers: LockerDataType[] } = await response.json();
-//   return lockers;
-// };
 
 export const getAllLockers = async () => {
   const client = await connectToDatabase('lockertest');
@@ -20,12 +12,12 @@ export const getLockerById = async (id: string) => {
 };
 
 export const getAllRumors = async () => {
-  const response = await fetch('http://localhost:3000/api/rumors');
-  const { rumors }: { rumors: RumorType[] } = await response.json();
+  const client = await connectToDatabase('lockertest');
+  const rumors = await getAllDocuments(client, 'rumors');
   return rumors;
 };
 
 export const getRumorById = async (id: string) => {
   const allRumors = await getAllRumors();
-  return allRumors.find((rumor) => rumor._id === id);
+  return allRumors.find((rumor) => rumor._id.toString() === id);
 };

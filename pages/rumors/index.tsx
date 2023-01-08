@@ -30,7 +30,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      allRumors,
+      allRumors: allRumors.map((rumor) => ({
+        ...rumor,
+        _id: rumor._id.toString(),
+      })),
     },
     revalidate: 600,
   };
