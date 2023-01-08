@@ -1,12 +1,7 @@
-import Link from 'next/link';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import {
-  getAllLockers,
-  getAllRumors,
-  getLockerById,
-} from '../../../../helpers/api';
-import { LockerDataType } from '../../../../types/lockersType';
+import { getAllLockers, getAllRumors } from '../../../../helpers/api';
+
 import { RumorType } from '../../../../types/rumorsTypes';
 import RumorList from '../../../../components/rumors/RumorList';
 
