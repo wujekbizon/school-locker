@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/styles.css';
 import type { AppProps } from 'next/app';
 import type { Session } from 'next-auth';
 import Layout from '../components/layout/Layout';
