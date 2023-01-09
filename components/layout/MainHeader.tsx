@@ -12,7 +12,7 @@ const MainHeader = () => {
   const isAdmin = false;
 
   const displaySubmenu = (e: any) => {
-    const page = e.target.textContent;
+    const page: string = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
     const bottom = tempBtn.bottom - 3;
