@@ -5,6 +5,13 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
+export const links = [
+  { title: 'Products' },
+  { title: 'Resources' },
+  { title: 'Metaverse' },
+  { title: 'Tools' },
+];
+
 const sublinks = [
   {
     page: 'products',

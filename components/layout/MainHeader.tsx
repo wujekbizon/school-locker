@@ -1,42 +1,51 @@
+import './MainHeader.scss';
 import Link from 'next/link';
+import MenuIcon from '@mui/icons-material/Menu';
 import { signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
-import './MainHeader.scss';
+import Logo from '../logo/Logo';
+import { links } from '../../data/data';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
   // temp isAdmin flag
   const isAdmin = false;
 
+  const displaySubmenu = (e: any) => {
+    const page = e.target.textContent;
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.left + tempBtn.right) / 2;
+    const bottom = tempBtn.bottom - 3;
+  };
+
   return (
-    <header className="header-wrapper">
-      <div>
-        <Link href="/">SCHOOL LOCKER</Link>
-      </div>
+    <header className="nav">
+      <div className="nav-center">
+        <div className="nav-header">
+          <Link href="/">
+            <Logo />
+          </Link>
+          {/* <button className="btn toggle-btn">
+            <MenuIcon />
+          </button> */}
+        </div>
 
-      <nav>
-        <ul>
-          <li>
-            <Link href="/rumors">Rumors</Link>
-          </li>
-          <li>
-            <Link href="/lockers">All lockers</Link>
-          </li>
-          <li>
-            <Link href="/populate">New and existing lockers</Link>
-          </li>
-          <li>
-            <Link href="/wolfpad">Wolfpad - Let&apos;s Code!</Link>
-          </li>
-          <li>
-            <Link href="/admin">Admin panel</Link>
-          </li>
+        <ul className="nav-links">
+          {links.map((link, index) => (
+            <li key={index}>
+              <button className="link-btn" onMouseOver={displaySubmenu}>
+                {link.title}
+              </button>
+            </li>
+          ))}
         </ul>
-      </nav>
 
-      {!session && status === 'unauthenticated' && (
-        <button onClick={() => signIn()}>Sign In</button>
-      )}
+        {!session && status === 'unauthenticated' && (
+          <button className="btn signin-btn" onClick={() => signIn()}>
+            Sign In
+          </button>
+        )}
+      </div>
     </header>
   );
 };
