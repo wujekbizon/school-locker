@@ -5,27 +5,39 @@ import { signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import Logo from '../logo/Logo';
 import { links } from '../../data/data';
+import { useGlobalContext } from '../context/globalContext';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
+  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
   // temp isAdmin flag
   const isAdmin = false;
 
   const displaySubmenu = (e: any) => {
-    const page: string = e.target.textContent;
+    const page = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
     const bottom = tempBtn.bottom - 3;
+    openSubmenu(page, { center, bottom });
+  };
+
+  const handleSubmenu = (e: any) => {
+    const className = e.target.className;
+    if (className === 'link-btn') {
+      return;
+    } else {
+      closeSubmenu();
+    }
   };
 
   return (
-    <header className="nav">
+    <header className="nav" onMouseOver={handleSubmenu}>
       <div className="nav-center">
         <div className="nav-header">
           <Link href="/">
             <Logo />
           </Link>
-          {/* <button className="btn toggle-btn">
+          {/* <button className="btn toggle-btn" onClick={openSidebar}>
             <MenuIcon />
           </button> */}
         </div>

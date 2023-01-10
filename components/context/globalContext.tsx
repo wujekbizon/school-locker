@@ -2,12 +2,17 @@ import React, { useState, useContext, createContext } from 'react';
 import sublinks from '../../data/data';
 import { Pages } from '../../data/data';
 
+type CoordinatesType = {
+  center: number;
+  bottom: number;
+};
+
 const AppContext = createContext({
   isSidebarOpen: false,
   isSubmenuOpen: false,
   openSidebar: () => {},
   closeSidebar: () => {},
-  openSubmenu: (text: string, coordinates: number) => {},
+  openSubmenu: (text: string, coordinates: CoordinatesType) => {},
   closeSubmenu: () => {},
   location: {},
   page: {
@@ -20,7 +25,10 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSideBarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [location, setLocation] = useState({});
-  const [page, setPage] = useState<Pages>();
+  const [page, setPage] = useState<Pages>({
+    page: '',
+    links: [{ label: '', icon: <p></p>, url: '' }],
+  });
 
   const openSidebar = () => {
     setIsSideBarOpen(true);
@@ -28,9 +36,11 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const closeSidebar = () => {
     setIsSideBarOpen(false);
   };
-  const openSubmenu = (text: string, coordinates: number) => {
+  const openSubmenu = (text: string, coordinates: CoordinatesType) => {
     const page = sublinks.find((link) => link.page === text);
-
+    if (!page) {
+      return;
+    }
     setPage(page);
     setLocation(coordinates);
     setIsSubmenuOpen(true);
@@ -39,9 +49,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setIsSubmenuOpen(false);
   };
 
-  if (!page) {
-    return <p>No links...</p>;
-  }
+  // if (!page) {
+  //   return <p></p>;
+  // }
 
   return (
     <AppContext.Provider
