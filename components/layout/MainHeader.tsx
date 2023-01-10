@@ -6,14 +6,15 @@ import { useSession } from 'next-auth/react';
 import Logo from '../logo/Logo';
 import { links } from '../../data/data';
 import { useGlobalContext } from '../context/globalContext';
+import Submenu from './Submenu';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
-  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
-  // temp isAdmin flag
-  const isAdmin = false;
+  const { openSidebar, openSubmenu, closeSubmenu, isSubmenuOpen } =
+    useGlobalContext();
 
   const displaySubmenu = (e: any) => {
+    console.log(isSubmenuOpen);
     const page = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
@@ -23,6 +24,7 @@ const MainHeader = () => {
 
   const handleSubmenu = (e: any) => {
     const className = e.target.className;
+    console.log(className);
     if (className === 'link-btn') {
       return;
     } else {
@@ -58,6 +60,7 @@ const MainHeader = () => {
           </button>
         )}
       </div>
+      <Submenu />
     </header>
   );
 };

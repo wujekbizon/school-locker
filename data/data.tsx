@@ -36,6 +36,16 @@ const sublinks: Pages[] = [
         icon: <LockOpenIcon />,
         url: '/populate',
       },
+      {
+        label: 'all lockers',
+        icon: <LockIcon />,
+        url: '/lockers',
+      },
+      {
+        label: 'new and existing lockers',
+        icon: <LockOpenIcon />,
+        url: '/populate',
+      },
     ],
   },
   {
