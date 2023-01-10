@@ -4,6 +4,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import { SvgIconProps } from '@mui/material';
 
 export const links = [
   { title: 'Products' },
@@ -12,7 +13,16 @@ export const links = [
   { title: 'Tools' },
 ];
 
-const sublinks = [
+export type Pages = {
+  page: string;
+  links: {
+    label: string;
+    icon: JSX.Element;
+    url: string;
+  }[];
+};
+
+const sublinks: Pages[] = [
   {
     page: 'products',
     links: [
