@@ -6,7 +6,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import Image from 'next/image';
 import { useContext } from 'react';
-import { LightModeContext } from '../../context/lightModeContext';
+import { LightModeContext } from '../../../context/lightModeContext';
 
 const MainHeader = () => {
   const { dispatch } = useContext(LightModeContext);

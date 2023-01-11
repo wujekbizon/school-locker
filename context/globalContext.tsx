@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
-import sublinks from '../../data/data';
-import { Pages } from '../../data/data';
+import sublinks from '../data/data';
+import { Pages } from '../data/data';
 
 type CoordinatesType = {
   center: number;
@@ -34,16 +34,14 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const openSubmenu = (text: PageText, coordinates: CoordinatesType) => {
-    console.log('open');
-
     const page = sublinks.find((link) => link.page === text);
     if (page !== undefined) {
-      console.log(page);
       setPage(page);
       setLocation(coordinates);
       setIsSubmenuOpen(true);
     }
   };
+
   const closeSubmenu = () => {
     setIsSubmenuOpen(false);
   };

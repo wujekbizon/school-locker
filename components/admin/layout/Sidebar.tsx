@@ -20,7 +20,7 @@ import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { useContext } from 'react';
-import { LightModeContext } from '../../context/lightModeContext';
+import { LightModeContext } from '../../../context/lightModeContext';
 
 const Sidebar = () => {
   const [active, setActive] = useState('1');

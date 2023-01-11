@@ -3,7 +3,7 @@ import '../../../styles/light.scss';
 import Sidebar from './Sidebar';
 import MainHeader from './MainHeader';
 import { useContext } from 'react';
-import { LightModeContext } from '../../context/lightModeContext';
+import { LightModeContext } from '../../../context/lightModeContext';
 
 type Props = {
   children: React.ReactNode;

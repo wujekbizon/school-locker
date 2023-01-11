@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import Logo from '../logo/Logo';
 import { links } from '../../data/data';
-import { useGlobalContext } from '../context/globalContext';
+import { useGlobalContext } from '../../context/globalContext';
 import Submenu from './Submenu';
 
 const MainHeader = () => {

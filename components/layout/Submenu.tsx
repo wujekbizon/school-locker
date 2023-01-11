@@ -1,6 +1,6 @@
 import './Submenu.scss';
 import { useRef, useEffect } from 'react';
-import { useGlobalContext } from '../context/globalContext';
+import { useGlobalContext } from '../../context/globalContext';
 import Link from 'next/link';
 
 const Submenu = () => {

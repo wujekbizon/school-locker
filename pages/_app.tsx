@@ -4,8 +4,8 @@ import type { AppProps } from 'next/app';
 import type { Session } from 'next-auth';
 import Layout from '../components/layout/Layout';
 import AdminPanelLayout from '../components/admin/layout/Layout';
-import { LightModeProvider } from '../components/context/lightModeContext';
-import { AppProvider } from '../components/context/globalContext';
+import { LightModeProvider } from '../context/lightModeContext';
+import { AppProvider } from '../context/globalContext';
 import { SessionProvider } from 'next-auth/react';
 
 export default function App({
