@@ -14,7 +14,6 @@ const MainHeader = () => {
     useGlobalContext();
 
   const displaySubmenu = (e: any) => {
-    console.log(isSubmenuOpen);
     const page = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
@@ -24,7 +23,7 @@ const MainHeader = () => {
 
   const handleSubmenu = (e: any) => {
     const className = e.target.className;
-    console.log(className);
+
     if (className === 'link-btn') {
       return;
     } else {
@@ -33,35 +32,37 @@ const MainHeader = () => {
   };
 
   return (
-    <header className="nav" onMouseOver={handleSubmenu}>
-      <div className="nav-center">
-        <div className="nav-header">
-          <Link href="/">
-            <Logo />
-          </Link>
-          {/* <button className="btn toggle-btn" onClick={openSidebar}>
+    <>
+      <header className="nav" onMouseOver={handleSubmenu}>
+        <div className="nav-center">
+          <div className="nav-header">
+            <Link href="/">
+              <Logo />
+            </Link>
+            {/* <button className="btn toggle-btn" onClick={openSidebar}>
             <MenuIcon />
           </button> */}
+          </div>
+
+          <ul className="nav-links">
+            {links.map((link, index) => (
+              <li key={index}>
+                <button className="link-btn" onMouseOver={displaySubmenu}>
+                  {link.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {!session && status === 'unauthenticated' && (
+            <button className="btn signin-btn" onClick={() => signIn()}>
+              Sign In
+            </button>
+          )}
         </div>
-
-        <ul className="nav-links">
-          {links.map((link, index) => (
-            <li key={index}>
-              <button className="link-btn" onMouseOver={displaySubmenu}>
-                {link.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        {!session && status === 'unauthenticated' && (
-          <button className="btn signin-btn" onClick={() => signIn()}>
-            Sign In
-          </button>
-        )}
-      </div>
+      </header>
       <Submenu />
-    </header>
+    </>
   );
 };
 export default MainHeader;

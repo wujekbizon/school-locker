@@ -7,22 +7,24 @@ type CoordinatesType = {
   bottom: number;
 };
 
+type PageText = 'Products' | 'Resources' | 'Metaverse' | 'Tools';
+
 const AppContext = createContext({
   isSidebarOpen: false,
   isSubmenuOpen: false,
   openSidebar: () => {},
   closeSidebar: () => {},
-  openSubmenu: (text: string, coordinates: CoordinatesType) => {},
+  openSubmenu: (text: PageText, coordinates: CoordinatesType) => {},
   closeSubmenu: () => {},
-  location: { center: 1, bottom: 1 },
+  location: { center: 100, bottom: 100 },
   page: sublinks[0],
 });
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [isSidebarOpen, setIsSideBarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
-  const [location, setLocation] = useState({ center: 1, bottom: 1 });
-  const [page, setPage] = useState<Pages>(sublinks[0]);
+  const [location, setLocation] = useState({ center: 100, bottom: 100 });
+  const [page, setPage] = useState(sublinks[0]);
 
   const openSidebar = () => {
     setIsSideBarOpen(true);
@@ -31,14 +33,16 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setIsSideBarOpen(false);
   };
 
-  const openSubmenu = (text: string, coordinates: CoordinatesType) => {
+  const openSubmenu = (text: PageText, coordinates: CoordinatesType) => {
     console.log('open');
-    // const page = sublinks.find((link) => link.page === text);
-    console.log(page);
 
-    setPage(page);
-    setLocation(coordinates);
-    setIsSubmenuOpen(true);
+    const page = sublinks.find((link) => link.page === text);
+    if (page !== undefined) {
+      console.log(page);
+      setPage(page);
+      setLocation(coordinates);
+      setIsSubmenuOpen(true);
+    }
   };
   const closeSubmenu = () => {
     setIsSubmenuOpen(false);

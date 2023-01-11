@@ -4,11 +4,10 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import { SvgIconProps } from '@mui/material';
 
 export const links = [
   { title: 'Products' },
-  { title: 'Resources' },
+  { title: 'Rumors' },
   { title: 'Metaverse' },
   { title: 'Tools' },
 ];
@@ -24,7 +23,7 @@ export type Pages = {
 
 const sublinks: Pages[] = [
   {
-    page: 'products',
+    page: 'Products',
     links: [
       {
         label: 'all lockers',
@@ -49,7 +48,7 @@ const sublinks: Pages[] = [
     ],
   },
   {
-    page: 'rumors',
+    page: 'Rumors',
     links: [
       {
         label: 'newest rumor',
@@ -64,7 +63,7 @@ const sublinks: Pages[] = [
     ],
   },
   {
-    page: 'Interactive Coding Environment',
+    page: 'Metaverse',
     links: [
       {
         label: 'Wolfpad',
@@ -74,7 +73,7 @@ const sublinks: Pages[] = [
     ],
   },
   {
-    page: 'Admin',
+    page: 'Tools',
     links: [
       {
         label: 'Admin Panel',
