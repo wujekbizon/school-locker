@@ -1,10 +1,9 @@
 .nav {
-  background: #040c18;
-  height: 6rem;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  // background: transparent;
+  background: transparent;
   position: relative;
   z-index: 1;
 
@@ -38,28 +37,27 @@
   }
 
   .nav-links {
-    display: block;
-    justify-self: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    text-align: center;
     height: 100%;
-    display: grid;
+    display: flex;
     align-items: center;
-
-    li {
-      height: 100%;
-    }
+    justify-content: center;
 
     .link-btn {
-      height: 100%;
       background: transparent;
       border-color: transparent;
       font-size: 1.1rem;
       color: white;
       text-transform: capitalize;
       letter-spacing: 1px;
-      width: 10rem;
+      padding: 10px 40px;
+
+      li {
+        height: 100%;
+      }
+
+      &:hover {
+        color: hsl(210, 22%, 49%);
+      }
     }
   }
 }
