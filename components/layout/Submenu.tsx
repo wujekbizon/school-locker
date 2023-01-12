@@ -30,6 +30,7 @@ const Submenu = () => {
     >
       {element}
       <div className={`submenu-center col-${links.length}`}>
+        <div className="submenu-title">{page}</div>
         {links.map((link, index) => {
           const { label, icon, url } = link;
           return (

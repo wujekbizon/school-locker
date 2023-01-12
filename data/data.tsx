@@ -4,6 +4,9 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import CloudSyncIcon from '@mui/icons-material/CloudSync';
 import Products from '../components/layout/Products';
 
 export const links = [
@@ -40,9 +43,8 @@ export const items = [
       'This is an interactive coding environment. You can write Javascript, see it executed, and write documentation.',
   },
   {
-    product: 'Editor',
-    description:
-      'Lexical is an extensible JavaScript web text-editor framework with an emphasis on reliability, accessibility, and performance. ',
+    product: 'Jarvis Chatbot',
+    description: 'Advanced GPT3 Model AI Chatbot. Welcome into to the future. ',
   },
 ];
 
@@ -96,6 +98,16 @@ const sublinks: Pages[] = [
         icon: <CodeIcon />,
         url: '/wolfpad',
       },
+      {
+        label: 'Cloud Solution',
+        icon: <CloudSyncIcon />,
+        url: '/cloud',
+      },
+      {
+        label: 'Currency Bitcoin',
+        icon: <CurrencyBitcoinIcon />,
+        url: '/exchange',
+      },
     ],
   },
   {
@@ -105,6 +117,11 @@ const sublinks: Pages[] = [
         label: 'Admin Panel',
         icon: <AdminPanelSettingsIcon />,
         url: '/admin',
+      },
+      {
+        label: 'Calendar',
+        icon: <CalendarMonthRoundedIcon />,
+        url: '/calendar',
       },
     ],
   },
