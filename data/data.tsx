@@ -37,7 +37,7 @@ export const items = [
   {
     product: 'Wolfpad',
     description:
-      'This is an interactive coding environment. You can write Javascript, see it executed, and write comprehensive documentation using markdown.',
+      'This is an interactive coding environment. You can write Javascript, see it executed, and write documentation.',
   },
   {
     product: 'Editor',

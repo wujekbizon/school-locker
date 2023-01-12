@@ -8,9 +8,8 @@
   display: none;
   transform: translateX(-50%);
   z-index: 3;
-  padding: 4px;
   transition: all 0.3s linear;
-  height: 400px;
+  height: 420px;
   width: 50%;
   border-radius: 10px;
   border: 5px solid hsl(210, 22%, 90%);
@@ -34,8 +33,9 @@
   }
 
   .submenu-center {
-    // display: grid;
-    // gap: 0.25rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
 
     a {
       width: 10rem;
