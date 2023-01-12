@@ -7,7 +7,7 @@ const Submenu = () => {
   const {
     isSubmenuOpen,
     location,
-    page: { page, links },
+    page: { page, links, element },
   } = useGlobalContext();
 
   const container = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ const Submenu = () => {
       className={`${isSubmenuOpen ? 'submenu show' : 'submenu'}`}
       ref={container}
     >
-      <h4>{page}</h4>
+      {element}
       <div className={`submenu-center col-${links.length}`}>
         {links.map((link, index) => {
           const { label, icon, url } = link;

@@ -4,6 +4,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CodeIcon from '@mui/icons-material/Code';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import Products from '../components/layout/Products';
 
 export const links = [
   { title: 'Products' },
@@ -14,6 +15,7 @@ export const links = [
 
 export type Pages = {
   page: string;
+  element?: JSX.Element;
   links: {
     label: string;
     icon: JSX.Element;
@@ -21,9 +23,33 @@ export type Pages = {
   }[];
 };
 
+export type Items = {
+  product: string;
+  description: string;
+};
+
+export const items = [
+  {
+    product: 'School Locker',
+    description:
+      'New multimedia platform, where user can create and fully customize a digital locker.',
+  },
+  {
+    product: 'Wolfpad',
+    description:
+      'This is an interactive coding environment. You can write Javascript, see it executed, and write comprehensive documentation using markdown.',
+  },
+  {
+    product: 'Editor',
+    description:
+      'Lexical is an extensible JavaScript web text-editor framework with an emphasis on reliability, accessibility, and performance. ',
+  },
+];
+
 const sublinks: Pages[] = [
   {
     page: 'Products',
+    element: <Products items={items} />,
     links: [
       {
         label: 'all lockers',

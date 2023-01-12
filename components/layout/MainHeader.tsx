@@ -22,11 +22,10 @@ const MainHeader = () => {
   };
 
   const handleSubmenu = (e: any) => {
-    const className = e.target.className;
-
-    if (className === 'link-btn') {
+    if (e.target.className === 'link-btn') {
       return;
     } else {
+      e.target.className === 'hero-wrapper';
       closeSubmenu();
     }
   };

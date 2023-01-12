@@ -11,7 +11,7 @@
   padding: 4px;
   transition: all 0.3s linear;
   height: 400px;
-  width: 40%;
+  width: 50%;
   border-radius: 10px;
   border: 5px solid hsl(210, 22%, 90%);
 
@@ -64,5 +64,5 @@
 }
 
 .show {
-  display: block;
+  display: flex;
 }
