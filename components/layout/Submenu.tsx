@@ -1,5 +1,5 @@
 import './Submenu.scss';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useGlobalContext } from '../../context/globalContext';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
@@ -13,7 +13,13 @@ const Submenu = () => {
     closeSubmenu,
   } = useGlobalContext();
 
+  const [active, setActive] = useState('0');
+  const [isSchool, setIsSchool] = useState(false);
   const container = useRef<HTMLDivElement>(null);
+
+  const handleEvent: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setActive(e.currentTarget.id);
+  };
 
   useEffect(() => {
     if (!container.current) {
@@ -31,23 +37,22 @@ const Submenu = () => {
       className={`${isSubmenuOpen ? 'submenu show' : 'submenu'}`}
       ref={container}
     >
-      {items && <Products items={items} />}
+      {items && (
+        <Products active={active} handleEvent={handleEvent} items={items} />
+      )}
       <div className="submenu-center">
         {links.map((link, index) => {
           const { label, icon, url, title } = link;
+
           return (
-            <div className="link-wrapper">
+            <div className="link-wrapper" key={index}>
               {icon}
-              <Link
-                key={index}
-                href={url}
-                className="link-title"
-                onClick={closeSubmenu}
-              >
+              <Link href={url} className="link-title" onClick={closeSubmenu}>
                 <div className="link-arrow">
                   <h4>{label}</h4>
                   <ArrowRightAltIcon className="icon" />
                 </div>
+
                 <p>{title}</p>
               </Link>
             </div>

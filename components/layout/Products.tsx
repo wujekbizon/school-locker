@@ -3,12 +3,13 @@ import { useState } from 'react';
 
 import type { Items } from '../../data/data';
 
-const Products = ({ items }: { items: Items[] }) => {
-  const [active, setActive] = useState('0');
+type Props = {
+  items: Items[];
+  handleEvent: React.MouseEventHandler<HTMLDivElement>;
+  active: string;
+};
 
-  const handleEvent: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setActive(e.currentTarget.id);
-  };
+const Products = ({ items, handleEvent, active }: Props) => {
   return (
     <>
       <div className="products-wrapper">

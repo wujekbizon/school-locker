@@ -11,12 +11,18 @@ import HomeIcon from '@mui/icons-material/Home';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import BookIcon from '@mui/icons-material/Book';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import NoteIcon from '@mui/icons-material/Note';
 
 export const links = [
   { title: 'Products' },
-  { title: 'Rumors' },
-  { title: 'Metaverse' },
   { title: 'Tools' },
+  { title: 'Metaverse' },
+  { title: 'Resources' },
 ];
 
 export type Pages = {
@@ -108,12 +114,17 @@ const sublinks: Pages[] = [
     ],
   },
   {
-    page: 'Rumors',
+    page: 'Tools',
     links: [
       {
-        label: 'newest rumor',
-        icon: <StickyNote2Icon />,
-        url: '/rumors/newest',
+        label: 'Admin Panel',
+        icon: <AdminPanelSettingsIcon />,
+        url: '/admin',
+      },
+      {
+        label: 'Calendar',
+        icon: <CalendarMonthRoundedIcon />,
+        url: '/calendar',
       },
       {
         label: 'add rumor',
@@ -159,17 +170,57 @@ const sublinks: Pages[] = [
     ],
   },
   {
-    page: 'Tools',
+    page: 'Resources',
     links: [
       {
-        label: 'Admin Panel',
-        icon: <AdminPanelSettingsIcon />,
-        url: '/admin',
+        label: 'Contact Support',
+        icon: <ContactSupportIcon />,
+        url: '/',
       },
       {
-        label: 'Calendar',
-        icon: <CalendarMonthRoundedIcon />,
-        url: '/calendar',
+        label: 'Video Library',
+        icon: <VideoLibraryIcon />,
+        url: '/',
+      },
+      {
+        label: 'Blog',
+        icon: <BookIcon />,
+        url: '/',
+      },
+      {
+        label: 'Newsroom',
+        icon: <NewspaperIcon />,
+        url: '/',
+      },
+      {
+        label: 'Customers Stories',
+        icon: <AutoStoriesIcon />,
+        url: '/',
+      },
+      {
+        label: 'Support Plans',
+        icon: <NoteIcon />,
+        url: '/',
+      },
+      {
+        label: 'Newsroom',
+        icon: <NewspaperIcon />,
+        url: '/',
+      },
+      {
+        label: 'Customers Stories',
+        icon: <AutoStoriesIcon />,
+        url: '/',
+      },
+      {
+        label: 'Support Plans',
+        icon: <NoteIcon />,
+        url: '/',
+      },
+      {
+        label: 'Support Plans',
+        icon: <NoteIcon />,
+        url: '/',
       },
     ],
   },
