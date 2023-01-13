@@ -1,13 +1,16 @@
 import './Submenu.scss';
 import { useRef, useEffect } from 'react';
 import { useGlobalContext } from '../../context/globalContext';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
+import Products from './Products';
 
 const Submenu = () => {
   const {
     isSubmenuOpen,
     location,
-    page: { page, links, element },
+    page: { page, links, items },
+    closeSubmenu,
   } = useGlobalContext();
 
   const container = useRef<HTMLDivElement>(null);
@@ -28,16 +31,26 @@ const Submenu = () => {
       className={`${isSubmenuOpen ? 'submenu show' : 'submenu'}`}
       ref={container}
     >
-      {element}
-      <div className={`submenu-center col-${links.length}`}>
-        <div className="submenu-title">{page}</div>
+      {items && <Products items={items} />}
+      <div className="submenu-center">
         {links.map((link, index) => {
-          const { label, icon, url } = link;
+          const { label, icon, url, title } = link;
           return (
-            <Link key={index} href={url}>
+            <div className="link-wrapper">
               {icon}
-              {label}
-            </Link>
+              <Link
+                key={index}
+                href={url}
+                className="link-title"
+                onClick={closeSubmenu}
+              >
+                <div className="link-arrow">
+                  <h4>{label}</h4>
+                  <ArrowRightAltIcon className="icon" />
+                </div>
+                <p>{title}</p>
+              </Link>
+            </div>
           );
         })}
       </div>

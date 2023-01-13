@@ -1,7 +1,9 @@
+@import '../../styles/styles.scss';
+
 /* links */
 .submenu {
   margin-top: 10px;
-  background: white;
+  background: hsl(209, 61%, 16%);
   position: absolute;
   top: 6rem;
   left: 50%;
@@ -12,7 +14,7 @@
   height: 420px;
   width: 50%;
   border-radius: 10px;
-  border: 5px solid hsl(210, 22%, 90%);
+  border: 5px solid hsl(209, 61%, 16%);
 
   &::before {
     content: '';
@@ -33,39 +35,66 @@
   }
 
   .submenu-center {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 15px;
     width: 100%;
+    display: grid;
+    gap: 0.25rem 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 15px 30px;
+    justify-content: space-evenly;
+    background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
+    border-radius: 5px;
 
-    .submenu-title {
-      width: 100%;
-    }
-
-    a {
-      width: 10rem;
-      display: block;
-      color: hsl(209, 61%, 16%);
-      text-transform: capitalize;
+    .link-wrapper {
       display: flex;
       align-items: center;
-    }
 
-    svg {
-      color: hsl(210, 22%, 49%);
-      margin-right: 1rem;
-    }
-  }
+      .link-title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-transform: capitalize;
+        color: hsl(209, 61%, 16%);
 
-  .col-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .col-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .col-4 {
-    grid-template-columns: repeat(4, 1fr);
+        .icon {
+          font-size: 20px;
+          margin: 0 0 0 10px;
+          opacity: 0;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+          p {
+            color: $borderColor;
+          }
+
+          .icon {
+            opacity: 1;
+          }
+        }
+
+        .link-arrow {
+          display: flex;
+          align-items: center;
+
+          h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+
+        p {
+          margin: 0;
+          color: $lightNav;
+        }
+      }
+
+      svg {
+        font-size: 2.5rem;
+        color: hsl(209, 61%, 16%);
+        margin-right: 20px;
+      }
+    }
   }
 }
 
