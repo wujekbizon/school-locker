@@ -38,28 +38,93 @@
     gap: 15px;
 
     input {
-      width: 50%;
-      height: 45px;
-      background: linear-gradient(70deg, #00dbd8, #b133ff);
+      width: 45%;
+      height: 50px;
+      background: #040c18;
       border: none;
-
+      border-radius: 5px;
       outline: none;
-    }
+      color: white;
+      font-family: 'Nunito';
+      font-size: 22px;
 
-    input[type='file'] {
-      background: none;
+      &:hover::placeholder {
+        color: rgba(173, 255, 47, 0.6);
+      }
 
-      &::-webkit-file-upload-button {
-        background: linear-gradient(70deg, #00dbd8, #b133ff);
-        color: red;
-        padding: 1em;
+      &::placeholder {
+        font-size: 17px;
+        color: rgba(173, 255, 47, 0.4);
+        letter-spacing: 0.3rem;
       }
     }
 
-    button {
-      width: 100%;
-      padding: 15px 40px;
-      cursor: pointer;
+    .form-select {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 45%;
+
+      select {
+        height: 40px;
+        outline: none;
+        border: none;
+        background-color: #040c18;
+        border-radius: 5px;
+        font-size: 17px;
+        color: rgba(173, 255, 47, 0.4);
+        letter-spacing: 0.3rem;
+        font-family: 'Nunito';
+
+        &:hover {
+          color: rgba(173, 255, 47, 0.6);
+        }
+      }
+
+      label {
+        color: #040c18;
+        background: linear-gradient(210deg, #040c18, rgba(173, 255, 47, 0.7));
+        font-size: 17px;
+        font-family: 'Nunito';
+        letter-spacing: 0.3rem;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 45%;
+        height: 40px;
+        border-radius: 5px;
+
+        &:hover {
+          color: rgba(173, 255, 47, 1);
+        }
+      }
+
+      .upload-icon {
+        font-size: 28px;
+      }
+
+      input[type='file'] {
+        display: none;
+      }
+    }
+
+    .submit-btn {
+      width: 45%;
+
+      button {
+        width: 100%;
+        font-size: 20px;
+        padding: 12px 40px;
+        cursor: pointer;
+        border-radius: 5px;
+        background: linear-gradient(210deg, #040c18, rgba(173, 255, 47, 0.9));
+
+        &:hover {
+          background: linear-gradient(360deg, #040c18, rgba(173, 255, 47, 1));
+        }
+      }
     }
   }
 }

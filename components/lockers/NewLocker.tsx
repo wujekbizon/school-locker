@@ -1,7 +1,6 @@
 import './NewLocker.scss';
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { cloudinaryLoader } from '../../helpers/cloudinary';
+import PublishIcon from '@mui/icons-material/Publish';
 import { defaultAvatarImage } from '../../helpers/cloudinary';
 import { uploadImageToCloudinary } from '../../helpers/cloudinary';
 import { signIn } from 'next-auth/react';
@@ -209,7 +208,7 @@ const NewLocker = () => {
           </>
         )}
         {!isLogin && (
-          <>
+          <div className="form-select">
             <select
               name="privacy"
               id="privacy"
@@ -219,21 +218,21 @@ const NewLocker = () => {
               <option value="public">Public Locker</option>
               <option value="private">Private Locker</option>
             </select>
-          </>
-        )}
-        {!isLogin && (
-          <>
+            <label htmlFor="file">
+              <PublishIcon className="upload-icon" />
+              Upload Photo
+            </label>
             <input
               type="file"
-              id="image"
+              id="file"
               name="file"
               onChange={onChangeHandler}
               required
             />
-          </>
+          </div>
         )}
 
-        <div>
+        <div className="submit-btn">
           <button>{isLogin ? 'Open Locker' : 'Create Locker'}</button>
         </div>
       </form>
