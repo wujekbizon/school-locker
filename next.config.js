@@ -10,6 +10,7 @@ const nextConfig = {
     MONGODB_USERNAME: process.env.MONGODB_USERNAME,
     MONGODB_PASSWORD: process.env.MONGODB_PASSWORD,
     CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
   webpack(config) {
     // if not work, try `config.module.rules[2]...`

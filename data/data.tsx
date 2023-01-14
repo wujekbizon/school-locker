@@ -17,6 +17,11 @@ import BookIcon from '@mui/icons-material/Book';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import NoteIcon from '@mui/icons-material/Note';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import SourceIcon from '@mui/icons-material/Source';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import WorkIcon from '@mui/icons-material/Work';
 
 export const links = [
   { title: 'Products' },
@@ -90,6 +95,13 @@ const sublinks: Pages[] = [
         url: '/rumors/newest',
       },
       {
+        label: 'add rumor',
+        idTag: 'one',
+        title: 'seed a rumor',
+        icon: <PostAddIcon />,
+        url: '/rumors/add',
+      },
+      {
         idTag: 'one',
         label: 'Home',
         title: 'School locker home page',
@@ -130,22 +142,25 @@ const sublinks: Pages[] = [
     page: 'Tools',
     links: [
       {
-        label: 'Admin Panel',
+        label: 'Admin',
+        title: 'Administrator Panel',
         idTag: 'one',
         icon: <AdminPanelSettingsIcon />,
         url: '/admin',
       },
       {
+        label: 'Create Portfolio',
+        title: 'customize and create portfolio',
+        idTag: 'one',
+        icon: <FolderSharedIcon />,
+        url: '/portfolio',
+      },
+      {
         label: 'Calendar',
+        title: 'schedule your next event',
         idTag: 'one',
         icon: <CalendarMonthRoundedIcon />,
         url: '/calendar',
-      },
-      {
-        label: 'add rumor',
-        idTag: 'one',
-        icon: <PostAddIcon />,
-        url: '/rumors/add',
       },
     ],
   },
@@ -153,9 +168,9 @@ const sublinks: Pages[] = [
     page: 'Metaverse',
     links: [
       {
-        label: 'Wolfpad',
+        label: 'Career Seek',
         idTag: 'one',
-        icon: <CodeIcon />,
+        icon: <WorkIcon />,
         url: '/wolfpad',
       },
       {
@@ -230,9 +245,9 @@ const sublinks: Pages[] = [
         url: '/',
       },
       {
-        label: 'Newsroom',
+        label: 'Documentation',
         idTag: 'one',
-        icon: <NewspaperIcon />,
+        icon: <SourceIcon />,
         url: '/',
       },
       {
@@ -242,15 +257,15 @@ const sublinks: Pages[] = [
         url: '/',
       },
       {
-        label: 'Support Plans',
+        label: 'Payments',
         idTag: 'one',
-        icon: <NoteIcon />,
+        icon: <PaymentsIcon />,
         url: '/',
       },
       {
-        label: 'Support Plans',
+        label: 'Awards',
         idTag: 'one',
-        icon: <NoteIcon />,
+        icon: <EmojiEventsIcon />,
         url: '/',
       },
     ],
