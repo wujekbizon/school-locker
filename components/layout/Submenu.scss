@@ -2,7 +2,7 @@
 
 /* links */
 .submenu {
-  margin-top: 10px;
+  margin-top: 5px;
   background: hsl(209, 61%, 16%);
   position: absolute;
   top: 6rem;
@@ -47,6 +47,7 @@
     .link-wrapper {
       display: flex;
       align-items: center;
+      // opacity: 0;
 
       .link-title {
         display: flex;
@@ -100,4 +101,14 @@
 
 .show {
   display: flex;
+}
+
+.test {
+  background-color: red;
+  opacity: 1;
+}
+
+.blue {
+  background-color: blue;
+  opacity: 1;
 }

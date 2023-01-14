@@ -5,7 +5,12 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
 import Products from './Products';
 
-const Submenu = () => {
+type Props = {
+  active: string;
+  handleEvent: React.MouseEventHandler<HTMLDivElement>;
+};
+
+const Submenu = ({ active, handleEvent }: Props) => {
   const {
     isSubmenuOpen,
     location,
@@ -13,13 +18,7 @@ const Submenu = () => {
     closeSubmenu,
   } = useGlobalContext();
 
-  const [active, setActive] = useState('0');
-  const [isSchool, setIsSchool] = useState(false);
   const container = useRef<HTMLDivElement>(null);
-
-  const handleEvent: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setActive(e.currentTarget.id);
-  };
 
   useEffect(() => {
     if (!container.current) {
@@ -32,6 +31,10 @@ const Submenu = () => {
     submenu.style.top = `${location.bottom}px`;
   }, [location]);
 
+  const schoolLinks = links.filter((link) => link.idTag === 'one');
+  const editorLinks = links.filter((link) => link.idTag === 'two');
+  const botLinks = links.filter((link) => link.idTag === 'three');
+
   return (
     <aside
       className={`${isSubmenuOpen ? 'submenu show' : 'submenu'}`}
@@ -40,25 +43,70 @@ const Submenu = () => {
       {items && (
         <Products active={active} handleEvent={handleEvent} items={items} />
       )}
-      <div className="submenu-center">
-        {links.map((link, index) => {
-          const { label, icon, url, title } = link;
 
-          return (
-            <div className="link-wrapper" key={index}>
-              {icon}
-              <Link href={url} className="link-title" onClick={closeSubmenu}>
-                <div className="link-arrow">
-                  <h4>{label}</h4>
-                  <ArrowRightAltIcon className="icon" />
-                </div>
+      {active === '0' && (
+        <div className="submenu-center">
+          {schoolLinks.map((link, index) => {
+            const { label, icon, url, title } = link;
 
-                <p>{title}</p>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+            return (
+              <div className="link-wrapper" key={index}>
+                {icon}
+                <Link href={url} className="link-title" onClick={closeSubmenu}>
+                  <div className="link-arrow">
+                    <h4>{label}</h4>
+                    <ArrowRightAltIcon className="icon" />
+                  </div>
+
+                  <p>{title}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {active === '1' && (
+        <div className="submenu-center">
+          {editorLinks.map((link, index) => {
+            const { label, icon, url, title } = link;
+
+            return (
+              <div className="link-wrapper" key={index}>
+                {icon}
+                <Link href={url} className="link-title" onClick={closeSubmenu}>
+                  <div className="link-arrow">
+                    <h4>{label}</h4>
+                    <ArrowRightAltIcon className="icon" />
+                  </div>
+
+                  <p>{title}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {active === '2' && (
+        <div className="submenu-center">
+          {botLinks.map((link, index) => {
+            const { label, icon, url, title } = link;
+
+            return (
+              <div className="link-wrapper" key={index}>
+                {icon}
+                <Link href={url} className="link-title" onClick={closeSubmenu}>
+                  <div className="link-arrow">
+                    <h4>{label}</h4>
+                    <ArrowRightAltIcon className="icon" />
+                  </div>
+
+                  <p>{title}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </aside>
   );
 };

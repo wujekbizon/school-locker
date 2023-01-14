@@ -7,11 +7,18 @@ import Logo from '../logo/Logo';
 import { links } from '../../data/data';
 import { useGlobalContext } from '../../context/globalContext';
 import Submenu from './Submenu';
+import { useState } from 'react';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
   const { openSidebar, openSubmenu, closeSubmenu, isSubmenuOpen } =
     useGlobalContext();
+
+  const [active, setActive] = useState('0');
+
+  const handleEvent: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setActive(e.currentTarget.id);
+  };
 
   const displaySubmenu = (e: any) => {
     const page = e.target.textContent;
@@ -23,9 +30,11 @@ const MainHeader = () => {
 
   const handleSubmenu = (e: any) => {
     if (e.target.className === 'link-btn') {
+      setActive('0');
       return;
     } else {
       e.target.className === 'hero-wrapper';
+      setActive('0');
       closeSubmenu();
     }
   };
@@ -60,7 +69,7 @@ const MainHeader = () => {
           )}
         </div>
       </header>
-      <Submenu />
+      <Submenu active={active} handleEvent={handleEvent} />
     </>
   );
 };

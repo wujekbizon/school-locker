@@ -29,6 +29,7 @@ export type Pages = {
   page: string;
   items?: Items[];
   links: {
+    idTag?: 'one' | 'two' | 'three' | 'all';
     label: string;
     title?: string;
     icon: JSX.Element;
@@ -37,22 +38,26 @@ export type Pages = {
 };
 
 export type Items = {
+  id: number;
   product: string;
   description: string;
 };
 
-export const items = [
+const items = [
   {
+    id: 1,
     product: 'School Locker',
     description:
       'New multimedia platform, where user can create and fully customize a digital locker.',
   },
   {
+    id: 2,
     product: 'Wolfpad',
     description:
       'This is an interactive coding environment. You can write Javascript, see it executed, and write documentation.',
   },
   {
+    id: 3,
     product: 'Jarvis Chatbot',
     description: 'Advanced GPT3 Model AI Chatbot. Welcome into to the future. ',
   },
@@ -64,49 +69,57 @@ const sublinks: Pages[] = [
     items: items,
     links: [
       {
+        idTag: 'one',
         label: 'lockers',
         title: 'expand all lockers',
         icon: <LockIcon />,
         url: '/lockers',
       },
       {
+        idTag: 'one',
         label: 'add new',
         title: 'populate new locker',
         icon: <LockOpenIcon />,
         url: '/populate',
       },
       {
+        idTag: 'one',
         label: 'rumors',
         title: 'explore newest rumors',
         icon: <StickyNote2Icon />,
         url: '/rumors/newest',
       },
       {
+        idTag: 'one',
         label: 'Home',
         title: 'School locker home page',
         icon: <HomeIcon />,
         url: '/',
       },
       {
+        idTag: 'two',
         label: 'wolfpad',
         title: 'interactive coding enviroment',
         icon: <CodeIcon />,
         url: '/wolfpad',
       },
       {
+        idTag: 'two',
         label: 'markdown editor',
         title: 'customize your own editor',
         icon: <FormatIndentIncreaseIcon />,
         url: '/editor',
       },
       {
-        label: 'Jarvis chatbot',
+        idTag: 'three',
+        label: 'jarvis chatbot',
         title: 'artificial intelligence chatbot',
         icon: <SmartToyIcon />,
         url: '/chat',
       },
       {
-        label: 'Manufacturing AI',
+        idTag: 'three',
+        label: 'manufacturing AI',
         title: 'The future of manufacturing',
         icon: <PrecisionManufacturingIcon />,
         url: '/futureAI',
@@ -118,16 +131,19 @@ const sublinks: Pages[] = [
     links: [
       {
         label: 'Admin Panel',
+        idTag: 'one',
         icon: <AdminPanelSettingsIcon />,
         url: '/admin',
       },
       {
         label: 'Calendar',
+        idTag: 'one',
         icon: <CalendarMonthRoundedIcon />,
         url: '/calendar',
       },
       {
         label: 'add rumor',
+        idTag: 'one',
         icon: <PostAddIcon />,
         url: '/rumors/add',
       },
@@ -138,32 +154,37 @@ const sublinks: Pages[] = [
     links: [
       {
         label: 'Wolfpad',
-
+        idTag: 'one',
         icon: <CodeIcon />,
         url: '/wolfpad',
       },
       {
         label: 'Cloud Solution',
+        idTag: 'one',
         icon: <CloudSyncIcon />,
         url: '/cloud',
       },
       {
         label: 'Currency Bitcoin',
+        idTag: 'one',
         icon: <CurrencyBitcoinIcon />,
         url: '/exchange',
       },
       {
         label: 'Wolfpad',
+        idTag: 'one',
         icon: <CodeIcon />,
         url: '/wolfpad',
       },
       {
         label: 'Cloud Solution',
+        idTag: 'one',
         icon: <CloudSyncIcon />,
         url: '/cloud',
       },
       {
         label: 'Currency Bitcoin',
+        idTag: 'one',
         icon: <CurrencyBitcoinIcon />,
         url: '/exchange',
       },
@@ -174,51 +195,61 @@ const sublinks: Pages[] = [
     links: [
       {
         label: 'Contact Support',
+        idTag: 'one',
         icon: <ContactSupportIcon />,
         url: '/',
       },
       {
         label: 'Video Library',
+        idTag: 'one',
         icon: <VideoLibraryIcon />,
         url: '/',
       },
       {
         label: 'Blog',
+        idTag: 'one',
         icon: <BookIcon />,
         url: '/',
       },
       {
         label: 'Newsroom',
+        idTag: 'one',
         icon: <NewspaperIcon />,
         url: '/',
       },
       {
         label: 'Customers Stories',
+        idTag: 'one',
         icon: <AutoStoriesIcon />,
         url: '/',
       },
       {
         label: 'Support Plans',
+        idTag: 'one',
         icon: <NoteIcon />,
         url: '/',
       },
       {
         label: 'Newsroom',
+        idTag: 'one',
         icon: <NewspaperIcon />,
         url: '/',
       },
       {
         label: 'Customers Stories',
+        idTag: 'one',
         icon: <AutoStoriesIcon />,
         url: '/',
       },
       {
         label: 'Support Plans',
+        idTag: 'one',
         icon: <NoteIcon />,
         url: '/',
       },
       {
         label: 'Support Plans',
+        idTag: 'one',
         icon: <NoteIcon />,
         url: '/',
       },
