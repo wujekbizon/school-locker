@@ -76,7 +76,7 @@ const Chat = () => {
   }, [memoizeKeyPressHandler]);
 
   return (
-    <main className="chat_page">
+    <div className="chat_page">
       <header className="header">
         <div className={!isInitializing ? 'line' : 'online'} />
         {!isInitializing ? (
@@ -88,7 +88,7 @@ const Chat = () => {
 
       <section className="chat_container" ref={chatContainerRef}></section>
       <InputForm formRef={formRef} onHandleSubmit={handleSubmitCallback} />
-    </main>
+    </div>
   );
 };
 export default Chat;

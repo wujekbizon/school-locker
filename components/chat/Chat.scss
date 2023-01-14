@@ -1,19 +1,18 @@
-.chat-page {
+.chat_page {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 70px);
   background: linear-gradient(
     103.22deg,
     rgba(0, 40, 83, 1) 0%,
     rgba(4, 12, 24, 1) 100%
   );
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
   .header {
-    width: 90%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,7 +22,7 @@
     h4 {
       color: white;
       transition: all 0.3s linear;
-      font-size: 12px;
+      font-size: 16px;
     }
 
     .line {
@@ -34,21 +33,23 @@
     }
 
     .online {
-      width: 45vw;
+      width: 60vw;
       height: 3px;
       background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
-      transition: all 0.3s linear;
+      transition: all 0.5s linear;
     }
   }
 
   .chat_container {
     flex: 1;
-    width: 100%;
+    width: 80%;
     height: 100%;
     overflow-y: scroll;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     /* gap: 10px; */
 
     -ms-overflow-style: none;
