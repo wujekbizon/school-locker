@@ -12,7 +12,12 @@ const InputForm = ({ onHandleSubmit, formRef }: InputFormProps) => {
     <form className="form" onSubmit={onHandleSubmit} ref={formRef}>
       <button>
         <Link href="/">
-          <Image src="/backarrow.svg" alt="back" width={25} height={25} />
+          <Image
+            src="/images/backarrow.svg"
+            alt="back"
+            width={25}
+            height={25}
+          />
         </Link>
       </button>
       <textarea
