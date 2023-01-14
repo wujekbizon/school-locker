@@ -1,0 +1,65 @@
+.newlocker_page {
+  width: 100vw;
+  height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+
+  .creation_preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    .newlocker_image {
+      width: 130px;
+      height: 130px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .newlocker_form {
+    background-image: url('/images/l2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    flex: 1;
+    margin: 50px;
+    padding-left: 30px;
+    height: calc(100% - 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+
+    input {
+      width: 50%;
+      height: 45px;
+      background: linear-gradient(70deg, #00dbd8, #b133ff);
+      border: none;
+
+      outline: none;
+    }
+
+    input[type='file'] {
+      background: none;
+
+      &::-webkit-file-upload-button {
+        background: linear-gradient(70deg, #00dbd8, #b133ff);
+        color: red;
+        padding: 1em;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 15px 40px;
+      cursor: pointer;
+    }
+  }
+}

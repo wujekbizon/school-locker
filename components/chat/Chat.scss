@@ -1,6 +1,6 @@
 .chat_page {
   width: 100vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 72px);
   background: linear-gradient(
     103.22deg,
     rgba(0, 40, 83, 1) 0%,
@@ -18,11 +18,13 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+    font-family: 'Barlow Condensed';
 
     h4 {
       color: white;
       transition: all 0.3s linear;
-      font-size: 16px;
+      font-size: 20px;
+      letter-spacing: 0.4rem;
     }
 
     .line {
@@ -33,7 +35,7 @@
     }
 
     .online {
-      width: 60vw;
+      width: 55vw;
       height: 3px;
       background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
       transition: all 0.5s linear;

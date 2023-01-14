@@ -1,3 +1,4 @@
+import './NewLocker.scss';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
@@ -131,120 +132,97 @@ const NewLocker = () => {
   };
 
   return (
-    <section>
-      <div>
-        <h1>{isLogin ? 'Open Your Locker' : 'Create a New Locker'}</h1>
-        {isLogin ? (
-          <p>Open exisitng locker</p>
-        ) : (
-          <p>Create and customize your locker</p>
-        )}
-        <Image
-          src="/v1670000632/SchoolLocker/l2_b6mo5k.png"
-          alt="customize locker"
-          width={600}
-          height={450}
-          style={{ width: '60%', height: 'auto' }}
-          priority
-          loader={cloudinaryLoader}
-        />
-      </div>
-      <form onSubmit={onSumbitHandler}>
+    <section className="newlocker_page">
+      <form onSubmit={onSumbitHandler} className="newlocker_form">
         {!isLogin && (
-          <div>
-            <label htmlFor="name">Student Name</label>
+          <>
             <input
               type="text"
               id="name"
               name="name"
-              placeholder="field required"
+              placeholder="Student Name"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>
+          </>
         )}
 
-        <div>
-          <label htmlFor="email">Email</label>
+        <>
           <input
             type="email"
             id="email"
             name="email"
             required
-            placeholder="field required"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="password">Locker Password</label>
+        </>
+        <>
           <input
             type="password"
             id="password"
             name="password"
             autoComplete="on"
             required
-            placeholder="field required"
+            placeholder="Locker Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+        </>
+
         {!isLogin && (
-          <div>
-            <label htmlFor="privacy">Security</label>
-            <select
-              name="privacy"
-              id="privacy"
-              onChange={(e) => setPrivacy(e.target.value)}
-            >
-              <option value="public">Public</option>
-              <option value="private">Private</option>
-            </select>
-          </div>
-        )}
-        {!isLogin && (
-          <div>
-            <label htmlFor="title">Locker title</label>
+          <>
             <input
               type="text"
               id="title"
               name="title"
-              placeholder="field optional"
+              placeholder="Locker Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </div>
+          </>
         )}
         {!isLogin && (
-          <div>
-            <label htmlFor="school">School Name</label>
+          <>
             <input
               type="text"
               id="school"
               name="school"
-              placeholder="field optional"
+              placeholder="School Name"
               value={schoolName}
               onChange={(e) => setSchoolName(e.target.value)}
             />
-          </div>
+          </>
         )}
         {!isLogin && (
-          <div>
-            <label htmlFor="classroom">Classroom</label>
+          <>
             <input
               type="text"
               id="classroom"
               name="classrom"
-              placeholder="field optional"
+              placeholder="Classroom"
               value={classroom}
               onChange={(e) => setClassroom(e.target.value)}
             />
-          </div>
+          </>
         )}
         {!isLogin && (
-          <div>
-            <label htmlFor="image">Avatar Image</label>
+          <>
+            <select
+              name="privacy"
+              id="privacy"
+              onChange={(e) => setPrivacy(e.target.value)}
+              placeholder="Security"
+            >
+              <option value="public">Public Locker</option>
+              <option value="private">Private Locker</option>
+            </select>
+          </>
+        )}
+        {!isLogin && (
+          <>
             <input
               type="file"
               id="image"
@@ -252,22 +230,28 @@ const NewLocker = () => {
               onChange={onChangeHandler}
               required
             />
-            <img src={previewImage} alt="image" width={100} height={100} />
-          </div>
+          </>
         )}
 
         <div>
           <button>{isLogin ? 'Open Locker' : 'Create Locker'}</button>
+        </div>
+      </form>
+      <div className="creation_preview">
+        {!isLogin && (
+          <div className="newlocker_image">
+            <img src={previewImage} alt="image" />
+          </div>
+        )}
+        <div className="">
           <button type="button" onClick={() => setIsLogin(!isLogin)}>
             {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
           </button>
+          <p>
+            In order to create a new locker , you need to provide all required
+            fields. All the optional fields you can always customize later.
+          </p>
         </div>
-      </form>
-      <div>
-        <p>
-          In order to create a new locker , you need to provide all required
-          fields. All the optional fields you can always customize later.
-        </p>
       </div>
     </section>
   );
