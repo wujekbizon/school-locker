@@ -39,15 +39,15 @@ export const chatStripe = (
   uniqueId: string
 ) => {
   return `
-    <div class="wrapper ${isAi && 'ai'}">
+    <div class="chat_wrapper ${isAi && 'ai'}">
       <div class="chat">
-          <div class="profile">
+          <div class="chat_profile">
               <img  
-                src=${isAi ? '/bot.svg' : '/user.svg'} 
+                src=${isAi ? '/images/chatbot.svg' : '/images/user.svg'} 
                 alt="${isAi ? 'bot' : 'user'}" 
               />
           </div>
-          <div class="message" id=${uniqueId}>${value}</div>
+          <div class="chat_message" id=${uniqueId}>${value}</div>
       </div>
     </div>
     `;
