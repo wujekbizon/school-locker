@@ -30,6 +30,13 @@ ul {
   -webkit-text-fill-color: transparent;
 }
 
+.gradient_private {
+  background: linear-gradient(270deg, #cc0303, #10204d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .gradient_preview {
   background: linear-gradient(360deg, #040c18, rgba(173, 255, 47, 1));
   background-clip: text;

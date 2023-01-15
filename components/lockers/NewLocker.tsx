@@ -253,6 +253,7 @@ const NewLocker = () => {
             school={schoolName}
             classroom={classroom}
             privacy={privacy}
+            email={email}
           />
         </PreviewLayout>
       </div>

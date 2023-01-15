@@ -8,6 +8,7 @@ type PreviewFormProps = {
   title: string;
   classroom: string;
   privacy: string;
+  email: string;
 };
 
 const PreviewForm = ({
@@ -33,10 +34,28 @@ const PreviewForm = ({
       {!isLogin && (
         <div className="preview_container">
           <div className="newlocker_info">
-            <div>{title}</div>
-            <div>{school}</div>
-            <div>{classroom}</div>
-            <div>{privacy}</div>
+            <div className="info-title">
+              <span>Locker Title:</span>
+              <h2>{title}</h2>
+            </div>
+            <div className="info-school">
+              <span>Education:</span>
+              <h2>{school}</h2>
+            </div>
+            <div className="info-school">
+              <span>Class:</span>
+              <h2>{classroom}</h2>
+            </div>
+
+            <div className="public">
+              <p
+                className={
+                  privacy === 'public' ? 'gradient_text' : 'gradient_private'
+                }
+              >
+                {privacy} account
+              </p>
+            </div>
           </div>
           <div className="newlocker_image">
             <img src={img} alt="image" />
