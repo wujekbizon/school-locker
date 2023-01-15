@@ -5,6 +5,7 @@ import { defaultAvatarImage } from '../../helpers/cloudinary';
 import { uploadImageToCloudinary } from '../../helpers/cloudinary';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import PreviewLayout from './PreviewLayout';
 
 const NewLocker = () => {
   const [name, setName] = useState('');
@@ -237,20 +238,22 @@ const NewLocker = () => {
         </div>
       </form>
       <div className="creation_preview">
-        {!isLogin && (
-          <div className="newlocker_image">
-            <img src={previewImage} alt="image" />
+        <PreviewLayout>
+          {!isLogin && (
+            <div className="newlocker_image">
+              <img src={previewImage} alt="image" />
+            </div>
+          )}
+          <div className="">
+            <button type="button" onClick={() => setIsLogin(!isLogin)}>
+              {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
+            </button>
+            <p>
+              In order to create a new locker , you need to provide all required
+              fields. All the optional fields you can always customize later.
+            </p>
           </div>
-        )}
-        <div className="">
-          <button type="button" onClick={() => setIsLogin(!isLogin)}>
-            {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
-          </button>
-          <p>
-            In order to create a new locker , you need to provide all required
-            fields. All the optional fields you can always customize later.
-          </p>
-        </div>
+        </PreviewLayout>
       </div>
     </section>
   );

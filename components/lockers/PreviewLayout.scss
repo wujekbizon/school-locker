@@ -1,0 +1,25 @@
+.preview_wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.top-tags {
+  bottom: auto;
+  top: 5%;
+}
+
+.tags {
+  color: #fa8231;
+  opacity: 0.7;
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-family: 'La Belle Aurore', cursive;
+}
+
+.bottom-tag-html {
+  margin-left: -20px;
+}
