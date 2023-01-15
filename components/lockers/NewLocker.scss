@@ -105,6 +105,7 @@
 
     .submit-btn {
       width: 45%;
+      margin-bottom: 20px;
 
       button {
         width: 100%;
@@ -116,6 +117,31 @@
 
         &:hover {
           background: linear-gradient(360deg, #040c18, rgba(173, 255, 47, 1));
+        }
+      }
+    }
+
+    .create-btn {
+      width: 45%;
+
+      button {
+        width: 100%;
+        text-align: center;
+        border: none;
+        padding: 0;
+        background: transparent;
+        font-size: 22px;
+        font-family: 'Nunito';
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        text-transform: uppercase;
+        color: #15223d;
+
+        &:hover {
+          color: #040c18;
+          text-decoration: underline;
+          text-decoration-color: #040c18;
         }
       }
     }

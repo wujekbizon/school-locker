@@ -237,7 +237,7 @@ const NewLocker = () => {
         <div className="submit-btn">
           <button>{isLogin ? 'Open Locker' : 'Create Locker'}</button>
         </div>
-        <div className="">
+        <div className="create-btn">
           <button type="button" onClick={() => setIsLogin(!isLogin)}>
             {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
           </button>
