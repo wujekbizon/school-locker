@@ -6,12 +6,12 @@ type Props = {
 const PreviewLayout = ({ children }: Props) => {
   return (
     <div className="preview_wrapper">
-      <span className="tags top-tags">&lt;body&gt;</span>
+      <span className="tags top-tags gradient_preview">&lt;body&gt;</span>
       {children}
-      <span className="tags bottom-tags">
+      <span className="tags bottom-tags gradient_preview">
         &lt;body&gt;
         <br />
-        <span className="bottom-tag-html">&lt;/html&gt;</span>
+        <span className="bottom-tag-html gradient_preview">&lt;/html&gt;</span>
       </span>
     </div>
   );

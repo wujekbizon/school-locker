@@ -6,6 +6,7 @@ import { uploadImageToCloudinary } from '../../helpers/cloudinary';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import PreviewLayout from './PreviewLayout';
+import PreviewForm from './PreviewForm';
 
 const NewLocker = () => {
   const [name, setName] = useState('');
@@ -236,23 +237,23 @@ const NewLocker = () => {
         <div className="submit-btn">
           <button>{isLogin ? 'Open Locker' : 'Create Locker'}</button>
         </div>
+        <div className="">
+          <button type="button" onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
+          </button>
+        </div>
       </form>
       <div className="creation_preview">
         <PreviewLayout>
-          {!isLogin && (
-            <div className="newlocker_image">
-              <img src={previewImage} alt="image" />
-            </div>
-          )}
-          <div className="">
-            <button type="button" onClick={() => setIsLogin(!isLogin)}>
-              {isLogin ? 'Create a new locker' : 'Login to exisitng locker'}
-            </button>
-            <p>
-              In order to create a new locker , you need to provide all required
-              fields. All the optional fields you can always customize later.
-            </p>
-          </div>
+          <PreviewForm
+            img={previewImage}
+            isLogin={isLogin}
+            name={name}
+            title={title}
+            school={schoolName}
+            classroom={classroom}
+            privacy={privacy}
+          />
         </PreviewLayout>
       </div>
     </section>
