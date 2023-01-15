@@ -21,20 +21,28 @@ const PreviewForm = ({
 }: PreviewFormProps) => {
   return (
     <section className="preview_form-container">
-      <header>
-        <span className="tags top-header gradient_preview">&lt;header&gt;</span>
-        <h1>Welcome to School Locker the multimedia platform</h1>
-        <span className="tags bottom-header gradient_preview">
-          &lt;/header&gt;
-        </span>
+      <header className="preview_header">
+        <h1>
+          Welcome{' '}
+          <span className="gradient_preview ">{name.substring(0, 25)} </span>to
+          School Locker <span className="span gradient_preview">,</span>
+          <br />
+          our multimedia platform.
+        </h1>
       </header>
-      <div className="preview_container">
-        {!isLogin && (
+      {!isLogin && (
+        <div className="preview_container">
+          <div className="newlocker_info">
+            <div>{title}</div>
+            <div>{school}</div>
+            <div>{classroom}</div>
+            <div>{privacy}</div>
+          </div>
           <div className="newlocker_image">
             <img src={img} alt="image" />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 };
