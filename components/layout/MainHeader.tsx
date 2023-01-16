@@ -8,6 +8,8 @@ import { links } from '../../data/data';
 import { useGlobalContext } from '../../context/globalContext';
 import Submenu from './Submenu';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { navVariants } from '../../utils/motion';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
@@ -32,17 +34,23 @@ const MainHeader = () => {
     if (e.target.className === 'link-btn') {
       setActive('0');
       return;
-    } else {
-      e.target.className === 'hero-wrapper';
-      setActive('0');
-      closeSubmenu();
     }
+
+    setActive('0');
+    closeSubmenu();
   };
 
   return (
     <>
-      <header className="nav" onMouseOver={handleSubmenu}>
-        <div className="nav-center">
+      <motion.header
+        variants={navVariants}
+        initial="hidden"
+        whileInView="show"
+        className="nav"
+        onMouseOver={handleSubmenu}
+      >
+        <nav className="nav-center">
+          <div className="navbar-gradient gradient-01" />
           <div className="nav-header">
             <Link href="/">
               <Logo />
@@ -67,8 +75,8 @@ const MainHeader = () => {
               Sign In
             </button>
           )}
-        </div>
-      </header>
+        </nav>
+      </motion.header>
       <Submenu active={active} handleEvent={handleEvent} />
     </>
   );

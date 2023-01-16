@@ -1,8 +1,10 @@
 @import '../../styles/styles.scss';
 
 .home {
-  height: 100%;
+  height: calc(100vh - 72px);
   position: relative;
+  display: flex;
+  align-items: center;
 
   .home-title {
     position: absolute;

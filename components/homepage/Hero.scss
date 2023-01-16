@@ -1,11 +1,11 @@
 @import '../../styles/styles.scss';
 
 .hero-wrapper {
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
-  padding: 250px 50px;
+  align-items: center;
   position: relative;
 
   .hero-title {
@@ -16,9 +16,9 @@
       font-family: 'Eudoxus Sans';
       font-weight: 700;
       font-size: 144px;
-      line-height: 110%;
+      line-height: 159px;
       text-transform: uppercase;
-      letter-spacing: -0.02em;
+      letter-spacing: 1.25rem;
     }
   }
 
@@ -49,10 +49,7 @@
 
   .animation-wrapper {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
-    top: -140px;
+    top: -180px;
   }
 }
