@@ -1,10 +1,8 @@
 @import '../../styles/styles.scss';
 
 .home {
-  height: calc(100vh - 72px);
+  height: calc(100vh - 6rem);
   position: relative;
-  display: flex;
-  align-items: center;
 
   .home-title {
     position: absolute;
@@ -47,16 +45,6 @@
       font-size: 26px;
       line-height: 120%;
       margin: 0;
-    }
-  }
-
-  .about-image {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: 50px;
-
-    .image-locker {
-      border-radius: 100px;
     }
   }
 }

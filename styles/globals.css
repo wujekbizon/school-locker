@@ -6,6 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: rgba(26, 35, 46, 1);
   color: #c9d1d9;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -67,6 +68,10 @@ ul {
     #34acc7 53.65%,
     #a134c7 100%
   );
+}
+
+.submenu-gradient {
+  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
 }
 
 .gradient-02 {

@@ -31,17 +31,6 @@ const Home = () => {
             Artificial Intelligence chatbot any question. And much more...
           </p>
         </div>
-
-        <div className="about-image">
-          <Image
-            src="/images/home_locker.avif"
-            alt="locker"
-            width={800}
-            height={400}
-            priority
-            className="image-locker"
-          />
-        </div>
       </section>
       <div className="home-scroll">
         <Image src="/images/down.png" alt="down-arrow" width={30} height={30} />
