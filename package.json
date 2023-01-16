@@ -27,6 +27,7 @@
     "esbuild-wasm": "^0.16.10",
     "eslint": "8.28.0",
     "eslint-config-next": "^13.1.1",
+    "framer-motion": "^8.4.3",
     "lexical": "^0.7.5",
     "localforage": "^1.10.0",
     "mongodb": "^4.12.1",
