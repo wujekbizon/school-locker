@@ -12,10 +12,11 @@
   z-index: 3;
   transition: all 0.3s linear;
   height: 420px;
-  width: 45%;
+  width: 50%;
   border-radius: 10px;
   border: 5px solid hsl(209, 61%, 16%);
   z-index: 11;
+  transition: all 0.3s ease-in-out;
 
   &::before {
     content: '';
@@ -56,6 +57,7 @@
         align-items: flex-start;
         text-transform: capitalize;
         color: hsl(209, 61%, 16%);
+        transition: all 0.2s ease-in-out;
 
         .icon {
           font-size: 20px;
@@ -102,14 +104,4 @@
 
 .show {
   display: flex;
-}
-
-.test {
-  background-color: red;
-  opacity: 1;
-}
-
-.blue {
-  background-color: blue;
-  opacity: 1;
 }

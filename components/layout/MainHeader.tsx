@@ -34,10 +34,10 @@ const MainHeader = () => {
     if (e.target.className === 'link-btn') {
       setActive('0');
       return;
+    } else {
+      setActive('0');
+      closeSubmenu();
     }
-
-    setActive('0');
-    closeSubmenu();
   };
 
   return (
@@ -47,9 +47,8 @@ const MainHeader = () => {
         initial="hidden"
         whileInView="show"
         className="nav"
-        onMouseOver={handleSubmenu}
       >
-        <nav className="nav-center">
+        <nav className="nav-center" onMouseOver={handleSubmenu}>
           <div className="navbar-gradient gradient-01" />
           <div className="nav-header">
             <Link href="/">

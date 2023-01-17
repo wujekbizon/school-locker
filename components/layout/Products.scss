@@ -11,6 +11,7 @@
     cursor: default;
     position: relative;
     border-radius: 5px;
+    transition: all 0.3s ease-in;
 
     h4 {
       margin: 0;
@@ -31,6 +32,7 @@
 
   h4 {
     color: hsl(209, 61%, 16%) !important;
+    transition: all 0.2s ease-in-out;
   }
 
   &::after {
