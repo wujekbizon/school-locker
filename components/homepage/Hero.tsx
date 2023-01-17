@@ -1,7 +1,12 @@
 import './Hero.scss';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { slideIn, staggerContainer, textVariant } from '../../utils/motion';
+import {
+  slideIn,
+  staggerContainer,
+  textVariant,
+  navVariants,
+} from '../../utils/motion';
 
 const Hero = () => {
   return (
@@ -32,7 +37,7 @@ const Hero = () => {
             />
           </motion.div>
 
-          <div className="hero-links">
+          <motion.div variants={navVariants} className="hero-links">
             <a href="https://www.reddit.com/" target="_blank" rel="noreferrer">
               <Image src="/images/bot.svg" alt="bot" width={30} height={30} />
             </a>
@@ -58,7 +63,7 @@ const Hero = () => {
             >
               <Image src="/images/insta.svg" alt="bot" width={30} height={30} />
             </a>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
     </>
