@@ -26,6 +26,10 @@ ul {
 
 /* Gradient colors */
 
+.gradient_relative {
+  position: relative;
+}
+
 .gradient_text {
   background: linear-gradient(270deg, #00dbd8, #b133ff);
   background-clip: text;

@@ -4,11 +4,11 @@ import { textContainer, textVariant2 } from '../../utils/motion';
 
 type TextProps = {
   title: string;
-  textStyles: string;
+  textStyles?: string;
 };
 
 export const TypingText = ({ title, textStyles }: TextProps) => (
-  <motion.p variants={textContainer} className={`${textStyles} text_title`}>
+  <motion.p variants={textContainer} className={`${textStyles} text_typed`}>
     {Array.from(title).map((letter, index) => (
       <motion.span variants={textVariant2} key={index}>
         {letter === ' ' ? '\u00A0' : letter}
@@ -22,7 +22,7 @@ export const TitleText = ({ title, textStyles }: TextProps) => (
     variants={textVariant2}
     initial="hidden"
     whileInView="show"
-    className={`mt-[8px] font-bold md:text-[64px] text-[40px] text-white ${textStyles}`}
+    className={`text-title ${textStyles}`}
   >
     {title}
   </motion.h2>

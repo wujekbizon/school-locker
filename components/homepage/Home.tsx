@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Title from './Title';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { staggerContainer } from '../../utils/motion';
+import { staggerContainer, fadeIn } from '../../utils/motion';
 
 const Home = () => {
   return (
@@ -12,29 +12,39 @@ const Home = () => {
       <section className="home">
         <Hero />
       </section>
-      <section className="about" id="about">
+      <section className="about">
         <div className="gradient-02" />
-        <motion.div className="about-content">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className="about-content"
+        >
           <div className="about-title">
-            <Title title="about" />
+            <Title title="about school locker" />
           </div>
 
-          <p>
-            <span className="gradient_text">School Locker </span>
+          <motion.p variants={fadeIn('up', 'tween', 0.2, 1)}>
+            <span className="gradient_text school-title">School Locker </span>
             is a new multimedia platform, where user can create and fully
             customize a digital locker. So what is exactly a digital locker then
             ?
-          </p>
-          <Image src="/images/hdots.jpg" alt="dots" width={80} height={75} />
-          <p>
+          </motion.p>
+          <br />
+
+          <motion.p variants={fadeIn('up', 'tween', 0.4, 1)}>
             Imagine digital metaverse, where you can keep all of your{' '}
             <q>stuff</q>. Where You can create your own custom student
             portfolio, get access to the newest technologies, and even setup a
             meeting. Where you can ask Artificial Intelligence chatbot any
             question. And much more...
-          </p>
+          </motion.p>
 
-          <div className="home-scroll">
+          <motion.div
+            variants={fadeIn('up', 'tween', 0.4, 1)}
+            className="home-scroll"
+          >
             <Image
               src="/images/down.png"
               alt="down-arrow"
@@ -50,9 +60,13 @@ const Home = () => {
               width={30}
               height={30}
             />
-          </div>
+          </motion.div>
         </motion.div>
       </section>
+      <div className="gradient_relative">
+        <div className="gradient-03" />
+      </div>
+      <section className="explore" id="explore"></section>
       <Footer />
     </>
   );
