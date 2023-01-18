@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Hero from './Hero';
 import Footer from './Footer';
 import Title from './Title';
+import FeatureCard from '../cards/FeatureCard';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../utils/motion';

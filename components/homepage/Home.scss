@@ -70,5 +70,13 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
+
+    .cards_container {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: row;
+      min-height: 70vh;
+      gap: 1.25rem;
+    }
   }
 }

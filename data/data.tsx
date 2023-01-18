@@ -26,28 +26,33 @@ import WorkIcon from '@mui/icons-material/Work';
 export const exploreFeatures = [
   {
     id: 'feature-1',
+    url: '/populate',
     imgUrl: '/images/l6.png',
     title: 'Fully Customize Locker',
   },
   {
     id: 'feature-2',
+    url: '/wolfpad',
     imgUrl: '/images/blog02.png',
     title: 'Access to the Artificial Inteligence',
   },
   {
     id: 'feature-3',
-    imgUrl: '/images/porfolio.png',
+    url: '',
+    imgUrl: '/images/portfolio.png',
     title: 'Create Your own unique portfolio',
   },
   {
     id: 'feature-4',
+    url: '/wolfpad',
     imgUrl: '/images/wolfpad.png',
     title: 'Wolfpad an interactive coding enviroment',
   },
   {
     id: 'feature-5',
+    url: '/create-career',
     imgUrl: '/images/blank.png',
-    title: 'Start from blank page and create your career path to success!',
+    title: 'Create your career path to success!',
   },
 ];
 
