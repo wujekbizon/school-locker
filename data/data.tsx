@@ -32,7 +32,7 @@ export const exploreFeatures = [
   },
   {
     id: 'feature-2',
-    url: '/wolfpad',
+    url: '/chat',
     imgUrl: '/images/blog02.png',
     title: 'Access to the Artificial Inteligence',
   },
@@ -45,13 +45,13 @@ export const exploreFeatures = [
   {
     id: 'feature-4',
     url: '/wolfpad',
-    imgUrl: '/images/wolfpad.png',
+    imgUrl: '/images/admin.png',
     title: 'Wolfpad an interactive coding enviroment',
   },
   {
     id: 'feature-5',
     url: '/create-career',
-    imgUrl: '/images/blank.png',
+    imgUrl: '/images/artist3.png',
     title: 'Create your career path to success!',
   },
 ];
