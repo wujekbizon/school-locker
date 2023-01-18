@@ -101,10 +101,25 @@
       align-items: center;
 
       img {
-        width: 40%;
-        height: 100%;
-        object-fit: contain;
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
         border-radius: 10px;
+      }
+    }
+
+    .get-started_content-features {
+      flex: 0.75;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .get-started_wrapper {
+        margin-top: 31px;
+        display: flex;
+        flex-direction: column;
+        max-width: 370px;
+        gap: 24px;
       }
     }
   }

@@ -8,7 +8,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn, titleVariants } from '../../utils/motion';
 import { TitleText } from '../animations/CustomTexts';
-import { exploreFeatures } from '../../data/data';
+import StartSteps from './StartSteps';
+import { exploreFeatures, startingFeatures } from '../../data/data';
 
 const Home = () => {
   const [active, setActive] = useState('feature-2');
@@ -125,8 +126,22 @@ const Home = () => {
           </motion.div>
           <motion.div
             variants={fadeIn('left', 'tween', 0.2, 1)}
-            className="get-started_content"
-          ></motion.div>
+            className="get-started_content-features"
+          >
+            <div className="animated_title">
+              <Title title="How School Locker Works" />
+            </div>
+            <TitleText title={<>Get started with just a few clicks</>} />
+            <div className="get-started_wrapper">
+              {startingFeatures.map((feature, index) => (
+                <StartSteps
+                  key={feature}
+                  number={`${index < 10 ? '0' : ''} ${index + 1}`}
+                  text={feature}
+                />
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </section>
       <Footer />
