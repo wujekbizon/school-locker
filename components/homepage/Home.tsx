@@ -1,4 +1,5 @@
 import './Home.scss';
+import { useState } from 'react';
 import Hero from './Hero';
 import Footer from './Footer';
 import Title from './Title';
@@ -6,8 +7,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../utils/motion';
 import { TitleText } from '../animations/CustomTexts';
+import { exploreFeatures } from '../../data/data';
 
 const Home = () => {
+  const [active, setActive] = useState('feature-2');
+
   return (
     <>
       <section className="home">
@@ -84,10 +88,21 @@ const Home = () => {
           <TitleText
             title={
               <>
-                Let's explore core features of <br /> School Locker
+                Let's explore main features of <br /> School Locker
               </>
             }
           />
+          <div className="cards_container">
+            {exploreFeatures.map((feature, index) => (
+              <FeatureCard
+                key={feature.id}
+                {...feature}
+                index={index}
+                active={active}
+                handleClick={setActive}
+              />
+            ))}
+          </div>
         </motion.div>
       </section>
       <Footer />
