@@ -1,13 +1,18 @@
 import './CustomText.scss';
 import { motion } from 'framer-motion';
 import { textContainer, textVariant2 } from '../../utils/motion';
+import { ReactNode } from 'react';
 
-type TextProps = {
+type TypingTextProps = {
   title: string;
   textStyles?: string;
 };
+type TextProps = {
+  title: ReactNode;
+  textStyles?: string;
+};
 
-export const TypingText = ({ title, textStyles }: TextProps) => (
+export const TypingText = ({ title, textStyles }: TypingTextProps) => (
   <motion.p variants={textContainer} className={`${textStyles} text_typed`}>
     {Array.from(title).map((letter, index) => (
       <motion.span variants={textVariant2} key={index}>

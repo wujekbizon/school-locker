@@ -23,6 +23,17 @@ ul {
   margin: 0;
   padding: 0;
 }
+/* Text Styles */
+
+.animated_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-color span {
+  color: whitesmoke !important;
+}
 
 /* Gradient colors */
 

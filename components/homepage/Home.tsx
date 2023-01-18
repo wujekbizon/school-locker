@@ -5,6 +5,7 @@ import Title from './Title';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../utils/motion';
+import { TitleText } from '../animations/CustomTexts';
 
 const Home = () => {
   return (
@@ -21,7 +22,7 @@ const Home = () => {
           viewport={{ once: false, amount: 0.25 }}
           className="about-content"
         >
-          <div className="about-title">
+          <div className="animated_title">
             <Title title="about school locker" />
           </div>
 
@@ -66,7 +67,29 @@ const Home = () => {
       <div className="gradient_relative">
         <div className="gradient-03" />
       </div>
-      <section className="explore" id="explore"></section>
+      <section className="explore" id="explore">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className="explore-content"
+        >
+          <div className="animated_title">
+            <Title
+              title="Explore Endless Possibilities"
+              textStyles="text-color"
+            />
+          </div>
+          <TitleText
+            title={
+              <>
+                Let's explore core features of <br /> School Locker
+              </>
+            }
+          />
+        </motion.div>
+      </section>
       <Footer />
     </>
   );

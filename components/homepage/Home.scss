@@ -24,12 +24,6 @@
     margin-left: auto;
     margin-right: auto;
 
-    .about-title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
     .school-title {
       text-transform: uppercase;
       font-size: 35px;
@@ -68,5 +62,13 @@
 
 .explore {
   position: relative;
-  height: 100vh;
+  padding: 64px;
+
+  .explore-content {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+  }
 }
