@@ -80,3 +80,32 @@
     }
   }
 }
+
+.get-started {
+  position: relative;
+  z-index: 10;
+  padding: 64px;
+
+  .get-started_content {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    .get-started_image-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 40%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+    }
+  }
+}

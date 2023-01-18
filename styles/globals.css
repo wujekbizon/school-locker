@@ -35,6 +35,10 @@ ul {
   color: whitesmoke !important;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 /* Gradient colors */
 
 .gradient_relative {

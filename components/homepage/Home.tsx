@@ -6,7 +6,7 @@ import Title from './Title';
 import FeatureCard from '../cards/FeatureCard';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { staggerContainer, fadeIn } from '../../utils/motion';
+import { staggerContainer, fadeIn, titleVariants } from '../../utils/motion';
 import { TitleText } from '../animations/CustomTexts';
 import { exploreFeatures } from '../../data/data';
 
@@ -70,7 +70,7 @@ const Home = () => {
         </motion.div>
       </section>
       <div className="gradient_relative">
-        <div className="gradient-03" />
+        <div className="gradient-03 z-0" />
       </div>
       <section className="explore" id="explore">
         <motion.div
@@ -104,6 +104,29 @@ const Home = () => {
               />
             ))}
           </div>
+        </motion.div>
+      </section>
+      <div className="gradient_relative">
+        <div className="gradient-04 z-0" />
+      </div>
+      <section className="get-started">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className="get-started_content"
+        >
+          <motion.div
+            variants={titleVariants('left')}
+            className="get-started_image-container"
+          >
+            <img src="/images/l7.png" alt="get-started" />
+          </motion.div>
+          <motion.div
+            variants={fadeIn('left', 'tween', 0.2, 1)}
+            className="get-started_content"
+          ></motion.div>
         </motion.div>
       </section>
       <Footer />

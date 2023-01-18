@@ -56,6 +56,13 @@ export const exploreFeatures = [
   },
 ];
 
+export const startingFeatures = [
+  'Register a new account to populate a locker',
+  "You will get a free tier locker that's ready to use",
+  'Check our custom tier lockers pricing to unlock premium content',
+  'You can customize your locker at any time',
+];
+
 export const links = [
   { title: 'Products' },
   { title: 'Tools' },

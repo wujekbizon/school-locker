@@ -34,7 +34,7 @@ const FeatureCard = ({
     >
       <img src={imgUrl} alt={title} className="feature_card-image" />
       {active !== id ? (
-        <h3 className="feature_card-title">{title}</h3>
+        <h3 className="feature_card-title gradient_preview">{title}</h3>
       ) : (
         <div className="active_title-container">
           <div className="active_image-container glassmorphism">
