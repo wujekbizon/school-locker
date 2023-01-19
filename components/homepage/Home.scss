@@ -1,8 +1,7 @@
 @import '../../styles/styles.scss';
 
 .home {
-  height: calc(100vh - 6rem);
-  position: relative;
+  overflow: hidden;
 }
 
 .about {

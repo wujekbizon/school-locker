@@ -1,14 +1,23 @@
 import './Footer.scss';
-import NewsmongerForm from '../newsmonger/NewsmongerForm';
-import Logo from '../logo/Logo';
-import SocialLinks from './SocialLinks';
+import NewsmongerForm from '../components/newsmonger/NewsmongerForm';
+import Logo from '../components/logo/Logo';
+import SocialLinks from '../components/homepage/SocialLinks';
 import Link from 'next/link';
+
+import { motion } from 'framer-motion';
+import { footerVariants } from '../utils/motion';
 
 const Footer = () => {
   return (
     <section className="footer-container">
       <NewsmongerForm />
-      <footer className="footer">
+      <motion.footer
+        variants={footerVariants}
+        initial="hidden"
+        whileInView="show"
+        className="footer"
+      >
+        <div className="footer-gradient" />
         <div className="footer-links">
           <div className="footer-list">
             <h2>Company</h2>
@@ -59,7 +68,7 @@ const Footer = () => {
             <SocialLinks />
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </section>
   );
 };

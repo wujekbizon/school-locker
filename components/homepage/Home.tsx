@@ -2,14 +2,12 @@ import './Home.scss';
 import Hero from './Hero';
 import { GetStarted, About, Explore } from '../../sections/';
 
-import Footer from './Footer';
+import Footer from '../../sections/Footer';
 
 const Home = () => {
   return (
-    <>
-      <section className="home">
-        <Hero />
-      </section>
+    <div className="home">
+      <Hero />
       <About />
       <div className="gradient_relative">
         <div className="gradient-03 z-0" />
@@ -20,7 +18,7 @@ const Home = () => {
       </div>
       <GetStarted />
       <Footer />
-    </>
+    </div>
   );
 };
 export default Home;
