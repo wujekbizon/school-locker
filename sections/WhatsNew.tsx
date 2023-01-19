@@ -34,7 +34,7 @@ const WhatsNew = () => {
           className="whats-new_image-container"
         >
           <img
-            src="/whats-new.png"
+            src="/images/ai.png"
             alt="get-started"
             className="whats-new_image"
           />
