@@ -2,6 +2,9 @@ import './NewsmongerForm.scss';
 import { useState } from 'react';
 import Image from 'next/image';
 
+import { motion } from 'framer-motion';
+import { newsVariants } from '../../utils/motion';
+
 const NewsmongerForm = () => {
   const [email, setEmail] = useState('');
 
@@ -40,7 +43,12 @@ const NewsmongerForm = () => {
   };
 
   return (
-    <div className="newsmonger-wrapper">
+    <motion.div
+      variants={newsVariants}
+      initial="hidden"
+      whileInView="show"
+      className="newsmonger-wrapper"
+    >
       <Image
         className="form-top"
         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTI5cHgiIGhlaWdodD0iMTU4cHgiIHZpZXdCb3g9IjAgMCAxMjkgMTU4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0OSAoNTEwMDIpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPkdseXBoZSAxPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkxhbmRpbmctcGFnZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQyLjAwMDAwMCwgLTI4MzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJTdWJzY3JpYmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zLjAwMDAwMCwgMjgyOS4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJzdWJzY3JpYmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM1LjAwMDAwMCwgMC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iR2x5cGhlLTEiPgogICAgICAgICAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTctQ29weS0yIiBmaWxsPSIjMTNBREM3IiBvcGFjaXR5PSIwLjUxMDEwMDQ0NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTkuNTAwMDAwLCAxMjUuMjM5NTA2KSByb3RhdGUoNTQuMDAwMDAwKSB0cmFuc2xhdGUoLTU5LjUwMDAwMCwgLTEyNS4yMzk1MDYpICIgeD0iMzQiIHk9IjcwLjg2OTEzNTgiIHdpZHRoPSI1MSIgaGVpZ2h0PSIxMDguNzQwNzQxIiByeD0iMjUuNSI+PC9yZWN0PgogICAgICAgICAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTciIGZpbGw9IiNGRkZGRkYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY5LjUwMDAwMCwgODguOTkyNTkzKSByb3RhdGUoNTQuMDAwMDAwKSB0cmFuc2xhdGUoLTY5LjUwMDAwMCwgLTg4Ljk5MjU5MykgIiB4PSI0NCIgeT0iMzQuNjIyMjIyMiIgd2lkdGg9IjUxIiBoZWlnaHQ9IjEwOC43NDA3NDEiIHJ4PSIyNS41Ij48L3JlY3Q+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtNy1Db3B5IiBzdHJva2U9IiM3QjYxRkYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC43MTM1NjAyNjgiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbXVsdGlwbHk7IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4OS41MDAwMDAsIDUyLjc0NTY3OSkgcm90YXRlKDU0LjAwMDAwMCkgdHJhbnNsYXRlKC04OS41MDAwMDAsIC01Mi43NDU2NzkpICIgeD0iNjUiIHk9Ii0wLjYyNDY5MTM1OCIgd2lkdGg9IjQ5IiBoZWlnaHQ9IjEwNi43NDA3NDEiIHJ4PSIyNC41Ij48L3JlY3Q+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
@@ -81,7 +89,7 @@ const NewsmongerForm = () => {
         height={150}
         alt="logo"
       />
-    </div>
+    </motion.div>
   );
 };
 export default NewsmongerForm;
