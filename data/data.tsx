@@ -73,7 +73,7 @@ export const newFeatures = [
     imgUrl: '/images/headset.svg',
     title: 'VR Support',
     subtitle:
-      'In the near future , we planning to add virtual reality  support, making the School Locker more realistic than ever.',
+      'Coming soon, VR support, that will make the School Locker more realistic than ever.',
   },
 ];
 

@@ -123,3 +123,46 @@
     }
   }
 }
+
+.whats-new {
+  position: relative;
+  z-index: 10;
+  padding: 64px;
+
+  .whats-new_container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+
+    .whats-new-title {
+      flex: 0.95;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .new-features_wrapper {
+        margin-top: 48px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 24px;
+      }
+    }
+
+    .whats-new_image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .whats-new_image {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.new-feature_container {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  min-width: 210px;
+
+  .new-feature_image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 24px;
+    background-color: rgba(50, 63, 93, 1);
+
+    img {
+      width: 50%;
+      height: 50%;
+      object-fit: contain;
+    }
+  }
+
+  .new-feature_container-title {
+    margin-top: 26px;
+    font-family: 'Eudoxus Sans';
+    font-style: 24px;
+    font-weight: 700;
+    line-height: 30.24px;
+    color: white;
+  }
+
+  .new-feature_container-subtitle {
+    flex: 1 1 0%;
+    margin-top: 16px;
+    font-family: 'Eudoxus Sans';
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(176, 176, 176, 1);
+    line-height: 32.4px;
+  }
+}
