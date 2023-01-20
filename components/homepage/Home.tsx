@@ -1,6 +1,6 @@
 import './Home.scss';
 import Hero from './Hero';
-import { GetStarted, About, Explore, WhatsNew } from '../../sections/';
+import { GetStarted, About, Explore, WhatsNew, World } from '../../sections/';
 
 import Footer from '../../sections/Footer';
 
@@ -18,6 +18,7 @@ const Home = () => {
       </div>
       <GetStarted />
       <WhatsNew />
+      <World />
       <Footer />
     </main>
   );
