@@ -25,11 +25,7 @@ const World = () => {
           variants={fadeIn('up', 'tween', 0.3, 1)}
           className="world-image_container"
         >
-          <img
-            src="/images/map.png"
-            alt="map"
-            className="w-full h-full object-cover"
-          />
+          <img src="/images/map.png" alt="map" />
         </motion.div>
       </motion.div>
     </section>
