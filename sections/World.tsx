@@ -30,10 +30,12 @@ const World = () => {
           {customers.map((customer, index) => (
             <motion.div
               variants={zoomIn(index * 0.1, 0.5)}
-              key={customer.name}
+              key={customer.id}
               className="dot"
               style={{ top: customer.top, left: customer.left }}
-            />
+            >
+              <p className="dot-content">{customer.name}</p>
+            </motion.div>
           ))}
         </motion.div>
       </motion.div>

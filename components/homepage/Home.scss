@@ -200,12 +200,36 @@
 
       .dot {
         position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: red;
+        width: 15px;
+        height: 15px;
+        background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
         border-radius: 50%;
-        border: 1px solid white;
+        border: 1px solid rgba(26, 35, 46, 1);
         cursor: pointer;
+        color: #040c18;
+        transition: all 0.3s ease-in-out;
+        z-index: 0;
+
+        &:hover {
+          width: 211px;
+          height: 159px;
+          border-radius: 10px 32px 32px 32px;
+          background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+          color: #040c18;
+          border: 5px solid rgb(50, 63, 93);
+          z-index: 10;
+
+          .dot-content {
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s linear;
+          }
+        }
+
+        .dot-content {
+          opacity: 0;
+        }
       }
     }
   }
