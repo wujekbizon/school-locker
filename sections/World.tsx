@@ -1,26 +1,10 @@
 import { motion } from 'framer-motion';
 import Title from '../components/homepage/Title';
 import { TitleText } from '../components/animations/CustomTexts';
-import { fadeIn, staggerContainer } from '../utils/motion';
-import { useRef, useEffect } from 'react';
+import { fadeIn, staggerContainer, zoomIn } from '../utils/motion';
+import { customers } from '../data/customers';
 
 const World = () => {
-  const imageRef: React.MutableRefObject<HTMLImageElement | null> =
-    useRef(null);
-
-  const mouseoverHandler = (event: MouseEvent) => {
-    console.log(event.clientX, event.clientY);
-  };
-
-  useEffect(() => {
-    if (!imageRef.current) {
-      return;
-    }
-    const image = imageRef.current;
-
-    image.addEventListener('mousemove', mouseoverHandler);
-  });
-
   return (
     <section className="world">
       <motion.div
@@ -31,7 +15,7 @@ const World = () => {
         className="world-container"
       >
         <div className="animated_title">
-          <Title title="| Our customers all over the world " />
+          <Title title="Our customers all over the world" />
         </div>
         <TitleText
           title={<>Over 15000 happy customers all over the globe.</>}
@@ -42,10 +26,15 @@ const World = () => {
           variants={fadeIn('up', 'tween', 0.3, 1)}
           className="world-image_container"
         >
-          <div className="image-wrapper">
-            <img src="/images/map.png" alt="map" ref={imageRef} />
-          </div>
-          <div className="dot" />
+          <img src="/images/map.png" alt="map" />
+          {customers.map((customer, index) => (
+            <motion.div
+              variants={zoomIn(index * 0.1, 0.5)}
+              key={customer.name}
+              className="dot"
+              style={{ top: customer.top, left: customer.left }}
+            />
+          ))}
         </motion.div>
       </motion.div>
     </section>
