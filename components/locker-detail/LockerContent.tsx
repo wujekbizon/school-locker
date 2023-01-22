@@ -1,3 +1,4 @@
+import './LockerContent.scss';
 import Link from 'next/link';
 import { LockerDataType } from '../../types/lockersType';
 import NewRumor from '../rumors/NewRumor';
@@ -13,7 +14,7 @@ const LockerContent = (props: LockerDataType) => {
   });
 
   return (
-    <main>
+    <main className="user-locker_content">
       <section>
         <h2>Student Information</h2>
         <div>
