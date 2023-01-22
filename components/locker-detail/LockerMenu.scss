@@ -17,8 +17,16 @@
   font-weight: 500;
   font-size: 22px;
 
-  li {
+  .menu_list {
     cursor: pointer;
+
+    &:hover {
+      color: lightgray;
+    }
+  }
+
+  .active-menu_list {
+    color: white;
   }
 }
 

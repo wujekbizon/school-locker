@@ -7,8 +7,9 @@ import LockerMenu from './LockerMenu';
 type Props = {
   title: string;
   img: string;
+  id: string;
 };
-const LockerInfo = ({ title, img }: Props) => {
+const LockerInfo = ({ title, img, id }: Props) => {
   const [active, setActive] = useState(false);
 
   const menuOpenHandler = () => setActive(!active);
@@ -46,7 +47,7 @@ const LockerInfo = ({ title, img }: Props) => {
           </svg>
         </div>
 
-        <LockerMenu active={active} />
+        <LockerMenu active={active} lockerId={id} />
       </section>
     </>
   );

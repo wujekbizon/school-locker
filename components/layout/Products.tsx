@@ -1,5 +1,5 @@
 import './Products.scss';
-import type { Items } from '../../data/data';
+import type { Items } from '../../types/index';
 
 export type ItemsProps = {
   items: Items[];

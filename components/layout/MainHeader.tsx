@@ -74,6 +74,12 @@ const MainHeader = () => {
               Sign In
             </button>
           )}
+
+          {session && status === 'authenticated' && (
+            <button className="btn">
+              <Link href="/populate">My Locker</Link>
+            </button>
+          )}
         </nav>
       </motion.header>
       <Submenu active={active} handleEvent={handleEvent} />

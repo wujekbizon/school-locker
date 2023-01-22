@@ -7,7 +7,7 @@ import type { LockerDataType } from '../types/lockersType';
 const UserLocker = (props: LockerDataType) => {
   return (
     <section className="user-locker">
-      <LockerInfo title={props.title} img={props.img} />
+      <LockerInfo title={props.title} img={props.img} id={props._id} />
       <LockerContent {...props} />
       <LockerSettings />
     </section>

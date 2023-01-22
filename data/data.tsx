@@ -22,6 +22,7 @@ import SourceIcon from '@mui/icons-material/Source';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import WorkIcon from '@mui/icons-material/Work';
+import type { Pages } from '../types/index';
 
 export const exploreFeatures = [
   {
@@ -77,30 +78,30 @@ export const newFeatures = [
   },
 ];
 
+export const lockerMenuLinks = [
+  {
+    title: 'Home',
+  },
+  {
+    title: 'Portfolio',
+  },
+  {
+    title: 'Rumors',
+  },
+  {
+    title: 'Tools',
+  },
+  {
+    title: 'Settings',
+  },
+];
+
 export const links = [
   { title: 'Products' },
   { title: 'Tools' },
   { title: 'Metaverse' },
   { title: 'Resources' },
 ];
-
-export type Pages = {
-  page: string;
-  items?: Items[];
-  links: {
-    idTag?: 'one' | 'two' | 'three' | 'all';
-    label: string;
-    title?: string;
-    icon: JSX.Element;
-    url: string;
-  }[];
-};
-
-export type Items = {
-  id: number;
-  product: string;
-  description: string;
-};
 
 const items = [
   {
