@@ -4,5 +4,13 @@
   z-index: 10;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
+  height: 100%;
+  gap: 200px;
+  font-family: 'Eudoxus Sans';
+  font-weight: 500;
+  font-size: 22px;
+  color: #040c18;
+  text-transform: capitalize;
 }

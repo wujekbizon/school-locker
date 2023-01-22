@@ -4,9 +4,12 @@ import { LockerDataType } from '../../types/lockersType';
 import NewRumor from '../rumors/NewRumor';
 import LockerFeatures from './LockerFeatures';
 import { useGlobalContext } from '../../context/globalContext';
+import { motion } from 'framer-motion';
+import Title from '../homepage/Title';
+import { staggerContainer, titleVariants } from '../../utils/motion';
 
 const LockerContent = (props: LockerDataType) => {
-  const { student, schoolName, classroom, createdAt, _id } = props;
+  const { student, schoolName, classroom, createdAt, _id, img } = props;
   const { menuActive } = useGlobalContext();
 
   const date = new Date(createdAt).toLocaleDateString('pl-PL', {
@@ -16,19 +19,36 @@ const LockerContent = (props: LockerDataType) => {
   });
 
   return (
-    <main className="user-locker_content">
+    <>
       {menuActive === '0' && (
-        <section>
-          <h2>Student Information</h2>
-          <div>
-            <h2>{student}</h2>
-            <h4>
-              {schoolName} - <span>{classroom}</span>{' '}
-            </h4>
-          </div>
-          <div>
-            <h5>Your locker was created at {date}</h5>
-          </div>
+        <section className="user-locker_content">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, amount: 0.25 }}
+            className="user-locker-container"
+          >
+            <div className="animated_title">
+              <Title title="Student Information" />
+            </div>
+
+            <div className="user-locker_info">
+              <motion.div
+                variants={titleVariants('left', 10)}
+                className="user-locker-left"
+              >
+                <h2>{student}</h2>
+                <h4>
+                  {schoolName} - <span>{classroom}</span>{' '}
+                </h4>
+
+                <h5>You are a member since {date}</h5>
+              </motion.div>
+
+              <div className="user-locker-right"></div>
+            </div>
+          </motion.div>
         </section>
       )}
 
@@ -46,7 +66,7 @@ const LockerContent = (props: LockerDataType) => {
           </button>
         </section>
       )}
-    </main>
+    </>
   );
 };
 export default LockerContent;

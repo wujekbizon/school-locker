@@ -27,7 +27,7 @@ const About = () => {
 
         <motion.p variants={fadeIn('up', 'tween', 0.4, 1)}>
           Imagine digital metaverse, where you can keep all of your <q>stuff</q>
-          . Where You can create your own custom student portfolio, get access
+          . Where you can create your own custom student portfolio, get access
           to the newest technologies, and even setup a meeting. Where you can
           ask Artificial Intelligence chatbot any question. And much more...
         </motion.p>
