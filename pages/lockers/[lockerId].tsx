@@ -1,8 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import LockerContent from '../../components/locker-detail/LockerContent';
-import LockerInfo from '../../components/locker-detail/LockerInfo';
-import LockerSettings from '../../components/locker-detail/LockerSettings';
+import { UserLocker } from '../../sections';
 import Head from 'next/head';
 import { getLockerById, getAllLockers } from '../../helpers/api';
 import { LockerDataType } from '../../types/lockersType';
@@ -45,9 +43,7 @@ const LockerDetailPage = ({ locker }: { locker: LockerDataType }) => {
             content={`This is ${locker.student} portfolio locker.`}
           />
         </Head>
-        <LockerInfo title={locker.title} img={locker.img} />
-        <LockerContent {...locker} />
-        <LockerSettings />
+        <UserLocker {...locker} />
       </>
     );
   }

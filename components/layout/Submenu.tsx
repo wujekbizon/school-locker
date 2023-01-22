@@ -30,7 +30,6 @@ const Submenu = ({ active, handleEvent }: Props) => {
     }
 
     const submenu = container.current;
-    console.log(submenu);
 
     submenu.style.left = `${location.center}px`;
     submenu.style.top = `${location.bottom}px`;

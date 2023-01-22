@@ -1,3 +1,4 @@
+import './LockerInfo.scss';
 import Image from 'next/image';
 import { cloudinaryLoader } from '../../helpers/cloudinary';
 
@@ -9,19 +10,21 @@ const LockerInfo = (props: Props) => {
   const { title, img } = props;
 
   return (
-    <section>
-      <div>
+    <section className="locker-info">
+      <div className="locker-title">
         <h1>{title}</h1>
-        <div>
-          <Image
-            src={img}
-            alt={title}
-            width={150}
-            height={150}
-            loader={cloudinaryLoader}
-            priority
-          />
-        </div>
+      </div>
+
+      <div className="locker-image_container">
+        <Image
+          src={img}
+          alt={title}
+          width={350}
+          height={350}
+          loader={cloudinaryLoader}
+          priority
+          className="locker-image"
+        />
       </div>
     </section>
   );
