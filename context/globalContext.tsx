@@ -1,6 +1,5 @@
 import React, { useState, useContext, createContext } from 'react';
 import sublinks from '../data/data';
-import { Pages } from '../data/data';
 
 type CoordinatesType = {
   center: number;
@@ -18,6 +17,8 @@ const AppContext = createContext({
   closeSubmenu: () => {},
   location: { center: 100, bottom: 100 },
   page: sublinks[0],
+  menuActive: '',
+  openLockerMenu: (index: string) => {},
 });
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -25,12 +26,17 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [location, setLocation] = useState({ center: 100, bottom: 100 });
   const [page, setPage] = useState(sublinks[0]);
+  const [menuActive, setMenuActive] = useState('0');
 
   const openSidebar = () => {
     setIsSideBarOpen(true);
   };
   const closeSidebar = () => {
     setIsSideBarOpen(false);
+  };
+
+  const openLockerMenu = (index: string) => {
+    setMenuActive(index);
   };
 
   const openSubmenu = (text: PageText, coordinates: CoordinatesType) => {
@@ -57,6 +63,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         closeSubmenu,
         location,
         page,
+        menuActive,
+        openLockerMenu,
       }}
     >
       {children}

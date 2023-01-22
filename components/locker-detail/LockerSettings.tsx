@@ -1,22 +1,27 @@
 import { signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useGlobalContext } from '../../context/globalContext';
 
 const LockerSettings = () => {
-  const router = useRouter();
+  const { menuActive } = useGlobalContext();
 
   const signoutHandler = () => {
     signOut();
   };
 
   return (
-    <section>
-      <div>
-        <h2>Locker settings</h2>
-        <h3>Settings Modal</h3>
-        <p>Icon will be here</p>
-        <button onClick={signoutHandler}>Sign out</button>
-      </div>
-    </section>
+    <>
+      {' '}
+      {menuActive === '4' && (
+        <section>
+          <div>
+            <h2>Locker settings</h2>
+            <h3>Settings Modal</h3>
+            <p>Icon will be here</p>
+            <button onClick={signoutHandler}>Sign out</button>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 export default LockerSettings;
