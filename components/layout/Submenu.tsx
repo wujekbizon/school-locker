@@ -1,5 +1,5 @@
 import './Submenu.scss';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 import { useGlobalContext } from '../../context/globalContext';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import Link from 'next/link';
@@ -20,15 +20,26 @@ const Submenu = ({ active, handleEvent }: Props) => {
 
   const container = useRef<HTMLDivElement>(null);
 
+  const memoizeMouseleaveHandler = useMemo(() => {
+    return (event: MouseEvent) => closeSubmenu();
+  }, []);
+
   useEffect(() => {
     if (!container.current) {
       return;
     }
 
     const submenu = container.current;
+    console.log(submenu);
 
     submenu.style.left = `${location.center}px`;
     submenu.style.top = `${location.bottom}px`;
+
+    submenu.addEventListener('mouseleave', memoizeMouseleaveHandler);
+
+    return () => {
+      submenu.removeEventListener('mouseleave', memoizeMouseleaveHandler);
+    };
   }, [location]);
 
   const schoolLinks = links.filter((link) => link.idTag === 'one');

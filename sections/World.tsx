@@ -29,7 +29,7 @@ const World = () => {
           <img src="/images/map.png" alt="map" />
           {customers.map((customer, index) => (
             <motion.div
-              variants={zoomIn(index * 0.1, 0.5)}
+              variants={zoomIn(index * 0.2, 0.4)}
               key={customer.id}
               className="dot"
               style={{ top: customer.top, left: customer.left }}
