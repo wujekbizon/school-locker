@@ -1,14 +1,14 @@
 import './LockerMenu.scss';
-import Link from 'next/link';
 import { lockerMenuLinks } from '../../data/data';
 import { useGlobalContext } from '../../context/globalContext';
 
 type LockerMenuProps = {
   active: boolean;
-  lockerId: string;
+  closeHandler: () => void;
+  lockerId?: string;
 };
 
-const LockerMenu = ({ active, lockerId }: LockerMenuProps) => {
+const LockerMenu = ({ active, closeHandler }: LockerMenuProps) => {
   const { menuActive, openLockerMenu } = useGlobalContext();
 
   return (
@@ -24,7 +24,10 @@ const LockerMenu = ({ active, lockerId }: LockerMenuProps) => {
             menuActive === index.toString() ? 'active-menu_list' : 'menu_list'
           }
           id={`${index}`}
-          onClick={() => openLockerMenu(index.toString())}
+          onClick={() => {
+            closeHandler();
+            openLockerMenu(index.toString());
+          }}
         >
           {item.title}
         </li>

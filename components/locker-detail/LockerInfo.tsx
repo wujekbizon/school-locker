@@ -14,6 +14,8 @@ const LockerInfo = ({ title, img, id }: Props) => {
 
   const menuOpenHandler = () => setActive(!active);
 
+  const menuCloseHandler = () => setActive(false);
+
   return (
     <>
       <section className="locker-info">
@@ -47,7 +49,11 @@ const LockerInfo = ({ title, img, id }: Props) => {
           </svg>
         </div>
 
-        <LockerMenu active={active} lockerId={id} />
+        <LockerMenu
+          active={active}
+          closeHandler={menuCloseHandler}
+          lockerId={id}
+        />
       </section>
     </>
   );
