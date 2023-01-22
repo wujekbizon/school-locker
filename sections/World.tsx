@@ -34,7 +34,9 @@ const World = () => {
               className="dot"
               style={{ top: customer.top, left: customer.left }}
             >
-              <p className="dot-content">{customer.name}</p>
+              <div className="dot_container">
+                <p className="dot-content">{customer.name}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

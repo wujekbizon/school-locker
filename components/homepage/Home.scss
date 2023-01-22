@@ -200,35 +200,51 @@
 
       .dot {
         position: absolute;
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
         background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
         border-radius: 50%;
-        border: 1px solid rgba(26, 35, 46, 1);
         cursor: pointer;
         color: #040c18;
-        transition: all 0.3s ease-in-out;
         z-index: 0;
 
         &:hover {
           width: 211px;
           height: 159px;
           border-radius: 10px 32px 32px 32px;
-          background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+          background-image: url('/images/blank.png');
+          background-size: 140% 100%;
+          background-position: center;
           color: #040c18;
           border: 5px solid rgb(50, 63, 93);
           z-index: 10;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-          .dot-content {
+          .dot_container {
             opacity: 1;
             display: flex;
+            align-items: center;
             justify-content: center;
-            transition: all 0.3s linear;
+
+            .dot-content {
+              opacity: 1;
+              font-family: 'Eudoxus Sans';
+              font-weight: 700;
+              font-size: 24px;
+              color: #040c18;
+              text-align: center;
+            }
           }
         }
 
-        .dot-content {
+        .dot_container {
           opacity: 0;
+
+          .dot-content {
+            opacity: 0;
+          }
         }
       }
     }
