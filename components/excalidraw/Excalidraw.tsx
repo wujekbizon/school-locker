@@ -26,6 +26,13 @@ import {
   PointerDownState as ExcalidrawPointerDownState,
 } from '@excalidraw/excalidraw/types/types';
 import { NonDeletedExcalidrawElement } from '@excalidraw/excalidraw/types/element/types';
+import {
+  resolvablePromise,
+  withBatchedUpdates,
+  withBatchedUpdatesThrottled,
+  distance2d,
+} from './utils';
+import { ResolvablePromise } from '@excalidraw/excalidraw/types/utils';
 
 const Excalidraw = () => {
   return <div>Excalidraw</div>;
