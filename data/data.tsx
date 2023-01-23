@@ -22,6 +22,7 @@ import SourceIcon from '@mui/icons-material/Source';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import WorkIcon from '@mui/icons-material/Work';
+import ShapeLineIcon from '@mui/icons-material/ShapeLine';
 import type { Pages } from '../types/index';
 
 export const exploreFeatures = [
@@ -216,6 +217,13 @@ const sublinks: Pages[] = [
         idTag: 'one',
         icon: <CalendarMonthRoundedIcon />,
         url: '/calendar',
+      },
+      {
+        label: 'Excalidraw',
+        title: 'virtual whiteboard for sketching',
+        idTag: 'one',
+        icon: <ShapeLineIcon />,
+        url: '/excalidraw',
       },
     ],
   },
