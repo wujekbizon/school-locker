@@ -2,6 +2,8 @@ import './Excalidraw.scss';
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import NightsStayOutlinedIcon from '@mui/icons-material/NightsStayOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
+import ViewCozyOutlinedIcon from '@mui/icons-material/ViewCozyOutlined';
 import {
   exportToCanvas,
   exportToSvg,
@@ -451,31 +453,21 @@ const Excalidraw = () => {
     );
   };
 
-  const renderSidebar = () => {
-    return (
-      <Sidebar>
-        <Sidebar.Header>Custom header!</Sidebar.Header>
-        Custom sidebar!
-      </Sidebar>
-    );
-  };
-
   const renderMenu = () => {
     return (
       <MainMenu>
         <MainMenu.DefaultItems.SaveAsImage />
         <MainMenu.DefaultItems.Export />
+        <MainMenu.DefaultItems.ClearCanvas />
+        <MainMenu.DefaultItems.Help />
         <MainMenu.Separator />
-        <MainMenu.DefaultItems.LiveCollaborationTrigger
+        {/* <MainMenu.DefaultItems.LiveCollaborationTrigger
           isCollaborating={isCollaborating}
           onSelect={() => window.alert('You clicked on collab button')}
-        />
-        <MainMenu.Group title="Excalidraw links">
-          <MainMenu.DefaultItems.Socials />
-        </MainMenu.Group>
-        <MainMenu.Separator />
+        /> */}
+
         <MainMenu.ItemCustom>
-          <div className="theme-mode_container">
+          <div className="theme-mode_container dropdown-menu-item">
             {theme === 'light' && (
               <>
                 <NightsStayOutlinedIcon
@@ -495,8 +487,28 @@ const Excalidraw = () => {
             )}
           </div>
         </MainMenu.ItemCustom>
+        <MainMenu.ItemCustom>
+          <div
+            className="theme-mode_container dropdown-menu-item dropdown-menu-custom"
+            onClick={() => setViewModeEnabled(!viewModeEnabled)}
+          >
+            <ViewCozyOutlinedIcon fontSize="inherit" />
+            <button>View mode</button>
+          </div>
+        </MainMenu.ItemCustom>
+        <MainMenu.ItemCustom>
+          <div
+            className="theme-mode_container dropdown-menu-item dropdown-menu-custom"
+            onClick={() => setGridModeEnabled(!gridModeEnabled)}
+          >
+            <GridOnOutlinedIcon fontSize="inherit" />
+            <button>Grid mode</button>
+          </div>
+        </MainMenu.ItemCustom>
 
-        <MainMenu.DefaultItems.Help />
+        <MainMenu.Separator />
+
+        <MainMenu.DefaultItems.ChangeCanvasBackground />
 
         {excalidrawAPI && <MobileFooter excalidrawAPI={excalidrawAPI} />}
       </MainMenu>
@@ -544,61 +556,12 @@ const Excalidraw = () => {
         <label>
           <input
             type="checkbox"
-            checked={viewModeEnabled}
-            onChange={() => setViewModeEnabled(!viewModeEnabled)}
-          />
-          View mode
-        </label>
-        <label>
-          <input
-            type="checkbox"
             checked={zenModeEnabled}
             onChange={() => setZenModeEnabled(!zenModeEnabled)}
           />
           Zen mode
         </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={gridModeEnabled}
-            onChange={() => setGridModeEnabled(!gridModeEnabled)}
-          />
-          Grid mode
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={isCollaborating}
-            onChange={() => {
-              if (!isCollaborating) {
-                const collaborators = new Map();
-                collaborators.set('id1', {
-                  username: 'Doremon',
-                  avatarUrl: 'doremon.png',
-                });
-                collaborators.set('id2', {
-                  username: 'Excalibot',
-                  avatarUrl: 'excalibot.png',
-                });
-                collaborators.set('id3', {
-                  username: 'Pika',
-                  avatarUrl: 'pika.jpeg',
-                });
-                collaborators.set('id4', {
-                  username: 'fallback',
-                  avatarUrl: 'https://example.com',
-                });
-                excalidrawAPI?.updateScene({ collaborators });
-              } else {
-                excalidrawAPI?.updateScene({
-                  collaborators: new Map(),
-                });
-              }
-              setIsCollaborating(!isCollaborating);
-            }}
-          />
-          Show collaborators
-        </label>
+
         <div>
           <button onClick={onCopy.bind(null, 'png')}>
             Copy to Clipboard as PNG
@@ -623,23 +586,6 @@ const Excalidraw = () => {
         </div>
       </div>
       <div className="excalidraw-wrapper">
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            bottom: '20px',
-            display: 'flex',
-            zIndex: 9999999999999,
-            padding: '5px 10px',
-            transform: 'translateX(-50%)',
-            background: 'rgba(255, 255, 255, 0.8)',
-            gap: '1rem',
-          }}
-        >
-          <button onClick={() => excalidrawAPI?.toggleMenu('customSidebar')}>
-            Toggle Custom Sidebar
-          </button>
-        </div>
         <Draw
           ref={(api: ExcalidrawImperativeAPI) => setExcalidrawAPI(api)}
           initialData={initialStatePromiseRef.current.promise}
@@ -661,7 +607,7 @@ const Excalidraw = () => {
           onLinkOpen={onLinkOpen}
           onPointerDown={onPointerDown}
           onScrollChange={rerenderCommentIcons}
-          renderSidebar={renderSidebar}
+          // renderSidebar={renderSidebar}
         >
           {excalidrawAPI && (
             <Footer>
