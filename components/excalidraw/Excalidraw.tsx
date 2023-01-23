@@ -1,5 +1,5 @@
 import './Excalidraw.scss';
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import NightsStayOutlinedIcon from '@mui/icons-material/NightsStayOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
@@ -19,6 +19,7 @@ import {
   MainMenu,
   Footer,
   Sidebar,
+  Button,
 } from '@excalidraw/excalidraw';
 import {
   AppState,
@@ -62,52 +63,24 @@ const Excalidraw = () => {
   const [canvasUrl, setCanvasUrl] = useState('');
   const [exportWithDarkMode, setExportWithDarkMode] = useState(false);
   const [exportEmbedScene, setExportEmbedScene] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [isCollaborating, setIsCollaborating] = useState(false);
   const [commentIcons, setCommentIcons] = useState<{ [id: string]: Comment }>(
     {}
   );
   const [comment, setComment] = useState<Comment | null>(null);
-  const initialStatePromiseRef = useRef<{
-    promise: ResolvablePromise<ExcalidrawInitialDataState | null>;
-  }>({ promise: null! });
-  if (!initialStatePromiseRef.current.promise) {
-    initialStatePromiseRef.current.promise =
-      resolvablePromise() as ExcalidrawInitialDataState | null;
-  }
+  // const initialStatePromiseRef = useRef<{
+  //   promise: ResolvablePromise<ExcalidrawInitialDataState | null>;
+  // }>({ promise: null! });
+  // if (!initialStatePromiseRef.current.promise) {
+  //   initialStatePromiseRef.current.promise =
+  //     resolvablePromise() as ExcalidrawInitialDataState | null;
+  // }
 
   const [excalidrawAPI, setExcalidrawAPI] =
     useState<ExcalidrawImperativeAPI | null>(null);
 
   useHandleLibrary({ excalidrawAPI });
-
-  useEffect(() => {
-    if (!excalidrawAPI) {
-      return;
-    }
-    const fetchData = async () => {
-      const res = await fetch('/images/down.png');
-      const imageData = await res.blob();
-      const reader = new FileReader();
-      reader.readAsDataURL(imageData);
-
-      reader.onload = function () {
-        const imagesArray: BinaryFileData[] = [
-          {
-            id: 'rocket' as BinaryFileData['id'],
-            dataURL: reader.result as BinaryFileData['dataURL'],
-            mimeType: MIME_TYPES.png,
-            created: 1644915140367,
-            lastRetrieved: 1644915140367,
-          },
-        ];
-
-        initialStatePromiseRef.current.promise.resolve(initialData);
-        excalidrawAPI.addFiles(imagesArray);
-      };
-    };
-    fetchData();
-  }, [excalidrawAPI]);
 
   const renderTopRightUI = (isMobile: boolean) => {
     return (
@@ -116,19 +89,21 @@ const Excalidraw = () => {
           <LiveCollaborationTrigger
             isCollaborating={isCollaborating}
             onSelect={() => {
-              window.alert('Collab dialog clicked');
+              console.log('Collab dialog clicked');
             }}
           />
         )}
 
         {/* addin elements to the right top UI */}
-        {/* <button
-          onClick={() => alert("This is dummy top right UI")}
-          style={{ height: "2.5rem" }}
-        >
-          {" "}
-          Click me{" "}
-        </button> */}
+        {!isMobile && (
+          <Button
+            onSelect={() => console.log('button')}
+            onClick={() => alert('This is dummy top right UI')}
+            className="btn_custom-element"
+          >
+            Update Library
+          </Button>
+        )}
       </>
     );
   };
@@ -183,7 +158,10 @@ const Excalidraw = () => {
         nativeEvent: MouseEvent | React.PointerEvent<HTMLCanvasElement>;
       }>
     ) => {
-      const link = element.link!;
+      const link = element.link;
+      if (!link) {
+        return;
+      }
       const { nativeEvent } = event.detail;
       const isNewTab = nativeEvent.ctrlKey || nativeEvent.metaKey;
       const isNewWindow = nativeEvent.shiftKey;
@@ -209,7 +187,7 @@ const Excalidraw = () => {
       files: excalidrawAPI.getFiles(),
       type,
     });
-    window.alert(`Copied to clipboard as ${type} successfully`);
+    console.log(`Copied to clipboard as ${type} successfully`);
   };
 
   const [pointerData, setPointerData] = useState<{
@@ -456,16 +434,12 @@ const Excalidraw = () => {
   const renderMenu = () => {
     return (
       <MainMenu>
+        <MainMenu.DefaultItems.SaveToActiveFile />
         <MainMenu.DefaultItems.SaveAsImage />
         <MainMenu.DefaultItems.Export />
         <MainMenu.DefaultItems.ClearCanvas />
         <MainMenu.DefaultItems.Help />
         <MainMenu.Separator />
-        {/* <MainMenu.DefaultItems.LiveCollaborationTrigger
-          isCollaborating={isCollaborating}
-          onSelect={() => window.alert('You clicked on collab button')}
-        /> */}
-
         <MainMenu.ItemCustom>
           <div className="theme-mode_container dropdown-menu-item">
             {theme === 'light' && (
@@ -505,11 +479,8 @@ const Excalidraw = () => {
             <button>Grid mode</button>
           </div>
         </MainMenu.ItemCustom>
-
         <MainMenu.Separator />
-
         <MainMenu.DefaultItems.ChangeCanvasBackground />
-
         {excalidrawAPI && <MobileFooter excalidrawAPI={excalidrawAPI} />}
       </MainMenu>
     );
@@ -522,29 +493,56 @@ const Excalidraw = () => {
           Update Scene
         </button>
         <button
-          className="reset-scene"
-          onClick={() => {
-            excalidrawAPI?.resetScene();
-          }}
-        >
-          Reset Scene
-        </button>
-        <button
           onClick={() => {
             const libraryItems: LibraryItems = [
               {
                 status: 'published',
                 id: '1',
                 created: 1,
-                elements: initialData.libraryItems[1] as any,
+                elements: initialData.libraryItems[0] as any,
               },
               {
-                status: 'unpublished',
+                status: 'published',
                 id: '2',
                 created: 2,
                 elements: initialData.libraryItems[1] as any,
               },
+              {
+                status: 'published',
+                id: '3',
+                created: 3,
+                elements: initialData.libraryItems[2] as any,
+              },
+              {
+                status: 'published',
+                id: '4',
+                created: 4,
+                elements: initialData.libraryItems[3] as any,
+              },
+              {
+                status: 'published',
+                id: '5',
+                created: 5,
+                elements: initialData.libraryItems[4] as any,
+              },
             ];
+            let items = [] as LibraryItems;
+            let tempElementsArray = [] as any;
+            initialData.libraryItems.forEach(
+              (libraryItem) =>
+                (items = libraryItem.map((item, index) => {
+                  tempElementsArray.push(item);
+                  return {
+                    status: 'published',
+                    id: (index + 1).toString(),
+                    created: index + 1,
+                    elements: tempElementsArray[index],
+                  };
+                }))
+            );
+
+            console.log(items);
+            console.log(libraryItems);
             excalidrawAPI?.updateLibrary({
               libraryItems,
             });
@@ -588,7 +586,7 @@ const Excalidraw = () => {
       <div className="excalidraw-wrapper">
         <Draw
           ref={(api: ExcalidrawImperativeAPI) => setExcalidrawAPI(api)}
-          initialData={initialStatePromiseRef.current.promise}
+          // initialData={initialStatePromiseRef.current.promise}
           onChange={(elements, state) => {
             // console.info('Elements :', elements, 'State : ', state);
           }}
@@ -619,7 +617,6 @@ const Excalidraw = () => {
         {Object.keys(commentIcons || []).length > 0 && renderCommentIcons()}
         {comment && renderComment()}
       </div>
-
       <div className="export-wrapper button-wrapper">
         <label className="export-wrapper__checkbox">
           <input

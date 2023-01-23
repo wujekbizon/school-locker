@@ -10,13 +10,7 @@ const CustomFooter = ({
   return (
     <>
       <Button
-        onSelect={() => alert('General Kenobi!')}
-        style={{ marginLeft: '1rem' }}
-        title="Hello there!"
-      >
-        {COMMENT_SVG}
-      </Button>
-      <button
+        onSelect={() => console.log('Comment')}
         className="custom-element"
         onClick={() => {
           excalidrawAPI?.setActiveTool({
@@ -43,7 +37,7 @@ const CustomFooter = ({
         }}
       >
         {COMMENT_SVG}
-      </button>
+      </Button>
     </>
   );
 };
