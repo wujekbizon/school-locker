@@ -4,6 +4,8 @@ import NightsStayOutlinedIcon from '@mui/icons-material/NightsStayOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import ViewCozyOutlinedIcon from '@mui/icons-material/ViewCozyOutlined';
+import CopyAllOutlinedIcon from '@mui/icons-material/CopyAllOutlined';
+import SyncAltOutlinedIcon from '@mui/icons-material/SyncAltOutlined';
 import {
   exportToCanvas,
   exportToSvg,
@@ -69,6 +71,7 @@ const Excalidraw = () => {
     {}
   );
   const [comment, setComment] = useState<Comment | null>(null);
+
   // const initialStatePromiseRef = useRef<{
   //   promise: ResolvablePromise<ExcalidrawInitialDataState | null>;
   // }>({ promise: null! });
@@ -93,8 +96,36 @@ const Excalidraw = () => {
             }}
           />
         )}
-
-        {/* addin elements to the right top UI */}
+        {!isMobile && (
+          <Button
+            onClick={onCopy.bind(null, 'png')}
+            onSelect={() => console.log('copy as PNG')}
+            className="btn_custom-element"
+          >
+            <CopyAllOutlinedIcon fontSize="small" />
+            PNG
+          </Button>
+        )}
+        {!isMobile && (
+          <Button
+            onClick={onCopy.bind(null, 'svg')}
+            onSelect={() => console.log('copy as SVG')}
+            className="btn_custom-element"
+          >
+            <CopyAllOutlinedIcon fontSize="small" />
+            SVG
+          </Button>
+        )}
+        {!isMobile && (
+          <Button
+            onClick={onCopy.bind(null, 'json')}
+            onSelect={() => console.log('copy as JSON')}
+            className="btn_custom-element"
+          >
+            <CopyAllOutlinedIcon fontSize="small" />
+            JSON
+          </Button>
+        )}
         {!isMobile && (
           <Button
             onSelect={() => console.log('button')}
@@ -118,7 +149,8 @@ const Excalidraw = () => {
             }}
             className="btn_custom-element"
           >
-            Update Library
+            <SyncAltOutlinedIcon fontSize="small" />
+            Library
           </Button>
         )}
       </>
@@ -379,7 +411,7 @@ const Excalidraw = () => {
           }}
         >
           <div className="comment-avatar">
-            <img src="doremon.png" alt="doremon" />
+            <img src="/images/download.png" alt="doremon" />
           </div>
         </div>
       );
@@ -515,17 +547,6 @@ const Excalidraw = () => {
           Zen mode
         </label>
 
-        <div>
-          <button onClick={onCopy.bind(null, 'png')}>
-            Copy to Clipboard as PNG
-          </button>
-          <button onClick={onCopy.bind(null, 'svg')}>
-            Copy to Clipboard as SVG
-          </button>
-          <button onClick={onCopy.bind(null, 'json')}>
-            Copy to Clipboard as JSON
-          </button>
-        </div>
         <div
           style={{
             display: 'flex',

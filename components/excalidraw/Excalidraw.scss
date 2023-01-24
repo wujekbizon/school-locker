@@ -3,10 +3,10 @@
   text-align: center;
 
   .comment-avatar {
-    background: #faa2c1;
+    background: #e67e22;
     border-radius: 66px 67px 67px 0px;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 4px;
     margin: 4px;
 
@@ -98,8 +98,10 @@
   }
 
   button.btn_custom-element {
+    font-family: 'Eudoxus Sans';
+    font-size: 12px;
     width: auto;
-    height: 2.25rem;
+    // height: 2.25rem;
   }
 }
 
