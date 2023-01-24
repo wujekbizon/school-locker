@@ -98,7 +98,24 @@ const Excalidraw = () => {
         {!isMobile && (
           <Button
             onSelect={() => console.log('button')}
-            onClick={() => alert('This is dummy top right UI')}
+            onClick={() => {
+              let libraryItems = [] as any;
+
+              initialData.libraryItems.forEach((libraryItem, index) => {
+                const item = {
+                  status: 'published',
+                  id: index.toString(),
+                  created: index + 1,
+                  elements: libraryItem,
+                };
+
+                libraryItems.push(item);
+              });
+
+              excalidrawAPI?.updateLibrary({
+                libraryItems,
+              });
+            }}
             className="btn_custom-element"
           >
             Update Library
@@ -489,68 +506,6 @@ const Excalidraw = () => {
   return (
     <div className="excaldraw_app" ref={appRef}>
       <div className="button-wrapper">
-        <button className="update-scene" onClick={updateScene}>
-          Update Scene
-        </button>
-        <button
-          onClick={() => {
-            const libraryItems: LibraryItems = [
-              {
-                status: 'published',
-                id: '1',
-                created: 1,
-                elements: initialData.libraryItems[0] as any,
-              },
-              {
-                status: 'published',
-                id: '2',
-                created: 2,
-                elements: initialData.libraryItems[1] as any,
-              },
-              {
-                status: 'published',
-                id: '3',
-                created: 3,
-                elements: initialData.libraryItems[2] as any,
-              },
-              {
-                status: 'published',
-                id: '4',
-                created: 4,
-                elements: initialData.libraryItems[3] as any,
-              },
-              {
-                status: 'published',
-                id: '5',
-                created: 5,
-                elements: initialData.libraryItems[4] as any,
-              },
-            ];
-            let items = [] as LibraryItems;
-            let tempElementsArray = [] as any;
-            initialData.libraryItems.forEach(
-              (libraryItem) =>
-                (items = libraryItem.map((item, index) => {
-                  tempElementsArray.push(item);
-                  return {
-                    status: 'published',
-                    id: (index + 1).toString(),
-                    created: index + 1,
-                    elements: tempElementsArray[index],
-                  };
-                }))
-            );
-
-            console.log(items);
-            console.log(libraryItems);
-            excalidrawAPI?.updateLibrary({
-              libraryItems,
-            });
-          }}
-        >
-          Update Library
-        </button>
-
         <label>
           <input
             type="checkbox"

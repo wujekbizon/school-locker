@@ -15,6 +15,7 @@ const DynamicTextEditor = dynamic(
     loading: () => (
       <p className="dynamic-loader">Initializing Text Editor...</p>
     ),
+    ssr: false,
   }
 );
 
