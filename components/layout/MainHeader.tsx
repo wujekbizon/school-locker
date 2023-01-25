@@ -10,6 +10,7 @@ import Submenu from './Submenu';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
+import StatusBar from '../status/StatusBar';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
