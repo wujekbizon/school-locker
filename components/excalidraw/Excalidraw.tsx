@@ -536,28 +536,21 @@ const Excalidraw = () => {
   };
 
   return (
-    <div className="excaldraw_app" ref={appRef}>
+    <div className="excalidraw_app" ref={appRef}>
       <div className="button-wrapper">
-        <label>
+        {/* <label>
           <input
             type="checkbox"
             checked={zenModeEnabled}
             onChange={() => setZenModeEnabled(!zenModeEnabled)}
           />
           Zen mode
-        </label>
+        </label> */}
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '1em',
-            justifyContent: 'center',
-            marginTop: '1em',
-          }}
-        >
+        {/* <div className="excalidraw-pointer_container">
           <div>x: {pointerData?.pointer.x ?? 0}</div>
           <div>y: {pointerData?.pointer.y ?? 0}</div>
-        </div>
+        </div> */}
       </div>
       <div className="excalidraw-wrapper">
         <Draw
@@ -593,7 +586,7 @@ const Excalidraw = () => {
         {Object.keys(commentIcons || []).length > 0 && renderCommentIcons()}
         {comment && renderComment()}
       </div>
-      <div className="export-wrapper button-wrapper">
+      {/* <div className="export-wrapper button-wrapper">
         <label className="export-wrapper__checkbox">
           <input
             type="checkbox"
@@ -682,7 +675,7 @@ const Excalidraw = () => {
         <div className="export export-canvas">
           <img src={canvasUrl} alt="" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

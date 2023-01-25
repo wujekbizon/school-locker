@@ -1,4 +1,4 @@
-.excaldraw_app {
+.excalidraw_app {
   font-family: 'Eudoxus Sans';
   text-align: center;
 
@@ -16,6 +16,16 @@
       border-radius: 50%;
     }
   }
+
+  // .excalidraw-pointer_container {
+  //   position: absolute;
+  //   bottom: 20%;
+  //   left: 3%;
+  //   z-index: 99;
+  //   color: inherit;
+  //   display: flex;
+
+  // }
 }
 
 .button-wrapper button {
@@ -101,7 +111,7 @@
     font-family: 'Eudoxus Sans';
     font-size: 12px;
     width: auto;
-    // height: 2.25rem;
+    height: 2.25rem;
   }
 }
 
