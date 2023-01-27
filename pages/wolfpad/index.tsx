@@ -6,6 +6,7 @@ const DynamicCodeCell = dynamic(
     loading: () => (
       <p className="dynamic-loader">Initializing Code Editor Cell...</p>
     ),
+    ssr: false,
   }
 );
 
