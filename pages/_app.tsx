@@ -7,6 +7,8 @@ import AdminPanelLayout from '../components/admin/layout/Layout';
 import { LightModeProvider } from '../context/lightModeContext';
 import { AppProvider } from '../context/globalContext';
 import { SessionProvider } from 'next-auth/react';
+import { Provider } from 'react-redux';
+import { store } from '../store';
 
 export default function App({
   Component,
@@ -17,19 +19,21 @@ export default function App({
 
   return (
     <SessionProvider session={session}>
-      <AppProvider>
-        <LightModeProvider>
-          {isAdmin ? (
-            <AdminPanelLayout>
-              <Component {...pageProps} />
-            </AdminPanelLayout>
-          ) : (
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          )}
-        </LightModeProvider>
-      </AppProvider>
+      <Provider store={store}>
+        <AppProvider>
+          <LightModeProvider>
+            {isAdmin ? (
+              <AdminPanelLayout>
+                <Component {...pageProps} />
+              </AdminPanelLayout>
+            ) : (
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+          </LightModeProvider>
+        </AppProvider>
+      </Provider>
     </SessionProvider>
   );
 }
