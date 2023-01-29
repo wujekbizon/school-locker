@@ -170,28 +170,41 @@ ul {
 /* resizable css */
 .react-resizable-handle {
   display: block;
-  background-color: #30363d;
-
-  background-repeat: no-repeat;
-  background-position: 50%;
+  background: rgba(29, 28, 37, 1) 0%;
 }
 
 .react-resizable-handle-s {
-  margin: auto;
   height: 10px;
-  width: calc(100% - 40px);
+  width: 100%;
   cursor: row-resize;
-  background-image: url('/images/hdots.jpg');
-  background-size: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(189.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  border-left: 100px solid #30363d;
+  border-right: 100px solid #30363d;
+  border-top: 3.5px solid #30363d;
+  border-bottom: 3.5px solid #30363d;
 }
 
 .react-resizable-handle-e {
-  width: 10px;
   min-width: 10px;
   height: 100%;
   cursor: col-resize;
-  background-image: url('/images/vdots.jpg');
-  background-size: 50px;
+  background: linear-gradient(189.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  border-left: 3.5px solid #30363d;
+  border-right: 3.5px solid #30363d;
+  border-top: 50px solid #30363d;
+  border-bottom: 50px solid #30363d;
+}
+
+.react-resizable-handle-e:active {
+  border-top: 120px solid #30363d;
+  border-bottom: 120px solid #30363d;
+}
+
+.react-resizable-handle-s:active {
+  border-left: 400px solid #30363d;
+  border-right: 400px solid #30363d;
 }
 
 .resize-horizontal {
