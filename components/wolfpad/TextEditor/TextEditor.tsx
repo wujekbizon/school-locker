@@ -19,8 +19,13 @@ import ToolbarPlugin from './Plugins/ToolbarPlugin';
 import CodeHighlightPlugin from './Plugins/CodeHighlightPlugin';
 import ActionsPlugin from './Plugins/ActionPlugin';
 import Placeholder from './Placeholder';
+import { Cell } from '../../../store/cell';
 
-const TextEditor = () => {
+interface TextEditorProps {
+  cell: Cell;
+}
+
+const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
   const onError = (error: Error) => {
     console.error(error.message);
     throw error;
