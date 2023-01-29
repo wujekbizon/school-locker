@@ -29,13 +29,13 @@ const prepopulatedText = () => {
   root.append(paragraph2);
   const list = $createListNode('bullet');
   list.append(
-    // $createListItemNode().append(
-    //   $createTextNode('These are links')
-    //   //     $createLinkNode('https://wolfai-chat-bot.vercel.app/').append(
-    //   //       $createTextNode('The New Era Of AI')
-    //   //     ),
-    //   //     $createTextNode(`).`)
-    // ),
+    $createListItemNode().append(
+      $createTextNode(`These are links (e.g., `),
+      $createLinkNode('https://wolfai-chat-bot.vercel.app/').append(
+        $createTextNode('The New Era Of AI')
+      ),
+      $createTextNode(`).`)
+    ),
     $createListItemNode().append(
       $createTextNode(`Press twice on the link to see and edit the URL.`)
     )

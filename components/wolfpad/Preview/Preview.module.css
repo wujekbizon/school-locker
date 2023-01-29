@@ -1,6 +1,6 @@
 .preview_wrapper {
   position: relative;
-  height: calc(100% - 1px);
+  height: 100%;
   flex-grow: 1;
   overflow: hidden;
 }

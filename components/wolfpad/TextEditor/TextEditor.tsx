@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import exampleTheme from './Themes';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { TableCellNode, TableNode, TableRowNode } from '@lexical/table';
@@ -11,53 +10,27 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { TRANSFORMERS } from '@lexical/markdown';
 import prepopulatedText from './SampleText';
+import { testText } from './SampleText';
+import MyCustomAutoFocusPlugin from './Plugins/MyCustomAutoFocusPlugin';
 import ToolbarPlugin from './Plugins/ToolbarPlugin';
 import CodeHighlightPlugin from './Plugins/CodeHighlightPlugin';
 import ActionsPlugin from './Plugins/ActionPlugin';
-// Lexical React plugins are React components, which makes them
-// highly composable. Furthermore, you can lazy load plugins if
-// desired, so you don't pay the cost for plugins until you
-// actually use them.
-import { testText } from './SampleText';
-
-const MyCustomAutoFocusPlugin = () => {
-  const [editor] = useLexicalComposerContext();
-
-  useEffect(() => {
-    // Focus the editor when the effect fires!
-    editor.focus();
-  }, [editor]);
-
-  return null;
-};
-
-const Placeholder = () => {
-  return (
-    <div className="editor-placeholder">
-      Play around with the Markdown plugin...
-    </div>
-  );
-};
-
-// Catch any errors that occur during Lexical updates and log them
-// or throw them as needed. If you don't throw them, Lexical will
-// try to recover gracefully without losing user data.
-const onError = (error: Error) => {
-  console.error(error.message);
-  throw error;
-};
+import Placeholder from './Placeholder';
 
 const TextEditor = () => {
+  const onError = (error: Error) => {
+    console.error(error.message);
+    throw error;
+  };
+
   const initialConfig = {
     namespace: 'Wolfpad_Editor',
-    editorState: prepopulatedText,
+    editorState: testText,
     theme: exampleTheme,
     onError,
-    // Any custom nodes go here
     nodes: [
       HeadingNode,
       ListNode,
