@@ -53,6 +53,13 @@ ul {
   -webkit-text-fill-color: transparent;
 }
 
+.gradient_editor-logo {
+  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .gradient_private {
   background: linear-gradient(270deg, #cc0303, #10204d);
   background-clip: text;

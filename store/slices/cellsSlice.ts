@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
 import { Cell } from '../cell';
 import {
   SaveCellsErrorAction,
@@ -87,7 +87,7 @@ const cellsSlice = createSlice({
       const cell: Cell = {
         content: '',
         type: payload.type,
-        id: randomId(),
+        id: nanoid(),
       };
 
       state.data[cell.id] = cell;
@@ -102,10 +102,6 @@ const cellsSlice = createSlice({
     },
   },
 });
-
-const randomId = () => {
-  return Math.random().toString(36).substring(2, 7);
-};
 
 export const {
   saveCellsError,

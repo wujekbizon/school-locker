@@ -31,15 +31,15 @@ export const actionCreators = {
   moveCell,
 };
 
-// store.dispatch(
-//   insertCellAfter({
-//     id: null,
-//     type: 'text',
-//   })
-// );
-// store.dispatch(
-//   insertCellAfter({
-//     id: null,
-//     type: 'code',
-//   })
-// );
+store.dispatch(
+  insertCellAfter({
+    id: null,
+    type: 'text',
+  })
+);
+store.dispatch(
+  insertCellAfter({
+    id: null,
+    type: 'code',
+  })
+);
