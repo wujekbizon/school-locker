@@ -2,16 +2,14 @@
 
 /* links */
 .submenu {
-  margin-top: 5px;
   background: hsl(209, 61%, 16%);
   position: absolute;
-  top: 6rem;
+  top: 0;
   left: 50%;
   display: none;
   transform: translateX(-50%);
-  z-index: 3;
   transition: all 0.3s linear;
-  height: 420px;
+  height: 400px;
   width: 50%;
   border-radius: 10px;
   border: 5px solid hsl(209, 61%, 16%);
@@ -25,7 +23,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid hsl(210, 22%, 90%);
+    border-bottom: 10px solid hsl(209, 61%, 16%);
     position: absolute;
     top: -14px;
     left: 50%;
