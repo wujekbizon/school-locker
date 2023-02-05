@@ -9,6 +9,10 @@ const DynamicCellList = dynamic(
 );
 
 const PlaygroundPage = () => {
-  return <DynamicCellList />;
+  return (
+    <div style={{ padding: '64px' }}>
+      <DynamicCellList />
+    </div>
+  );
 };
 export default PlaygroundPage;

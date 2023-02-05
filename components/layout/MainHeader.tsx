@@ -56,8 +56,8 @@ const MainHeader = () => {
               <Logo />
             </Link>
             {/* <button className="btn toggle-btn" onClick={openSidebar}>
-            <MenuIcon />
-          </button> */}
+              <MenuIcon />
+            </button> */}
           </div>
 
           <ul className="nav-links">

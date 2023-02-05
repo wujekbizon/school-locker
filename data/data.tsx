@@ -212,6 +212,13 @@ const sublinks: Pages[] = [
         url: '/portfolio',
       },
       {
+        label: 'Wolfpad',
+        title: 'interactive coding enviroment',
+        idTag: 'one',
+        icon: <CodeIcon />,
+        url: '/wolfpad',
+      },
+      {
         label: 'Calendar',
         title: 'schedule your next event',
         idTag: 'one',
