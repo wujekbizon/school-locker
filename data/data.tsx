@@ -35,8 +35,8 @@ export const exploreFeatures = [
   {
     id: 'feature-2',
     url: '/chat',
-    imgUrl: '/images/blog02.png',
-    title: 'Access to the Artificial Inteligence',
+    imgUrl: '/images/chatbot.png',
+    title: 'Access to the Artificial Intelligence',
   },
   {
     id: 'feature-3',
@@ -47,7 +47,7 @@ export const exploreFeatures = [
   {
     id: 'feature-4',
     url: '/wolfpad',
-    imgUrl: '/images/admin.png',
+    imgUrl: '/images/cell.png',
     title: 'Wolfpad an interactive coding enviroment',
   },
   {

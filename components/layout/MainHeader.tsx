@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
 import StatusBar from '../status/StatusBar';
+import Image from 'next/image';
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
@@ -52,9 +53,8 @@ const MainHeader = () => {
         <nav className="nav-center" onMouseOver={handleSubmenu}>
           <div className="navbar-gradient gradient-01" />
           <div className="nav-header">
-            <Link href="/">
-              <Logo />
-            </Link>
+            <Logo />
+
             {/* <button className="btn toggle-btn" onClick={openSidebar}>
               <MenuIcon />
             </button> */}

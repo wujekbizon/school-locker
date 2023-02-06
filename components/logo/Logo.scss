@@ -1,7 +1,16 @@
-.logo-title {
-  color: white;
-  margin: 0;
-  font-family: 'Robot Condensed';
-  font-weight: 400;
-  font-size: 30px;
+.logo-container {
+  display: flex;
+  align-items: center;
+
+  .logo-title {
+    color: white;
+    margin: 0;
+    font-family: 'Robot Condensed';
+    font-weight: 400;
+    font-size: 30px;
+  }
+
+  .school_logo {
+    border-radius: 50%;
+  }
 }
