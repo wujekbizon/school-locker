@@ -44,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       student.trim() === ''
     ) {
       res.status(422).json({
-        message: 'Invalid input - password must be at leat 8 characters long.',
+        message: 'Invalid input - password must be at least 8 characters long.',
       });
       return;
     }
